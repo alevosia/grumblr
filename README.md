@@ -30,3 +30,10 @@ NoSQL project for SFLECT1
 
 * You can use MySQL/PostgreSQL to store user information but the blog posts
   should be stored, and saved on a MongoDB instance
+
+### Members:
+
+* Nathaniel Saludes
+* Alexander Marinas
+* Kevin Say
+* Paolo Latoja
