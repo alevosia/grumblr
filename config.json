@@ -1,7 +1,7 @@
 {
-    "database" : {
-        "username":"alex",
-        "password":"alex123"
+    "database": {
+        "username": "alex",
+        "password": "alex123"
     }
-    
+
 }
