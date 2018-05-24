@@ -1,22 +1,10 @@
 # Grumblr
 
-### NoSQL project for SFLECT1
+NoSQL project for SFLECT1
 
 ### Project website that mimics the website of Tumblr.com
 
-#### Temporary Project Name: Grumblr
-
----
-
-## Dependencies
-
-* body-parser
-* express
-* mongodb
-
-## devDependencies
-
-* nodemon
+### Temporary Project Name: Grumblr
 
 ---
 

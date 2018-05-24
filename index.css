@@ -1,4 +1,5 @@
-@import 'Gotham Rounded Font/gotham-rounded.css';
+@import 'Fonts/gotham-rounded.css';
+
 * {
    padding: 0px;
    margin: 0px;
@@ -13,25 +14,62 @@ body {
    height: 100vh;
    display: grid;
    justify-items: center;
-   box-align: center;
-   -webkit-box-align: center;
-   -ms-flex-align: center;
    align-items: center;
 }
 
-.formContainer {
+.loginContainer {
    background-color: #6C4ED5;
    width: 45em;
-   height: 30em;
+   height: 35em;
    display: grid;
    grid-template-columns: 1.4fr 1fr;
    border-radius: 10px;
 }
 
-.logo {
-   /* background-color: red; */
+
+
+
+.logoContainer {
+   /* background-color: #6DC4FF; */
+   justify-self: center;
+   align-self: center;
+   margin-bottom: 50px;
 }
 
-.form {
+
+
+
+
+.formContainer {
    background-color: #E4F1FA;
+   border-radius: 0px 10px 10px 0px;  
+   display: grid;
+   align-items: center;justify-content: center
 }
+
+      form .title {
+         margin-bottom: 20px;
+      }
+
+      form .title h1 {
+         font-family: "Big John";
+         /* background-color: white; */
+         text-align: center;
+         color: #859CAB;
+         width: auto;
+         margin-bottom: 10px;
+      }
+
+      form {
+         width: 16em;
+         height: auto;
+      }
+      
+      #username, #password {
+         font-size: 0.8em; color: #859CAB; letter-spacing: 1px; font-weight: normal;
+      }
+      
+      #LoginButton {
+         background-color: #6CC3FE;
+         color: white;
+      }

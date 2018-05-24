@@ -1,31 +1,77 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Grumblr</title>
 
+  <!-- semantic-ui styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+  <!-- main css -->
   <link rel="stylesheet" type="text/css" media="screen" href="./index.css" />
 </head>
-
-
 <body>
-  <h2>Register / Login Page</h2>
-  <div class="formContainer">
-    <div class="logo">
-    </div>
-    <div class="form">
-      <form action="" method="POST">
 
-      </form>
-    </div>
-  </div>
+  <div class="wrapper">
 
-  <!-- When the user successfully logs in, user is redirected to his/her profile page -->
+    <div class="loginContainer">
+
+      <!-- logo -->
+      <div class="logoContainer">
+        <img src="./IMG/Logo@2x.png" alt="GRUMBLR">
+      </div>
+  
+
+
+      <div class="formContainer">
+        <form action="" method="POST" class="ui form">
+
+          <!-- Brand -->
+          <div class="title"><h1>GRUMBLR</h1></div>
+  
+          <!-- username -->
+          <div class="field">
+            <label id="username">USERNAME</label>
+            <input type="text" name="username">
+          </div>
+
+          <!-- password -->
+          <div class="field">
+            <label id="password">PASSWORD</label>
+            <input type="password" name="password">
+          </div>
+
+                  <!-- remember me checkbox -->
+                  <div class="field">
+                    <div class="ui checkbox">
+                      <input type="checkbox" tabindex="0">
+                      <label style="font-size: 0.8em; color:#859CAB;"> &nbsp;Remember Me</label>
+                    </div>
+                  </div>
+
+          <!-- login button -->
+          <button class="ui button fluid" type="submit" id="LoginButton">Login</button>
+
+          <!-- login with facebook -->
+          <div class="field">
+          </div>
+
+        </form>
+      </div><!-- formContainer -->
+
+    </div><!-- loginContainer -->
+
+  </div> <!-- wrapper -->
+
+
+
+
+
 
   <script src="server.js"></script>
-</body>
+  <!-- semantic-ui js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 
+</body>
 </html>
