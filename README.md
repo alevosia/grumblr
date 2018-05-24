@@ -8,6 +8,18 @@ NoSQL project for SFLECT1
 
 ---
 
+## Dependencies
+
+* body-parser
+* express
+* mongodb
+
+## devDependencies
+
+* nodemon
+
+---
+
 ## Core Features Required
 
 * Login either via email with email and password (5%)
