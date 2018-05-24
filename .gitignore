@@ -1,9 +1,0 @@
-/node_modules
-
-/.vscode
-
-#Ignoring my personal workspace notes
-myNotes.txt
-
-#I dont think I can ignore .gitignore because its already in the repository
-**.gitignore**
