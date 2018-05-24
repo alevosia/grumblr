@@ -13,6 +13,7 @@ body {
    height: 100vh;
    display: grid;
    justify-items: center;
+   box-align: center;
    -webkit-box-align: center;
    -ms-flex-align: center;
    align-items: center;
