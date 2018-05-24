@@ -8,9 +8,7 @@ NoSQL project for SFLECT1
 
 ---
 
-## Features Required
-
-### Core features are the following:
+## Core Features Required
 
 * Login either via email with email and password (5%)
 * or via Facebook (optional +5%)
