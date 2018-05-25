@@ -5,18 +5,55 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Grumblr</title>
-</head>
-<body style=
-     "background-color: #6DC4FF; background-color: #6DC4FF;
+
+   <style>
+      #body {
+      background-color: #6DC4FF; background-color: #6DC4FF;
       color:#25303b;
       line-height:1.6;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding:1em;"
-      >
-      
-   <!-- Registration Success -->
+      padding:1em;
+      }
 
-   <div class="container" style="text-align: center;">
+      .wrapper {
+         box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
+         padding: 2px;
+         /* margin: 2px; */
+         text-align: center;
+      }
+      
+      div.container {
+         background:#f9feff;
+         margin: 2px;
+         padding: 2px;
+      }
+
+      button {
+         padding-top: 5px;
+         margin-bottom: 7px;
+         background:#6DC4FF;
+         border:0;
+         border-radius: 4px;
+         width: 100px;
+         height: 50px;
+      }
+
+      div button:hover{
+         background:#2473c2;
+         color:#fff;
+         outline:0;
+         -webkit-transition: background-color 2s ease-out;
+         transition: background-color 2s ease-out;
+      }
+   </style>
+</head>
+
+
+<body id="body">
+      
+
+
+   <div class="container wrapper">
       <h1>Registration successful! You may now use Grumblr</h1>
       <a href="/login"><button style="font-size: 20px;">Login</button></a>
    </div>
