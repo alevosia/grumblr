@@ -130,9 +130,6 @@ timeline {
    height: 15em;
 }
 
-.accountDetails {
-}
-
 .profilePosts {
    display: grid;
    justify-items: center;
@@ -222,10 +219,6 @@ timeline {
    width: 100%;
    display: grid;
    grid-template-columns: 1.5fr 1fr;
-}
-
-.modal_postCotent {
-   /* padding: 10px; */
 }
 
 .modal_commentSection {
