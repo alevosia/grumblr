@@ -33,6 +33,11 @@ app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
 })
 
+// register page
+app.get('/handle_registration', (req, res) => {
+    res.sendFile(__dirname + '/registration_successful.html')
+})
+
 // profile page
 app.get('/profile', (req, res) => {
     res.sendFile(__dirname + '/profile.html')
@@ -45,5 +50,6 @@ app.get('/timeline', (req, res) => {
 
 // handles the login
 app.post('/handle_login', (req, res) => {
-    res.sendFile(__dirname + '/login_success.html')
+    // if succesful login
+    res.sendFile(__dirname + '/profile.html')
 })
