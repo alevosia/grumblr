@@ -19,8 +19,8 @@
 
       </div>
       <div class="contact">
-        <h1 id="register">Register</h1>
-        <form>
+        <h1 id="registerTitle">Register</h1>
+        <form action="#" method="POST" id="regForm">
           <p>
             <label>First Name</label>
             <input type="text" name="firstName">
@@ -47,17 +47,25 @@
           </p>
           <p>
             <label>Gender</label>
-            <select name="cars">
-              <option value="volvo">Male</option>
-              <option value="saab">Female</option>
+            <select name="gender">
+              <option selected>...</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
             </select>
           </p>  
           <p class="full">
-            <button><p class="buttonText">Submit</p></button>
+            <button type="submit" form="regForm" value="Submit">
+              <p class="buttonText">Submit</p>
+            </button>
           </p>
         </form>
       </div>
     </div>
   </div>
+
+  <script>
+
+  </script>
 </body>
 </html>

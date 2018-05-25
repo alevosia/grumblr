@@ -119,7 +119,7 @@ select {
   color: #485e74
 }
 
-#register {
+#registerTitle {
   padding-left: 230px;
   font-size: 35px;
 }
@@ -131,8 +131,12 @@ p .buttonText {
 }
 
 img {
-  display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+}
+
+button {
+    border-radius: 4px;
 }
