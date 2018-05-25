@@ -219,11 +219,17 @@ timeline {
    width: 100%;
    display: grid;
    grid-template-columns: 1.5fr 1fr;
+   overflow: hidden;
 }
 
 .modal_commentSection {
    padding: 10px;
 }
+
+.captionContainer {
+   padding: 5px 10px 10px 10px;
+}
+
 
 .commentContent {
    display: grid;
