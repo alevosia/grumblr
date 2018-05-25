@@ -1,4 +1,4 @@
-@import 'Fonts/gotham-rounded.css';
+@import url("../fonts/gotham-rounded.css");
 
 * {
    padding: 0px;
