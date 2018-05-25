@@ -28,6 +28,12 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+// landing page - login
+app.get('/index', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+})
+
+
 // register page
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
