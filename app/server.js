@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+// register page
+app.get('register', (req, res) => {
+    res.sendFile(__dirname + '/register.html')
+})
+
 // profile page
 app.get('/profile', (req, res) => {
     res.sendFile(__dirname + '/profile.html')
