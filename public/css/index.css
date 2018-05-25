@@ -73,3 +73,15 @@ body {
          background-color: #6CC3FE;
          color: white;
       }
+      #LoginButton:hover {
+         background-color: #64afe1;
+      }
+
+      #registerButton {
+            margin-top: 1em; 
+            background-color: #6C4ED5;
+            color: white;
+      }
+      #registerButton:hover {
+            background-color: #543da7;
+      }
