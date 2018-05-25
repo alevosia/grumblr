@@ -138,12 +138,108 @@ timeline {
    overflow: hidden;
 }
 
+
+
+
+
+
+/* CREATE A POST STYLES */
+.createPostContainer {
+   /* background-color: #e1e1e1; */
+   background-color: white;
+   width: 100%;
+   border-radius: 10px;
+   height: auto;
+   overflow: hidden;
+   /* display: grid; */
+}
+
+.createPostField {
+   /* background-color: #e1e1e1; */
+   position: relative;
+   width: 100%;
+   justify-self: center;
+   display: grid;
+   padding-top: 10px;
+   /* padding-bottom: 10px; */
+}
+
+#createPostField {
+   justify-self: center;
+   position: relative;
+   width: 100%;
+   height: 12em;
+   resize: none;
+   background-color: transparent;
+   color: #767676;
+   outline: none;
+   border: none;
+}
+
+.imageAttachment {
+   padding-top: 10px;
+}
+#imageAttachment {
+   width: 100%;
+   height: auto;
+}
+
+.hidden {
+   display: none;
+}
+
+
+
+
+.createPostControls {
+   width: 100%;
+   /* background-color: red; */
+   height: auto;
+   padding: 5px 5px;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+
+#uploadImageButton {
+   border-radius: 5px;
+   justify-self: start;
+   /* background-color: black; */
+   padding: 0px 8px;
+   display: flex;
+   justify-items: center;
+   align-items: center;
+}
+
+#postButton {
+   background-color: #6C4ED5;
+   color: white;
+   border-radius: 5px;
+   justify-self: end;
+   transition: all 0.1s ease-in-out;
+}
+#postButton:hover {
+   background-color: #5ba8db;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* TIMELINE POSTS OR CONTENTS */
 .post {
    background-color: white;
    border-radius: 10px;
    width: 100%;
    overflow: hidden;
-   margin-bottom: 10px;
+   margin: 10px 0px;
 }
 
 .postMeta {
@@ -187,6 +283,9 @@ timeline {
 .postDetails, .postComments {
    padding: 5px 10px;
    width: 100%;
+}
+.postComments {
+   margin-top: 20px;
 }
 
 .viewComments {

@@ -72,6 +72,38 @@
          
          <div class="profilePosts">
 
+            <!-- CREATE A POST -->
+            <form action="" method="POST" class="createPostContainer ui form">
+                  <!-- post text -->
+                  <div class="createPostField ui">
+                        <textarea name="" id="createPostField" placeholder="what's on your mind"></textarea>
+                  </div>
+                  
+                  <!-- post: attach an image -->
+                  <div class="imageAttachment"> 
+                        <img src="/images/placeholderimage1.jpg" alt="" id="imageAttachment">
+                  </div>
+
+                  <!-- post controls -->
+                  <div class="createPostControls">
+                        <div id="uploadImageButton">
+                              <img src="/images/uploadimage.png" alt="">
+                        </div>
+
+                        <!-- upload image modal -->
+                        <div class="ui modal mini uploadImage">
+                              <input type="file" name="" id="">
+                        </div>
+
+                        <input type="submit" value="POST" class="ui button" id="postButton">
+                  </div>
+            </form>
+
+
+
+
+
+
             <!-- some content -->
             <div class="post">
 
@@ -80,7 +112,7 @@
                      <div class="author">
                         <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
                         <span class="postMetaAuthorName">
-                           Firstname Lastname
+                           @uSeRnAmE
                         </span>
                      </div>
                      <div class="postMetaTime">date posted</div>
@@ -91,7 +123,7 @@
                      <p class="postContent">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet quas odit, aliquid dolorum repudiandae, quia nulla quos voluptas harum esse, soluta perspiciatis aliquam saepe possimus ea hic! Recusandae, unde quisquam.
                      </p>
-                     <img src="./images/sampleimage1.jpg" alt="#" id="postContent">
+                     <img src="./images/placeholderimage2.png" alt="#" id="postContent">
                   </div>
    
                   <!-- post comment section -->
@@ -104,21 +136,28 @@
                      <a class="viewComments">View Comments</a>
 
                      <div class="ui modal longer">
+                        
+                        <!-- modal content container -->
                         <div class="commentModal">
 
+                              
                            <div class="modal_postCotent">
                               <div class="postContentContainer">
-                                    <img src="./images/sampleimage1.jpg" alt="#" id="postContent">
+                                    <!-- post image -->
+                                    <img src="./images/placeholderimage2.png" alt="#" id="postContent">
+
                                     <!-- post meta data -->
                                     <div class="postMeta">
                                           <div class="author">
                                                 <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
                                                 <span class="postMetaAuthorName">
-                                                      Firstname Lastname
+                                                      @uSeRnAmE
                                                 </span>
                                           </div>
                                           <div class="postMetaTime">date posted</div>
                                      </div>
+
+                                     <!-- post caption -->
                                     <div class="captionContainer">
                                           <p class="caption">
                                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet quas odit, aliquid dolorum repudiandae, quia nulla quos voluptas harum esse, soluta perspiciatis aliquam saepe possimus ea hic! Recusandae, unde quisquam.
@@ -134,7 +173,7 @@
                                           <div class="commentContent">
                                              <img class="ui avatar image" src="/images/avatar.png" alt="avatar">
                                              <p>
-                                                <a href="" class="modal_authorName">Commenter's Name</a>
+                                                <a href="" class="modal_authorName">@Author's_uSeRnAmE</a>
                                                 <span>
                                                       author's comment shall be shown here. this is inside a span tag.
                                                 </span>
@@ -179,6 +218,10 @@
 
       $('.ui.longer.modal')
          .modal('attach events', '.viewComments', 'show')
+      ;
+
+      $('.ui.modal.uploadImage')
+            .modal('attach events', '#uploadImageButton', 'show')
       ;
 
     </script>
