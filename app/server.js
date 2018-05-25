@@ -5,10 +5,7 @@ const bodyParser = require('body-parser')
 const MongoDB = require('mongodb')
 const MongoClient = MongoDB.MongoClient
 
-app.use(bodyParser.urlencoded({
-    extended: true
-}))
-
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 var db = null
@@ -28,8 +25,19 @@ app.listen(3000, function () {
     console.log('Listening to 3000!')
 })
 
+// landing page - login
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
+})
+
+// profile page
+app.get('/profile.html', (req, res) => {
+    res.sendFile(__dirname + '/profile.html')
+})
+
+// timeline
+app.get('/timeline.html', (req, res) => {
+    res.sendFile(__dirname + '/timeline.html')
 })
 
 // handles the post
