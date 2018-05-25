@@ -45,5 +45,5 @@ app.get('/timeline', (req, res) => {
 
 // handles the login
 app.post('/handle_login', (req, res) => {
-    res.sendFile(__dirname + '/profile.html')
+    res.sendFile(__dirname + '/login_success.html')
 })
