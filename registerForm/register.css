@@ -4,7 +4,7 @@
 }
 
 body{
-  background-color:#92bde7;
+  background-color: #6DC4FF;
   color:#485e74;
   line-height:1.6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -79,7 +79,7 @@ ul{
 }
 
 .contact form button{
-  background:#3151b8;
+  background:#6DC4FF;
   border:0;
   text-transform: uppercase;
 }
@@ -124,6 +124,15 @@ select {
   font-size: 35px;
 }
 
-button {
+
+p .buttonText {
   font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+img {
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
 }
