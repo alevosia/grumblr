@@ -127,7 +127,12 @@ timeline {
    border-radius: 10px;
    width: 100%;
    padding: 10px;
-   height: 15em;
+   height: 20em;
+}
+
+.accountDetails {
+   overflow: auto;
+   height: auto;
 }
 
 .profilePosts {
