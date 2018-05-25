@@ -9,7 +9,7 @@
    <!-- semantic-ui styles -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
    <!-- main css -->
-   <link rel="stylesheet" href="css/profile.css">
+   <link rel="stylesheet" href="./css/profile.css">
 
 </head>
 
@@ -35,7 +35,7 @@
             <img src="images/avatar.png" alt="Avatar" id="userAvatar">
             
             <div class="menu">
-               <div class="item">Profile Settings</div>
+               <div class="item">Account Settings</div>
                <div class="item">Logout</div>
             </div>
          </div>
@@ -91,7 +91,7 @@
                      <p class="postContent">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet quas odit, aliquid dolorum repudiandae, quia nulla quos voluptas harum esse, soluta perspiciatis aliquam saepe possimus ea hic! Recusandae, unde quisquam.
                      </p>
-                     <img src="./images/placeholderImage.jpg" alt="#" id="postContent">
+                     <img src="./images/sampleimage1.jpg" alt="#" id="postContent">
                   </div>
    
                   <!-- post comment section -->
@@ -103,23 +103,41 @@
 
                      <a class="viewComments">View Comments</a>
 
-                     <div class="ui modal">
+                     <div class="ui modal longer">
                         <div class="commentModal">
 
                            <div class="modal_postCotent">
                               <div class="postContentContainer">
-                                    <img src="./images/placeholderImage.jpg" alt="#" id="postContent">
+                                    <img src="./images/sampleimage1.jpg" alt="#" id="postContent">
+                                    <!-- post meta data -->
+                                    <div class="postMeta">
+                                          <div class="author">
+                                                <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                                                <span class="postMetaAuthorName">
+                                                      Firstname Lastname
+                                                </span>
+                                          </div>
+                                          <div class="postMetaTime">date posted</div>
+                                     </div>
+                                    <div class="captionContainer">
+                                          <p class="caption">
+                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet quas odit, aliquid dolorum repudiandae, quia nulla quos voluptas harum esse, soluta perspiciatis aliquam saepe possimus ea hic! Recusandae, unde quisquam.
+                                          </p>
+                                    </div>
                               </div>
                            </div>
 
 
-                           <div class="modal_commentSection">
+                           <div class="modal_commentSection scrolling content">
                                     <!-- comments section -->
                                     <div class="commentSection">
                                           <div class="commentContent">
                                              <img class="ui avatar image" src="/images/avatar.png" alt="avatar">
-                                             <p><a href="" class="modal_authorName">Firstname Lastname</a>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum quasi quas nam. Qui consequuntur consequatur voluptatem asperiores error quidem incidunt quasi quaerat deserunt. Maxime, voluptates dolore! Aut vitae alias dolores.
+                                             <p>
+                                                <a href="" class="modal_authorName">Commenter's Name</a>
+                                                <span>
+                                                      author's comment shall be shown here. this is inside a span tag.
+                                                </span>
                                              </p>
                                           </div>
                                     </div>
@@ -159,7 +177,7 @@
         .dropdown()
       ;
 
-      $('.ui.modal')
+      $('.ui.longer.modal')
          .modal('attach events', '.viewComments', 'show')
       ;
 
