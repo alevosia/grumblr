@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 })
 
 // register page
-app.get('register', (req, res) => {
+app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
 })
 
