@@ -14,20 +14,28 @@ app.use(express.static('public'), formidable())
 app.set('view engine', 'ejs')
 
 
+// MONGO DB MONGO DB MONGO DB MONGO DB MONGO DB MONGO DB MONGO DB
 var db = null
-var dbuser = config["database"]["username"]
-var dbpw = config["database"]["password"]
-console.log('DBUser: ' + dbuser + " | DBPass: " + dbpw)
-var dburl = 'mongodb://' + dbuser + ':' + dbpw + '@ds016298.mlab.com:16298/grumblr'
+/* MongoDB Username */     var dbuser = config["database"]["username"]
+/* MongoDB Password */     var dbpw = config["database"]["password"]
+                              console.log('DBUser: ' + dbuser + " | DBPass: " + dbpw)
+/* MongoDB URL */          var dburl = 'mongodb://' + dbuser + ':' + dbpw + '@ds016298.mlab.com:16298/grumblr'
+/* MongoDB Database Name */var dbname = 'grumblr'
 
+
+// create database connection
 MongoClient.connect(dburl, {useNewUrlParser: true}, (err, client) => {
-    if (err) return console.log(err)
-    db = client.db('grumblr')
+    if (err) 
+      return console.log(err)
+
+    db = client.db(dbname)
 
     app.listen(3000,() => {
-        console.log('Listening to 3000!')
+        console.log('LISTENING TO PORT 3000!')
     })
 })
+// MONGO DB MONGO DB MONGO DB MONGO DB MONGO DB MONGO DB MONGO DB
+
 
 // landing page - login
 app.get('/', (req, res) => {
