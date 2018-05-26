@@ -337,7 +337,8 @@ timeline {
 
 .commentContent {
    display: grid;
-   grid-template-columns: 1fr 8fr
+   grid-template-columns: 1fr 8fr;
+   padding-bottom: 10px;
 }
 
 .modal_authorName {
