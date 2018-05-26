@@ -1,3 +1,4 @@
+<!-- NAVIGATION BAR COMPONENT -->
 <div id="navBarContainer">
    <div class="ui menu inverted" id="navbar">
       <div class="item">
@@ -7,11 +8,11 @@
       <a href="" class="active item">PROFILE</a>
 
       <div class="item right">
-         <div class="ui action left icon input">
-            <i class="search icon"></i>
-            <input type="text" placeholder="Search..." id="">
-            <button class="ui button" id="searchButton">Submit</button>
-         </div>
+         <form action="/search" method="POST" class="ui action left icon input">
+               <i class="search icon"></i>
+               <input type="text" placeholder="Search..." id="" name="searchQuery">
+               <button class="ui button" id="searchButton">Submit</button>
+         </form>
       </div>
 
       <div class="ui dropdown item right" tabindex="0">
