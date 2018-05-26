@@ -14,34 +14,11 @@
 </head>
 
 <body>
-   <div id="navBarContainer">
-      <div class="ui menu inverted" id="navbar">
-         <div class="item">
-            <img src="images/brandlogo.png" alt="" id="brandLogo">
-         </div>
-         <a href="" class="item">DISCOVER</a>
-         <a href="" class="active item">PROFILE</a>
+   
+   <!-- Navigation Bar Component -->
+   <% include ../public/components/navbar.html %>
 
-         <div class="item right">
-            <div class="ui action left icon input">
-               <i class="search icon"></i>
-               <input type="text" placeholder="Search..." id="">
-               <button class="ui button" id="searchButton">Submit</button>
-            </div>
-         </div>
-
-         <div class="ui dropdown item right" tabindex="0">
-            <span id="userName">Username</span>
-            <img src="images/avatar.png" alt="Avatar" id="userAvatar">
-            
-            <div class="menu">
-               <div class="item">Account Settings</div>
-               <div class="item">Logout</div>
-            </div>
-         </div>
-      </div>
-   </div>
-
+   
    <div id="content">
       <header>
          <!-- Profile Avatar -->
