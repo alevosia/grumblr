@@ -87,17 +87,13 @@
                   </div>
 
                   <!-- post controls -->
-                  <style>
-                  .image-upload > input
-                  { display: none; }
-                  </style>
                   <div class="createPostControls">
-                        <div class="image-upload">
-                              <label for="file-input">
-                                    <img src="images/uploadimage.png"/>
+                        <div class="imageUpload">
+                              <label for="fileInput">
+                                 <img src="images/uploadimage.png"/>
                               </label>
                                     
-                              <input id="file-input" type="file" name="blog_image"/>
+                              <input id="fileInput" type="file" name="blog_image"/>
                         </div>
                         
                         <input type="submit" value="POST" class="ui button" id="postButton">
@@ -128,7 +124,7 @@
                      <p class="postContent">
                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet quas odit, aliquid dolorum repudiandae, quia nulla quos voluptas harum esse, soluta perspiciatis aliquam saepe possimus ea hic! Recusandae, unde quisquam.
                      </p>
-                     <img src="./images/placeholderimage2.png" alt="#" id="postContent">
+                     <img src="./images/sampleimage1.jpg" alt="#" id="postContent">
                   </div>
    
                   <!-- post comment section -->
@@ -138,18 +134,23 @@
                        <span>0 Comments</span>             
                      </div>
 
-                     <a class="viewComments">View Comments</a>
 
+
+
+
+
+
+
+                     <a class="viewComments">View Comments</a>
+                     <!-- view comments modal -->
                      <div class="ui modal longer">
                         
                         <!-- modal content container -->
                         <div class="commentModal">
-
-                              
                            <div class="modal_postCotent">
                               <div class="postContentContainer">
                                     <!-- post image -->
-                                    <img src="./images/placeholderimage2.png" alt="#" id="postContent">
+                                    <img src="./images/sampleimage1.jpg" alt="#" id="postContent">
 
                                     <!-- post meta data -->
                                     <div class="postMeta">
@@ -193,12 +194,17 @@
                                     </div>
                            </div>
                         </div>
-                        
                      </div>
    
+
+
+
+
+
+
                      
                   </div>
-               </div>
+            </div>
             <!-- some content -->
          </div>
          
