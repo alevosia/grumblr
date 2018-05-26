@@ -50,6 +50,6 @@
 ### Members:
 
 * Nathaniel Saludes
-* Alexander Marinas
-* Kevin Say
-* Paolo Latoja
+* Alexandrinne Levi
+* Kelly Say
+* Pau Latte
