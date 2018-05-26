@@ -42,31 +42,38 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
+// landing page - login
+app.get('/index', (req, res) => {
+    res.sendFile(__dirname + '/index.html')
+})
+
 // register page
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
 })
 
-// profile page
+// render profile page
 app.get('/profile', (req, res) => {
-    res.sendFile(__dirname + '/profile.html')
+    res.render('profile.ejs')
 })
 
-// timeline
+// render timeline
 app.get('/timeline', (req, res) => {
-    res.sendFile(__dirname + '/timeline.html')
+    res.render('timeline.ejs')
 })
 
-// handles the login
+// handles the login - render profile page
 app.post('/handle_login', (req, res) => {
     // if succesful login
-    res.sendFile(__dirname + '/profile.html')
+    res.render('profile.ejs')
 })
 
 // register page
 app.post('/handle_registration', (req, res) => {
     res.sendFile(__dirname + '/registration_success.html')
 })
+
+
 
 app.post('/send_blog', (req, res) => {
     var utcMS = new Date().getTime()
@@ -97,13 +104,18 @@ app.post('/send_blog', (req, res) => {
     fs.writeFile(writePath, blogDocument.image.base64String, {encoding: 'base64'}, function(err) {
         console.log('File created');
     });*/
-    res.render('profile.ejs', {blogPost: blogDocument})
+    res.render('profile.ejs')
 })
 
 
 // forbidden GETS
 app.get('/handle_login', (req, res) => {
     // if succesful login
+    res.redirect('/')
+})
+
+// register page
+app.post('/registration_success', (req, res) => {
     res.redirect('/')
 })
 
