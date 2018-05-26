@@ -14,11 +14,11 @@ var dbpw = config["database"]["password"]
 console.log('DBUser: ' + dbuser + " | DBPass: " + dbpw)
 var dburl = 'mongodb://' + dbuser + ':' + dbpw + '@ds016298.mlab.com:16298/grumblr'
 
-MongoClient.connect(dburl, (err, client) => {
+MongoClient.connect(dburl, {useNewUrlParser: true}, (err, client) => {
     if (err) return console.log(err)
     db = client.db('grumblr')
 
-    app.listen(3000, () => {
+    app.listen(3000,() => {
         console.log('Listening to 3000!')
     })
 })
@@ -32,7 +32,6 @@ app.get('/', (req, res) => {
 app.get('/index', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
-
 
 // register page
 app.get('/register', (req, res) => {
@@ -57,5 +56,5 @@ app.get('/timeline', (req, res) => {
 // handles the login
 app.post('/handle_login', (req, res) => {
     // if succesful login
-    res.sendFile(__dirname + '/profile.html')
+    res.redirect('/profile')
 })
