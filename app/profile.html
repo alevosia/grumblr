@@ -87,17 +87,13 @@
                   </div>
 
                   <!-- post controls -->
-                  <style>
-                  .image-upload > input
-                  { display: none; }
-                  </style>
                   <div class="createPostControls">
-                        <div class="image-upload">
-                              <label for="file-input">
-                                    <img src="images/uploadimage.png"/>
+                        <div class="imageUpload">
+                              <label for="fileInput">
+                                 <img src="images/uploadimage.png"/>
                               </label>
                                     
-                              <input id="file-input" type="file" name="blog_image"/>
+                              <input id="fileInput" type="file" name="blog_image"/>
                         </div>
                         
                         <input type="submit" value="POST" class="ui button" id="postButton">
@@ -138,14 +134,19 @@
                        <span>0 Comments</span>             
                      </div>
 
-                     <a class="viewComments">View Comments</a>
 
+
+
+
+
+
+
+                     <a class="viewComments">View Comments</a>
+                     <!-- view comments modal -->
                      <div class="ui modal longer">
                         
                         <!-- modal content container -->
                         <div class="commentModal">
-
-                              
                            <div class="modal_postCotent">
                               <div class="postContentContainer">
                                     <!-- post image -->
@@ -193,12 +194,17 @@
                                     </div>
                            </div>
                         </div>
-                        
                      </div>
    
+
+
+
+
+
+
                      
                   </div>
-               </div>
+            </div>
             <!-- some content -->
          </div>
          
