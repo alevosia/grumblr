@@ -1,12 +1,13 @@
 const config = require('./config.json')
 const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+const formidable = require('express-formidable')
 const MongoDB = require('mongodb')
+
+const app = express()
 const MongoClient = MongoDB.MongoClient
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static('public'))
+app.use(express.static('public'), formidable())
+
 
 var db = null
 var dbuser = config["database"]["username"]
@@ -14,11 +15,11 @@ var dbpw = config["database"]["password"]
 console.log('DBUser: ' + dbuser + " | DBPass: " + dbpw)
 var dburl = 'mongodb://' + dbuser + ':' + dbpw + '@ds016298.mlab.com:16298/grumblr'
 
-MongoClient.connect(dburl, (err, client) => {
+MongoClient.connect(dburl, {useNewUrlParser: true}, (err, client) => {
     if (err) return console.log(err)
     db = client.db('grumblr')
 
-    app.listen(3000, () => {
+    app.listen(3000,() => {
         console.log('Listening to 3000!')
     })
 })
@@ -28,20 +29,9 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html')
 })
 
-// landing page - login
-app.get('/index', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-})
-
-
 // register page
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/register.html')
-})
-
-// register page
-app.get('/handle_registration', (req, res) => {
-    res.sendFile(__dirname + '/registration_successful.html')
 })
 
 // profile page
@@ -57,5 +47,25 @@ app.get('/timeline', (req, res) => {
 // handles the login
 app.post('/handle_login', (req, res) => {
     // if succesful login
-    res.sendFile(__dirname + '/profile.html')
+    res.redirect('/profile')
 })
+
+// register page
+app.post('/handle_registration', (req, res) => {
+    res.sendFile(__dirname + '/registration_success.html')
+})
+
+app.post('/send_blog', (req, res) => {
+    console.log(req.fields.blog_text)
+    console.log(req.files.blog_image)
+    res.redirect('/profile')
+})
+
+
+// forbidden GETS
+app.get('/handle_login', (req, res) => {
+    // if succesful login
+    res.redirect('/')
+})
+
+
