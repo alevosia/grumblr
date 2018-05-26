@@ -75,10 +75,10 @@
          <div class="profilePosts">
 
             <!-- CREATE A POST -->
-            <form action="" method="POST" class="createPostContainer ui form">
+            <form action="/send_blog" method="POST" class="createPostContainer ui form" enctype="multipart/form-data">
                   <!-- post text -->
                   <div class="createPostField ui">
-                        <textarea name="" id="createPostField" placeholder="Write Something..."></textarea>
+                        <textarea name="blog_text" id="blog_text" placeholder="Write something..."></textarea>
                   </div>
                   
                   <!-- post: attach an image -->
@@ -87,16 +87,19 @@
                   </div>
 
                   <!-- post controls -->
+                  <style>
+                  .image-upload > input
+                  { display: none; }
+                  </style>
                   <div class="createPostControls">
-                        <div id="uploadImageButton">
-                              <img src="/images/uploadimage.png" alt="">
+                        <div class="image-upload">
+                              <label for="file-input">
+                                    <img src="images/uploadimage.png"/>
+                              </label>
+                                    
+                              <input id="file-input" type="file" name="blog_image"/>
                         </div>
-
-                        <!-- upload image modal -->
-                        <div class="ui modal mini uploadImage">
-                              <input type="file" name="" id="">
-                        </div>
-
+                        
                         <input type="submit" value="POST" class="ui button" id="postButton">
                   </div>
             </form>
