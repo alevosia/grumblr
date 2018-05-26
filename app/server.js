@@ -1,12 +1,13 @@
 const config = require('./config.json')
 const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
+const formidable = require('express-formidable')
 const MongoDB = require('mongodb')
+
+const app = express()
 const MongoClient = MongoDB.MongoClient
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static('public'))
+app.use(express.static('public'), formidable())
+
 
 var db = null
 var dbuser = config["database"]["username"]
@@ -54,9 +55,17 @@ app.post('/handle_registration', (req, res) => {
     res.sendFile(__dirname + '/registration_success.html')
 })
 
+app.post('/send_blog', (req, res) => {
+    console.log(req.fields.blog_text)
+    console.log(req.files.blog_image)
+    res.redirect('/profile')
+})
+
+
 // forbidden GETS
 app.get('/handle_login', (req, res) => {
     // if succesful login
     res.redirect('/')
-    res.send('Woops!')
 })
+
+
