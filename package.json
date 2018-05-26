@@ -4,6 +4,7 @@
   "description": "NoSQL project for SFLECT1",
   "main": "app/server.js",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-formidable": "^1.0.0",
     "mongodb": "^3.1.0-beta4"
