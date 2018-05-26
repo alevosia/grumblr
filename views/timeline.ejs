@@ -5,17 +5,43 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+   <link rel="stylesheet" href="./components/Navbar/navbar.css">
+   <link rel="stylesheet" href="../css/timeline.css">
    <title>Grumblr</title>
 </head>
 
 <body>
-   <h1>NEWSFEED</h1>
+   <!-- <h1>NEWSFEED</h1>
    <h3>Displayed here where the post/s of user/s that the logged user is following</h3>
    <h3>Sorted via Date
       <br/> Timezone must be in UTC
-   </h3>
+   </h3> -->
+
+   <% include  ../public/components/Navbar/navbar.html %>
+
+   <div class="post-area">
+      <div class="post-container">
+            <p>Name: </p>
+            <p>Profile Image: </p><img src="" alt="">
+            <p>Post / Image Post : </p>
+      </div> <!-- .post-container (container for each posts) -->
+
+   </div> <!-- .post-area -->
+
 
    <!-- API to get all the posts from the MongoDB -->
+
+    <!-- jquery should be above the semantic.js due to having dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- semantic-ui javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+    <script>
+      // dropdown function
+            $('.ui.dropdown')
+              .dropdown();
+    </script>
 </body>
 
 </html>

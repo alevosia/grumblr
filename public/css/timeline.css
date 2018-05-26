@@ -1,0 +1,23 @@
+body {
+   display: grid;
+   grid-template-columns: 20% 20% 20% 20% 20%;
+   grid-template-rows: 20% 20% 20% 20% 20%;
+   height: 200vh;
+   background-color: #6C4ED5;
+   /* background-color: #6C4ED5; */
+   /* border: 5px solid red; */
+}
+
+body div.post-area {
+   display: inline-block;
+   margin-top: 150px;
+   grid-column-start: 3;
+   border: 5px solid yellow;
+   width: 400px;
+   height: 500px;
+}
+
+div.post-area div.post-container {
+   border: 5px solid blue;
+   
+}
