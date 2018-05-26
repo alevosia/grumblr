@@ -1,12 +1,17 @@
-const config = require('./config.json')
 const express = require('express')
 const formidable = require('express-formidable')
+const fs = require('fs')
 const MongoDB = require('mongodb')
+// out own modules
+const config = require('./config.json')
+const helpers = require('./helpers.js')
+
 
 const app = express()
 const MongoClient = MongoDB.MongoClient
 
 app.use(express.static('public'), formidable())
+app.set('view engine', 'ejs')
 
 
 var db = null
@@ -47,7 +52,7 @@ app.get('/timeline', (req, res) => {
 // handles the login
 app.post('/handle_login', (req, res) => {
     // if succesful login
-    res.redirect('/profile')
+    res.sendFile(__dirname + '/profile.html')
 })
 
 // register page
@@ -56,9 +61,35 @@ app.post('/handle_registration', (req, res) => {
 })
 
 app.post('/send_blog', (req, res) => {
-    console.log(req.fields.blog_text)
-    console.log(req.files.blog_image)
-    res.redirect('/profile')
+    var utcMS = new Date().getTime()
+    var username = "iamalexander"
+    var text = null
+    var imageJSON = null
+
+    if (req.fields.blog_text) {
+        var text = req.fields.blog_text
+    }
+
+    if (req.files.blog_image) {
+        var image_name = req.files.blog_image.name
+        var image_type = req.files.blog_image.type
+        var image_path = req.files.blog_image.path
+        var base64String = fs.readFileSync(image_path, {encoding: 'base64'})
+        imageJSON = helpers.CreateImageJSON(image_name, image_type, base64String)
+    } else {
+        console.log('No file uploaded or detected.')
+    }
+    
+    //let base64Image = base64String.split(';base64,').pop();
+    //var utcDate = new Date(utcMS)
+
+    var blogDocument = helpers.CreateBlogJSON(username, utcMS, text, imageJSON)
+    //db.collection.insert()
+    /*var writePath = 'uploaded/testImage.jpg'
+    fs.writeFile(writePath, blogDocument.image.base64String, {encoding: 'base64'}, function(err) {
+        console.log('File created');
+    });*/
+    res.render('profile.ejs', {blogPost: blogDocument})
 })
 
 
