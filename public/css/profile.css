@@ -82,7 +82,7 @@ header .profileHeaderUserInfo {
 
 
 
-timeline {
+TIMELINE {
    /* background-color: brown; */
    width: 50em;
    border-radius: 10px;
@@ -260,7 +260,7 @@ timeline {
    grid-template-columns: 1fr 1fr;
 }
 
-.postMetaTime {
+.postMetaDate {
    justify-self: end;
    margin-right: 10px;
 }
@@ -272,12 +272,12 @@ timeline {
    /* height: 5em; */
 }
 
-.postContent {
+.postContentText {
    width: 100%;
    padding: 0px 10px;
 }
 
-#postContent {
+#postContentImage {
    width: 100%;
 }
 
@@ -290,12 +290,24 @@ timeline {
 }
 
 
-.postDetails, .postComments {
-   padding: 5px 10px;
-   width: 100%;
+.postDetails,  {
+	background-color: #5ba8db;
+	width: 100%;
 }
+
+
+
+
+
+
+
+
+
 .postComments {
-   margin-top: 20px;
+	/* background-color: #5ba8db; */
+	width: 100%;
+	height: auto;
+	display: grid;
 }
 
 .viewComments {
@@ -307,6 +319,15 @@ timeline {
    text-decoration: underline;
 }
 
+.postCommentsUserInfo {
+	position: relative;
+	width: 100%;
+	/* background-color: #6C4ED5; */
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
 
 #commentUserAvatar {
    margin-right: 10px;
@@ -314,7 +335,16 @@ timeline {
 
 #commentField {
    resize: none;
+   width: 98%;
+   height: 4em;
+   justify-self: center;
+   margin-bottom: 5px;
 }
+
+.replyButton {
+	justify-self: start;
+}
+
 
 
 

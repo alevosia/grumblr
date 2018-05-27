@@ -15,103 +15,12 @@
 </head>
 
 <body>
-   
-   <!-- Navigation Bar Component -->
-   <% include ../public/components/Navbar/navbar.html %>
-
-
-   <div id="content">
-      <header>
-         <!-- Profile Avatar -->
-         <div class="profileAvatarContainer">
-            <img src="images/profileImage.png" alt="Avatar" id="profileImage">
-         </div>
-
-         <!-- Header Image -->
-         <div class="profileHeaderImageContainer">
-            <img src="images/headerImage.png" alt="Header Image" id="headerImage">
-         </div>
-
-         <!-- User's Name -->
-         <div class="profileHeaderUserInfo">
-            <h1>Firstname Lastname</h1>
-            <h3>@uSeRnAmE</h3>
-         </div>
-      </header>
-
-
-      <timeline id="timeline">
-
-         <!-- account details -->
-         <div class="profileDetailsContainer">
-            <div class="accountDetails">
-                  <h2 class="ui header">Biography</h2>
-                  <code style="text-align: center">*insert random cringeworthy quotes*</code>
-            </div>
-         </div>
-         
-         <div class="profilePosts">
-
-            <!-- CREATE A POST -->
-            <form action="/send_blog" method="POST" class="createPostContainer ui form" enctype="multipart/form-data">
-                  <!-- post text -->
-                  <div class="createPostField ui">
-                        <textarea name="blog_text" id="blog_text" placeholder="Write something..."></textarea>
-                  </div>
-                  
-                  <!-- post: attach an image -->
-                  <div class="hidden" id="imageAttachmentContainer">  <!-- "this container is hidden by default" -->
-                     <i class="delete icon" id="removeImageButton" onClick="removeAttachedImage(event)"></i>
-                     <img src="/images/placeholderimage1.jpg" alt="" id="imageAttachment">
-                  </div>
-
-                  <!-- post controls -->
-                  <div class="createPostControls">
-                        <div class="imageUpload">
-                              <label for="fileInput">
-                                 <img src="images/uploadimage.png"/>
-                              </label>
-                                    
-                              <input id="fileInput" type="file" accept="image/*" name="blog_image" onChange="loadImageAttachment(event)">
-                        </div>
-                        
-                        <input type="submit" value="POST" class="ui button" id="postButton">
-                  </div>
-            </form>
-
-
-
-
-
-
-            <!-- some content -->
-            <div class="post">
-
-                  <!-- post meta data -->
-                  <div class="postMeta">
-                     <div class="author">
-                        <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
-                        <span class="postMetaAuthorName">
-                           @uSeRnAmE
-                        </span>
-                     </div>
-                     <div class="postMetaTime">date posted</div>
-                  </div>
-   
-                  <!-- post Content -->
-                  <div class="postContentContainer">
-                     <p class="postContent">
-                        This is the text of the content/post. this text should be reflected to the caption inside the modal.
-                     </p>
-                     <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
-                  </div>
-   
-                  <!-- post comment section -->
-                  <div class="postContentExtra">
-                     <div class="postDetails">
-                       <i class="comment icon"></i>
-                       <span>0 Comments</span>             
-                     </div>
+<!-- Navigation Bar Component -->
+<% include ../public/components/Navbar/navbar.html %>
+<!-- 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
 
 
 
@@ -120,124 +29,300 @@
 
 
 
-                     <a class="viewComments">View Comments</a>
-                     <!-- view comments modal -->
-                     <div class="ui modal longer">
-                        
-                        <!-- modal content container -->
-                        <div class="commentModal">
-                           <div class="modal_postCotent">
-                              <div class="postContentContainer">
-                                    <!-- post image -->
-                                    <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
-
-                                    <!-- post meta data -->
-                                    <div class="postMeta">
-                                          <div class="author">
-                                                <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
-                                                <span class="postMetaAuthorName">
-                                                      @uSeRnAmE
-                                                </span>
-                                          </div>
-                                          <div class="postMetaTime">date posted</div>
-                                     </div>
-
-                                     <!-- post caption -->
-                                    <div class="captionContainer">
-                                          <p class="caption">
-                                             This is the caption/text same as what is written in the post outside this modal.
-                                          </p>
-                                    </div>
-                              </div>
-                           </div>
-
-
-                           <div class="modal_commentSection scrolling content">
-                                    <!-- comments section -->
-                                    <div class="commentSection">
-                                          <div class="commentContent">
-                                             <img class="ui avatar image" src="/images/avatar.png" alt="avatar">
-                                             <p>
-                                                <a href="" class="modal_authorName">@Author's_uSeRnAmE</a>
-                                                <span>
-                                                      author's comment shall be shown here. this is inside a span tag.
-                                                </span>
-                                             </p>
-                                          </div>
-                                    </div>
-                                    
-                                    <!-- comment text area -->
-                                    <div class="postComments ui fluid input transparent form">
-                                          <img class="ui avatar image" src="/images/avatar.png" id="commentUserAvatar">
-                                          <textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
-                                    </div>
-                           </div>
-                        </div>
-                     </div>
-   
 
 
 
 
 
 
-                     
-                  </div>
-            </div>
-            <!-- some content -->
-         </div>
-         
-      </timeline>
-
-      </timeline>
-   </div>
 
 
-    <!-- jquery should be above the semantic.js due to having dependencies -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- semantic-ui javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 
-    <!-- main javascript -->
-    <script>
 
-      // dropdown function
-      $('.ui.dropdown')
-        .dropdown()
-      ;
 
-      $('.ui.longer.modal')
-         .modal('attach events', '.viewComments', 'show')
-      ;
 
-      // REMOVE UPLOADED IMAGE
-      function removeAttachedImage(event) {
-         var image = document.getElementById('imageAttachment');
-         var container = document.getElementById('imageAttachmentContainer')
 
-         if(image.src == null || image.src == "") {
-            /* if there is no attached image in the container, proceed*/
-         } 
-         else {
-            image.src = "";
-            container.classList.add('hidden');
-         }
-      }
-      
-      // ATTACH UPLOADED IMAGE
-      function loadImageAttachment() {
-         var imageContainer = document.getElementById('imageAttachmentContainer');
-         var output = document.getElementById('imageAttachment');
 
-         if(imageContainer.classList.contains('hidden')) {
-            imageContainer.classList.remove('hidden')
-            output.src = URL.createObjectURL(event.target.files[0]);
-         } else {
-            output.src = URL.createObjectURL(event.target.files[0]);
-         }
-      }
 
-    </script>
+
+
+
+<div id="content">
+<!-- 
+==============================================================================================================================================================
+HEADER 
+-->
+<HEADER>
+	<!-- HEADER: USER AVATAR -->
+	<div class="profileAvatarContainer">
+		<img src="images/profileImage.png" alt="Avatar" id="profileImage">
+	</div>
+
+	<!-- HEADER: HEADER COVER/IMAGE -->
+	<div class="profileHeaderImageContainer">
+		<img src="images/headerImage.png" alt="Header Image" id="headerImage">
+	</div>
+
+	<!-- HEADER: USER INFORMATION -->
+	<div class="profileHeaderUserInfo">
+		<h1>Firstname Lastname</h1>
+		<h3>@uSeRnAmE</h3>
+	</div>
+</HEADER>
+<!--
+==============================================================================================================================================================
+PROFILE FEED
+-->
+<TIMELINE id="timeline">
+
+
+	<PANEL>
+	<!-- PANEL: ABOUT USER -->
+	<div class="profileDetailsContainer">
+	<div class="accountDetails">
+		<h2 class="ui header">Intro</h2>
+		<p style="text-align: center">*insert random cringeworthy quotes*</p>
+	</div>
+	<div class="ui divider"></div>
+	</div>
+	</PANEL>
+
+
+	<PANEL>
+	<div class="profilePosts">
+		<!-- PANEL: CREATE-A-POST -->
+		<form action="/send_blog" method="POST" class="createPostContainer ui form" enctype="multipart/form-data">
+
+			<!-- CREATE-A-POST: text/caption -->
+			<div class="createPostField ui field">
+				<textarea name="blog_text" id="blog_text" placeholder="Write something..."></textarea>
+			</div>
+			
+			<!-- CREATE-A-POST: IMAGE ATTACHMENT (hidden by default)-->
+			<div class="hidden" id="imageAttachmentContainer">
+				<!-- REMOVE BUTTON -->  <i class="delete icon" id="removeImageButton" onClick="removeAttachedImage(event)"></i>
+				<!-- IMAGE -->			<img src="image url here" alt="Image Placeholder (visible: false)" id="imageAttachment">
+			</div>
+
+			<!-- CREATE-A-POST: controls -->
+			<div class="createPostControls">
+				<div class="imageUpload">
+				<!-- UPLOAD IMAGE BUTTON -->    <label for="fileInput"><img src="images/uploadimage.png"/></label>       
+				<!-- CHOOSE FILE INPUT -->      <input id="fileInput" type="file" accept="image/*" name="blog_image" onChange="loadImageAttachment(event)">
+				</div>
+				
+				<!-- POST BUTTON --> <input type="submit" value="POST" class="ui button" id="postButton">
+			</div>
+		</form>
+
+
+
+		<!-- SAMPLE CONTENT -->
+		<div class="post">
+
+			<!-- POST: META-DATA -->
+			<div class="postMeta">
+				<div class="authorDetails">
+				<!-- USER: AVATAR -->       <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+				<!-- USER: USERNAME -->     <span class="postMetaAuthorName">@uSeRnAmE</span>
+				</div>
+				<!-- META: DATE CREATED --> <div class="postMetaDate">date posted</div>
+			</div>
+			
+			
+			<!-- POST: CONTENT -->
+			<div class="postContentContainer">
+				<!-- POST CONTENT: CAPTION/TEXT -->	<p class="ui postContentText input">This is the text of the content/post. this text should be reflected 																		to the caption inside the modal. this is inside a paragraph tag.</p>
+				<!-- POST CONTENT: IMAGE --> 		<img class="hidden" src="images/sampleimage1.jpg" alt="this is hidden by default" id="postContentImage" onload="showImage()">
+			</div>
+
+
+			<!-- POST: COMMENT SECTION -->
+			<div class="postContentExtra">
+
+			<div class="postDetails"> 
+				<i class="comment icon" style="margin-left: 10px;"></i><span>0 Comments</span>
+			</div>
+			
+			<!-- VIEW COMMENTS HYPERTEXT -->	<a class="viewComments">View Comments</a>
+
+
+			<!-- MODAL |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+			<div class="ui modal longer">
+				<!-- modal content container -->
+				<div class="commentModal">
+					<div class="modal_postCotent">
+					<div class="postContentContainer">
+						<!-- post image -->
+						<img src="./images/placeholderimage1.jpg" alt="#" id="postContent" style="width: 100%">
+
+						<!-- post meta data -->
+						<div class="postMeta">
+							<div class="author">
+								<img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+								<span class="postMetaAuthorName">
+									@uSeRnAmE
+								</span>
+							</div>
+							<div class="postMetaDate">date posted</div>
+						</div>
+
+						<!-- post caption -->
+						<div class="captionContainer">
+							<p class="caption">
+									||| This is the text of the content/post. this text should be reflected to the caption inside the modal. this is inside a paragraph tag. |||
+							</p>
+						</div>
+					</div>
+					</div>
+
+
+					<div class="modal_commentSection scrolling content">
+					<!-- comments section -->
+					<div class="commentSection">
+						<!-- C O M M E N T   L O O P (For any person that comments on the post)-->
+						<div class="commentContent">
+							<img class="ui avatar image" src="/images/avatar.png" alt="avatar">
+							<p>
+								<a href="" class="modal_authorName">@Author's_uSeRnAmE</a>
+								<span>
+									author's comment shall be shown here. this is inside a span tag.
+								</span>
+							</p>
+						</div>
+						<!-- C O M M E N T   L O O P -->
+					</div>
+
+					<div class="ui divider"></div> <!-- =========================== DIVIDER ================================== -->
+
+					<!-- comment text area -->
+					<form class="postComments ui transparent form" action="/." method="POST">
+						<!-- USER INFO -->
+						<div class="postCommentsUserInfo">
+							<img class="ui avatar image" src="/images/avatar.png" id="commentUserAvatar">
+							<a href="#"><strong>@uSeRnAmE</strong></a>
+						</div>
+						<!-- COMMENT FIELD -->	<textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
+						<!-- REPLY BUTTON -->	<button class="ui primary submit button replyButton" type="submit">Reply</button>
+					</form>
+					</div>
+				</div>
+			</div> 
+			<!-- MODAL ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+			
+			</div>
+		</div>
+		<!-- SAMPLE CONTENT -->
+
+
+	</div>
+	</PANEL>
+
+
+</TIMELINE>
+<!--
+==============================================================================================================================================================
+-->
+</div><!-- id="content" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+SEMANTIC-UI SCRIPTS==============================================================================================================================================================
+-->
+<!-- jquery should be above the semantic.js due to having dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- semantic-ui javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+<!--
+MAIN SCRIPTS=====================================================================================================================================================================
+-->
+
+<!-- main script -->
+<script>
+
+// SEMANTIC-UI dropdown function
+$('.ui.dropdown')
+	.dropdown()
+;
+
+$('.ui.longer.modal')
+	.modal('attach events', '.viewComments', 'show')
+;
+
+
+
+// REMOVE UPLOADED IMAGE
+function removeAttachedImage() {
+	var image = document.getElementById('imageAttachment');
+	var container = document.getElementById('imageAttachmentContainer');
+	
+	if(image.src == null || image.src == "") {
+		/* if there is no attached image in the container, proceed*/
+	} 
+	else {
+		image.src = "";
+		container.classList.add('hidden');
+	}
+}
+	
+// PREVIEW UPLOADED IMAGE
+function loadImageAttachment() {
+	var imageContainer = document.getElementById('imageAttachmentContainer');
+	var output = document.getElementById('imageAttachment');
+
+	if(imageContainer.classList.contains('hidden')) {
+		imageContainer.classList.remove('hidden')
+		output.src = URL.createObjectURL(event.target.files[0]);
+	} else {
+		output.src = URL.createObjectURL(event.target.files[0]);
+	}
+}
+
+// INFINITE SCROLL FUNCTION
+$('.infinite.example .demo.segment')
+	.visibility({
+	once: false,
+	// update size when new content loads
+	observeChanges: true,
+	// load content on bottom edge visible
+	onBottomVisible: function() { // Alex: ako mag aayos nitong function na to to call the API
+		// some code to call the api to render more data
+	}
+})
+;
+
+function showImage() {
+	var postContentImage = document.getElementById('postContentImage');
+	
+	if(postContentImage.src != null || postpostContentImage.src != "") {
+		postContentImage.classList.remove('hidden');
+	} else {
+		postContentImage.classList.add('hidden');
+	}
+}
+
+</script>
 </body>
 
 </html>
