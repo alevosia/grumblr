@@ -6,28 +6,294 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+
+   <!-- Infinite Scroll based on API calls with jQuery -->
+   <script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>
+   <link rel="stylesheet" href="./css/profile.css">
    <link rel="stylesheet" href="./components/Navbar/navbar.css">
    <link rel="stylesheet" href="../css/timeline.css">
    <title>Grumblr</title>
 </head>
 
 <body>
-   <!-- <h1>NEWSFEED</h1>
-   <h3>Displayed here where the post/s of user/s that the logged user is following</h3>
-   <h3>Sorted via Date
-      <br/> Timezone must be in UTC
-   </h3> -->
+      <% include  ../public/components/Navbar/navbar.html %>
 
-   <% include  ../public/components/Navbar/navbar.html %>
+<div id="content">
+      <div class="extra">
+            <h3>Timeline</h3>
+      </div>
+            <div class="post">
+                        <!-- post meta data -->
+                        <div class="postMeta">
+                           <div class="author">
+                              <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                              <span class="postMetaAuthorName">
+                                 @uSeRnAmE
+                              </span>
+                           </div>
+                           <div class="postMetaTime">date posted</div>
+                        </div>
+         
+                        <!-- post Content -->
+                        <div class="postContentContainer">
+                           <p class="postContent">
+                              This is the text of the content/post. this text should be reflected to the caption inside the modal.
+                           </p>
+                           <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
+                        </div>
+         
+                        <!-- post comment section -->
+                        <div class="postContentExtra">
+                           <div class="postDetails">
+                             <i class="comment icon"></i>
+                             <!-- number of comments shown in the post -->
+                             <span>0 Comments</span>             
+                           </div>
+      
+      
+      
+      
+      
+      
+                           <a class="viewComments">View Comments</a>
+                           <!-- view comments modal -->
+                           <div class="ui modal longer">
+                              
+                              <!-- modal content container -->
+                              <div class="commentModal">
+                                 <div class="modal_postCotent">
+                                    <div class="postContentContainer">
+                                          <!-- post image -->
+                                          <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
+      
+                                          <!-- post meta data -->
+                                          <div class="postMeta">
+                                                <div class="author">
+                                                      <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                                                      <span class="postMetaAuthorName">
+                                                            @uSeRnAmE
+                                                      </span>
+                                                </div>
+                                                <div class="postMetaTime">date posted</div>
+                                           </div>
+      
+                                           <!-- post caption -->
+                                          <div class="captionContainer">
+                                                <p class="caption">
+                                                   This is the caption/text same as what is written in the post outside this modal.
+                                                </p>
+                                          </div>
+                                    </div>
+                                 </div>
+      
+      
+                                 <div class="modal_commentSection scrolling content">
+                                          <!-- comments section -->
+                                          <div class="commentSection">
+                                                <div class="commentContent">
+                                                   <img class="ui avatar image" src="/images/avatar.png" alt="avatar">
+                                                   <p>
+                                                      <a href="" class="modal_authorName">@Author's_uSeRnAmE</a>
+                                                      <span>
+                                                            author's comment shall be shown here. this is inside a span tag.
+                                                      </span>
+                                                   </p>
+                                                </div>
+                                          </div>
+                                          
+                                          <!-- comment text area -->
+                                          <div class="postComments ui fluid input transparent form">
+                                                <img class="ui avatar image" src="/images/avatar.png" id="commentUserAvatar">
+                                                <textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
+                                          </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+            </div> <!-- some content -->
+            <div class="post">
+                        <!-- post meta data -->
+                        <div class="postMeta">
+                           <div class="author">
+                              <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                              <span class="postMetaAuthorName">
+                                 @uSeRnAmE
+                              </span>
+                           </div>
+                           <div class="postMetaTime">date posted</div>
+                        </div>
+         
+                        <!-- post Content -->
+                        <div class="postContentContainer">
+                           <p class="postContent">
+                              This is the text of the content/post. this text should be reflected to the caption inside the modal.
+                           </p>
+                           <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
+                        </div>
+         
+                        <!-- post comment section -->
+                        <div class="postContentExtra">
+                           <div class="postDetails">
+                             <i class="comment icon"></i>
+                             <!-- number of comments shown in the post -->
+                             <span>0 Comments</span>             
+                           </div>
+      
+      
+      
+      
+      
+      
+                           <a class="viewComments">View Comments</a>
+                           <!-- view comments modal -->
+                           <div class="ui modal longer">
+                              
+                              <!-- modal content container -->
+                              <div class="commentModal">
+                                 <div class="modal_postCotent">
+                                    <div class="postContentContainer">
+                                          <!-- post image -->
+                                          <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
+      
+                                          <!-- post meta data -->
+                                          <div class="postMeta">
+                                                <div class="author">
+                                                      <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                                                      <span class="postMetaAuthorName">
+                                                            @uSeRnAmE
+                                                      </span>
+                                                </div>
+                                                <div class="postMetaTime">date posted</div>
+                                           </div>
+      
+                                           <!-- post caption -->
+                                          <div class="captionContainer">
+                                                <p class="caption">
+                                                   This is the caption/text same as what is written in the post outside this modal.
+                                                </p>
+                                          </div>
+                                    </div>
+                                 </div>
+      
+      
+                                 <div class="modal_commentSection scrolling content">
+                                          <!-- comments section -->
+                                          <div class="commentSection">
+                                                <div class="commentContent">
+                                                   <img class="ui avatar image" src="/images/avatar.png" alt="avatar">
+                                                   <p>
+                                                      <a href="" class="modal_authorName">@Author's_uSeRnAmE</a>
+                                                      <span>
+                                                            author's comment shall be shown here. this is inside a span tag.
+                                                      </span>
+                                                   </p>
+                                                </div>
+                                          </div>
+                                          
+                                          <!-- comment text area -->
+                                          <div class="postComments ui fluid input transparent form">
+                                                <img class="ui avatar image" src="/images/avatar.png" id="commentUserAvatar">
+                                                <textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
+                                          </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+            </div> <!-- some content -->
 
-   <div class="post-area">
-      <div class="post-container">
-            <p>Name: </p>
-            <p>Profile Image: </p><img src="" alt="">
-            <p>Post / Image Post : </p>
-      </div> <!-- .post-container (container for each posts) -->
-
-   </div> <!-- .post-area -->
+            <div class="post">
+                        <!-- post meta data -->
+                        <div class="postMeta">
+                           <div class="author">
+                              <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                              <span class="postMetaAuthorName">
+                                 @uSeRnAmE
+                              </span>
+                           </div>
+                           <div class="postMetaTime">date posted</div>
+                        </div>
+         
+                        <!-- post Content -->
+                        <div class="postContentContainer">
+                           <p class="postContent">
+                              This is the text of the content/post. this text should be reflected to the caption inside the modal.
+                           </p>
+                           <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
+                        </div>
+         
+                        <!-- post comment section -->
+                        <div class="postContentExtra">
+                           <div class="postDetails">
+                             <i class="comment icon"></i>
+                             <!-- number of comments shown in the post -->
+                             <span>0 Comments</span>             
+                           </div>
+      
+      
+      
+      
+      
+      
+                           <a class="viewComments">View Comments</a>
+                           <!-- view comments modal -->
+                           <div class="ui modal longer">
+                              
+                              <!-- modal content container -->
+                              <div class="commentModal">
+                                 <div class="modal_postCotent">
+                                    <div class="postContentContainer">
+                                          <!-- post image -->
+                                          <img src="./images/placeholderimage1.jpg" alt="#" id="postContent">
+      
+                                          <!-- post meta data -->
+                                          <div class="postMeta">
+                                                <div class="author">
+                                                      <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                                                      <span class="postMetaAuthorName">
+                                                            @uSeRnAmE
+                                                      </span>
+                                                </div>
+                                                <div class="postMetaTime">date posted</div>
+                                           </div>
+      
+                                           <!-- post caption -->
+                                          <div class="captionContainer">
+                                                <p class="caption">
+                                                   This is the caption/text same as what is written in the post outside this modal.
+                                                </p>
+                                          </div>
+                                    </div>
+                                 </div>
+      
+      
+                                 <div class="modal_commentSection scrolling content">
+                                          <!-- comments section -->
+                                          <div class="commentSection">
+                                                <div class="commentContent">
+                                                   <img class="ui avatar image" src="/images/avatar.png" alt="avatar">
+                                                   <p>
+                                                      <a href="" class="modal_authorName">@Author's_uSeRnAmE</a>
+                                                      <span>
+                                                            author's comment shall be shown here. this is inside a span tag.
+                                                      </span>
+                                                   </p>
+                                                </div>
+                                          </div>
+                                          
+                                          <!-- comment text area -->
+                                          <div class="postComments ui fluid input transparent form">
+                                                <img class="ui avatar image" src="/images/avatar.png" id="commentUserAvatar">
+                                                <textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
+                                          </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+            </div> <!-- some content -->
+                  
+</div>  <!-- div#content-->
+      
+   
 
 
    <!-- API to get all the posts from the MongoDB -->
@@ -41,6 +307,12 @@
       // dropdown function
             $('.ui.dropdown')
               .dropdown();
+
+            $('.ui.longer.modal')
+             .modal('attach events', '.viewComments', 'show');
+
+            $('.ui.modal.uploadImage')
+            .modal('attach events', '#uploadImageButton', 'show'); 
     </script>
 </body>
 
