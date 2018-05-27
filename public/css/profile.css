@@ -153,9 +153,24 @@ timeline {
 
 
 
+#removeImageButton {
+   background-color: rgba(0, 0, 0, 0.35);
+   border-radius: 5px;
+   margin-top: 5px;
+   height: 20px;
+   width: 20px;
+   position: absolute;
+   right: 0;
+   color: rgb(226, 226, 226);
+   transition: all 0.2s ease-in-out;
+}#removeImageButton:hover {
+   color: #5ba8db;
+   cursor: pointer;
+}
 
-.imageAttachment {
+#imageAttachmentContainer {
    padding-top: 10px;
+   position: relative;
 }
 #imageAttachment {
    width: 100%;
