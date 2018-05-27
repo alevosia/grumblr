@@ -1,23 +1,54 @@
-body {
+/* body {
    display: grid;
    grid-template-columns: 20% 20% 20% 20% 20%;
    grid-template-rows: 20% 20% 20% 20% 20%;
    height: 200vh;
    background-color: #6C4ED5;
-   /* background-color: #6C4ED5; */
-   /* border: 5px solid red; */
+   background-color: #6C4ED5;
+   border: 5px solid red;
 }
 
 body div.post-area {
    display: inline-block;
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   grid-gap: 20px;
+   -webkit-box-pack: center;
+   -ms-flex-pack: center;
+   justify-content: center;
    margin-top: 150px;
-   grid-column-start: 3;
+   grid-column-start: 2;
    border: 5px solid yellow;
-   width: 400px;
-   height: 500px;
+   width: 900px;
+   height: 1000px;
+   border-radius: 4px;
+   box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
+    -webkit-box-shadow: 0 0 20px 0 rgba(72,94,116,0.7);
+   -webkit-box-shadow: 0 0 20px 0 rgba(72,94,116,0.7); 
 }
 
 div.post-area div.post-container {
    border: 5px solid blue;
+   -webkit-box-pack: center;
+       -ms-flex-pack: center;
+           justify-content: center;
    
+   
+} 
+
+*/
+
+/* Overrides properties for class post in profile.css */
+.post {
+   width: 45%;
 }
+
+div.extra {
+   padding-top: 10px;
+   padding-bottom: 20px;
+   /* font-size: 25px; */
+}
+
+/* div.extra p {
+   font-size: 25px;
+} */
