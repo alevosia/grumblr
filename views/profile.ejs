@@ -60,8 +60,9 @@
                   </div>
                   
                   <!-- post: attach an image -->
-                  <div class="imageAttachment hidden"> 
-                        <img src="/images/placeholderimage1.jpg" alt="" id="imageAttachment">
+                  <div class="hidden" id="imageAttachmentContainer">  <!-- "this container is hidden by default" -->
+                     <i class="delete icon" id="removeImageButton" onClick="removeAttachedImage(event)"></i>
+                     <img src="/images/placeholderimage1.jpg" alt="" id="imageAttachment">
                   </div>
 
                   <!-- post controls -->
@@ -71,7 +72,7 @@
                                  <img src="images/uploadimage.png"/>
                               </label>
                                     
-                              <input id="fileInput" type="file" name="blog_image"/>
+                              <input id="fileInput" type="file" accept="image/*" name="blog_image" onChange="loadImageAttachment(event)">
                         </div>
                         
                         <input type="submit" value="POST" class="ui button" id="postButton">
@@ -209,9 +210,32 @@
          .modal('attach events', '.viewComments', 'show')
       ;
 
-      $('.ui.modal.uploadImage')
-            .modal('attach events', '#uploadImageButton', 'show')
-      ;
+      // REMOVE UPLOADED IMAGE
+      function removeAttachedImage(event) {
+         var image = document.getElementById('imageAttachment');
+         var container = document.getElementById('imageAttachmentContainer')
+
+         if(image.src == null || image.src == "") {
+            /* if there is no attached image in the container, proceed*/
+         } 
+         else {
+            image.src = "";
+            container.classList.add('hidden');
+         }
+      }
+      
+      // ATTACH UPLOADED IMAGE
+      function loadImageAttachment() {
+         var imageContainer = document.getElementById('imageAttachmentContainer');
+         var output = document.getElementById('imageAttachment');
+
+         if(imageContainer.classList.contains('hidden')) {
+            imageContainer.classList.remove('hidden')
+            output.src = URL.createObjectURL(event.target.files[0]);
+         } else {
+            output.src = URL.createObjectURL(event.target.files[0]);
+         }
+      }
 
     </script>
 </body>
