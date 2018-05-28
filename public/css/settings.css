@@ -1,0 +1,37 @@
+@import '../fonts/gotham-rounded.css';
+
+body {
+    background-color: #6C4ED5;
+}
+
+#content {
+    /* background-color: yellowgreen; */
+    padding-top: 5em;
+    justify-items: center;
+    display: grid;
+}
+
+.settingsContainer {
+    width: 50em;
+    background-color: #6DC4FF;
+}
+
+
+
+
+
+
+.imageUpload {
+    /* background-color: #6C4ED5; */
+    width: 100%;
+    grid-template-columns: 1fr 3.5fr;
+    display: grid;
+}
+
+            #profileImage {
+                /* background-color: red; */
+            }
+
+            #uploadProfileImageContainer {
+                /* background-color: blue; */
+            }
