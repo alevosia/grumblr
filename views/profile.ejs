@@ -12,6 +12,27 @@
    <link rel="stylesheet" href="./css/profile.css">
    <link rel="stylesheet" href="./components/Navbar/navbar.css">
 
+   <script>
+    function showImage() {
+        var postContentImage = document.getElementById('postContentImage');
+        var modalImage = document.getElementById('postContent');
+
+        // POST
+        if(postContentImage.src != null || postContentImage.src != "") {
+            postContentImage.classList.remove('hidden');
+        } else {
+            postContentImage.classList.add('hidden');
+        }
+
+        // MODAL
+        if(modalImage.src != null || modalImage.src != "") {
+            modalImage.classList.remove('hidden');
+        } else {
+            modalImage.classList.add('hidden');
+        }
+    }
+   </script>
+
 </head>
 
 <body>
@@ -133,7 +154,7 @@ PROFILE FEED
 			<!-- POST: CONTENT -->
 			<div class="postContentContainer">
 				<!-- POST CONTENT: CAPTION/TEXT -->	<p class="ui postContentText input">This is the text of the content/post. this text should be reflected 																		to the caption inside the modal. this is inside a paragraph tag.</p>
-				<!-- POST CONTENT: IMAGE --> 		<img class="hidden" src="images/sampleimage1.jpg" alt="this is hidden by default" id="postContentImage" onload="showImage()">
+				<!-- POST CONTENT: IMAGE --> 		<img class="hidden" src="insert image url here..." alt="this is hidden by default" id="postContentImage" onload="showImage()">
 			</div>
 
 
@@ -153,19 +174,20 @@ PROFILE FEED
 				<div class="commentModal">
 					<div class="modal_postCotent">
 					<div class="postContentContainer">
-						<!-- post image -->
-						<img src="./images/placeholderimage1.jpg" alt="#" id="postContent" style="width: 100%">
-
-						<!-- post meta data -->
+                        
+                        <!-- post meta data -->
 						<div class="postMeta">
-							<div class="author">
-								<img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
-								<span class="postMetaAuthorName">
-									@uSeRnAmE
-								</span>
-							</div>
-							<div class="postMetaDate">date posted</div>
-						</div>
+                            <div class="author">
+                                <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
+                                <span class="postMetaAuthorName">
+                                    @uSeRnAmE
+                                </span>
+                            </div>
+                            <div class="postMetaDate">date posted</div>
+                        </div>
+                        
+						<!-- post image -->
+						<img class="hidden" src="insert image url here..." alt="this must not be shown" id="postContent" style="width: 100%" onload="showImage()">
 
 						<!-- post caption -->
 						<div class="captionContainer">
@@ -174,8 +196,9 @@ PROFILE FEED
 							</p>
 						</div>
 					</div>
-					</div>
-
+                    </div>
+                    
+                    <!-- ================================================================================================================================= -->
 
 					<div class="modal_commentSection scrolling content">
 					<!-- comments section -->
@@ -193,7 +216,7 @@ PROFILE FEED
 						<!-- C O M M E N T   L O O P -->
 					</div>
 
-					<div class="ui divider"></div> <!-- =========================== DIVIDER ================================== -->
+					<div class="ui divider"></div> <!-- =========================== DIVIDER =========================== -->
 
 					<!-- comment text area -->
 					<form class="postComments ui transparent form" action="/." method="POST">
@@ -311,17 +334,6 @@ $('.infinite.example .demo.segment')
 	}
 })
 ;
-
-function showImage() {
-	var postContentImage = document.getElementById('postContentImage');
-	
-	if(postContentImage.src != null || postpostContentImage.src != "") {
-		postContentImage.classList.remove('hidden');
-	} else {
-		postContentImage.classList.add('hidden');
-	}
-}
-
 </script>
 </body>
 
