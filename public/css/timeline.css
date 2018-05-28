@@ -39,14 +39,23 @@ div.post-area div.post-container {
 */
 
 /* Overrides properties for class post in profile.css */
+
+body, div.content {
+    width: 100%;
+}
+
 .post {
-   width: 45%;
+   width: 39%;
 }
 
 div.extra {
    padding-top: 10px;
    padding-bottom: 20px;
    /* font-size: 25px; */
+}
+
+div#content div.card {
+    position: fixed;
 }
 
 /* div.extra p {
