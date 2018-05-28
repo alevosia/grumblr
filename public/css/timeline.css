@@ -61,5 +61,6 @@ body{
 
 #postContainer {
     /* background-color: gray; */
-    width: 40%;
+    width: 45em;
+    margin-left: 15em;
 }

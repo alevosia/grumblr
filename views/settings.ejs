@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Grumblr</title>
+
+   <!-- semantic-ui styles -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+   <!-- main css -->
+   <link rel="stylesheet" href="./css/settings.css">
+   <link rel="stylesheet" href="./components/navbar/navbar.css">
+</head>
+
+<body>
+<!-- Navigation Bar Component -->
+<% include ../public/components/navbar/navbar.ejs %>
+<!-- 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+
+
+
+
+
+
+
+<div id="content">
+<div class="settingsContainer">
+<form action="" class="ui form">
+    <!-- ==================================================================== -->
+    <h1 class="ui top attached header">
+        General Settings
+        <div class="sub header">Manage your account settings</div>
+    </h1>
+    <!-- ==================================================================== -->
+    <div class="ui attached segment">
+        <div class="two fields">
+            <div class="field">
+                <label>First name</label>
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="field">
+                <label>Last name</label>
+                <input type="text" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="field">
+            <div class="field">
+                <label>Password</label>
+                <input type="password" placeholder="Change Password">
+            </div>
+        </div>
+        <div class="field">
+            <div class="field">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm Password">
+            </div>
+        </div>
+    </div>
+    <!-- ==================================================================== -->
+    <h1 class="ui attached header">
+        Profile Settings
+    </h1>
+    <!-- ==================================================================== -->
+    <div class="ui attached segment">
+        <div class="imageUpload">
+            <div class="ui image" id="profileImageContainer">
+                <img src="images/profileImage.png" alt="avatar" id="profileImage">
+            </div>
+            <div class="field" id="uploadProfileImage">
+                <label>Change Profile Picture</label>
+                <input type="file" accept="image/*" id="uploadProfileImageInput" onchange="changeProfilePicture(event)">
+            </div>
+        </div>
+
+        <div class="ui input">
+            <input type="submit" value="Save" class="ui button teal">
+        </div>
+    </div>
+
+</form>
+</div>
+</div>
+
+
+
+
+
+<!--
+SEMANTIC-UI SCRIPTS ==========================================================================================================================================-->
+<!-- jquery should be above the semantic.js due to having dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- semantic-ui javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+<!--MAIN SCRIPTS =============================================================================================================================================-->
+
+<!-- main script -->
+<script>
+
+// SEMANTIC-UI dropdown function
+$('.ui.dropdown')
+	.dropdown()
+;
+
+var uploadImageInput = $('#uploadProfileImageInput');
+uploadImageInput.addEventListener('click')
+</script>
+</body>
+
+</html>

@@ -62,6 +62,11 @@ app.get('/timeline', (req, res) => {
     res.render('timeline.ejs')
 })
 
+// render account settings page
+app.get('/settings', (req, res) => {
+    res.render('settings.ejs')
+})
+
 // handles the login - render profile page
 app.post('/handle_login', (req, res) => {
     // if succesful login
