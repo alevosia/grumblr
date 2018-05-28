@@ -16,6 +16,7 @@ body {
 
 #content {
    /* background-color: chartreuse; */
+   width: 100%;
    display: grid;
    justify-items: center;
    padding-top: 5em;
@@ -119,19 +120,20 @@ TIMELINE {
 
 
 
+
+
+
 /* CREATE A POST STYLES */
 .createPostContainer {
-   /* background-color: #e1e1e1; */
-   background-color: white;
-   width: 100%;
-   border-radius: 10px;
-   height: auto;
-   overflow: hidden;
-   /* display: grid; */
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    height: auto;
+    overflow: hidden;
 }
 
 .createPostField {
-   /* background-color: #e1e1e1; */
+   background-color: #ededed;
    position: relative;
    width: 100%;
    justify-self: center;
@@ -141,14 +143,15 @@ TIMELINE {
 }
 
 #blog_text {
-   justify-self: center;
-   position: relative;
-   width: 100%;
-   height: 12em;
-   resize: none;
-   font-family: inherit;
-   outline: none;
-   border: none;
+    background-color: transparent;
+    justify-self: center;
+    position: relative;
+    width: 100%;
+    height: 12em;
+    resize: none;
+    font-family: inherit;
+    outline: none;
+    border: none;
 }
 
 
@@ -185,197 +188,39 @@ TIMELINE {
 
 
 .createPostControls {
-   width: 100%;
-   /* background-color: red; */
-   height: auto;
-   padding: 5px 5px;
-   display: grid;
-   grid-template-columns: 1fr 1fr;
+    /* background-color: red; */
+    width: 100%;
+    height: auto;
+    padding: 5px 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.imageUpload > input {
-   display: none;
-}
-.imageUpload > label {
-   background-color: transparent;
-   display: flex;
-   align-items: center;
-   justify-self: start;
-   justify-content: center;
-   width: 3em;
-   height: 100%;
-}
-.imageUpload > label:hover {
-   background-color: rgb(226, 226, 226);
-   cursor: pointer;
-}
+            .imageUpload > input {
+            display: none;
+            }
+            .imageUpload > label {
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-self: start;
+            justify-content: center;
+            width: 3em;
+            height: 100%;
+            color: #6C4ED5;
+            }
+            .imageUpload > label:hover {
+            color: #5ba8db;
+            cursor: pointer;
+            }
 
-#uploadImageButton {
-   border-radius: 5px;
-   justify-self: start;
-   /* background-color: black; */
-   padding: 0px 8px;
-   display: flex;
-   justify-items: center;
-   align-items: center;
-}
-
-#postButton {
-   background-color: #6C4ED5;
-   color: white;
-   border-radius: 5px;
-   justify-self: end;
-   transition: all 0.1s ease-in-out;
-}
-#postButton:hover {
-   background-color: #5ba8db;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* TIMELINE POSTS OR CONTENTS */
-.post {
-   background-color: white;
-   border-radius: 10px;
-   width: 100%;
-   overflow: hidden;
-   margin: 10px 0px;
-}
-
-.postMeta {
-   width: 100%;
-   /* background-color: rgb(235, 235, 235); */
-   padding: 10px;
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-}
-
-.postMetaDate {
-   justify-self: end;
-   margin-right: 10px;
-}
-
-.postContentContainer {
-   /* background-color: black;  */
-   width: 100%;
-   overflow: hidden;
-   /* height: 5em; */
-}
-
-.postContentText {
-   width: 100%;
-   padding: 0px 10px;
-}
-
-.postContentImage {
-   width: 100%;
-}
-
-
-.postContentExtra {
-   display: grid;
-   padding-bottom: 5px;
-   grid-template-columns: 1fr 1fr;
-   align-items: center;
-}
-
-
-.postDetails,  {
-	background-color: #5ba8db;
-	width: 100%;
-}
-
-
-
-
-
-
-
-
-
-.postComments {
-	/* background-color: #5ba8db; */
-	width: 100%;
-	height: auto;
-	display: grid;
-}
-
-.viewComments {
-   cursor: pointer;
-   justify-self: end;
-   margin-right: 10px;
-}
-.viewComments:hover {
-   text-decoration: underline;
-}
-
-.postCommentsUserInfo {
-	position: relative;
-	width: 100%;
-	/* background-color: #6C4ED5; */
-	display: flex;
-	align-items: center;
-	margin-bottom: 10px;
-}
-
-
-#commentUserAvatar {
-   margin-right: 10px;
-}
-
-#commentField {
-   resize: none;
-   width: 98%;
-   height: 4em;
-   justify-self: center;
-   margin-bottom: 5px;
-}
-
-.replyButton {
-	justify-self: start;
-}
-
-
-
-
-
-.commentSection {
-   display: grid;
-}
-
-
-.commentModal {
-   width: 100%;
-   display: grid;
-   grid-template-columns: 1.5fr 1fr;
-   overflow: hidden;
-}
-
-.modal_commentSection {
-   padding: 10px;
-}
-
-.captionContainer {
-   padding: 5px 10px 10px 10px;
-}
-
-
-.commentContent {
-   display: grid;
-   grid-template-columns: 1fr 8fr;
-   padding-bottom: 10px;
-}
-
-.modal_authorName {
-   font-weight: bolder;
-}
+            #postButton {
+                background-color: #6C4ED5;
+                color: white;
+                border-radius: 5px;
+                justify-self: end;
+                transition: all 0.1s ease-in-out;
+            }
+            #postButton:hover {
+                background-color: #5ba8db;
+            }
