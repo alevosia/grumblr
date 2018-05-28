@@ -53,9 +53,14 @@
 HEADER 
 -->
 <HEADER>
+	<%
+	var profileImage = 'data:image/png;base64,' + user.profileImage.base64String;
+	console.log('base64String: ' + profileImage)
+
+	%>
 	<!-- HEADER: USER AVATAR -->
 	<div class="profileAvatarContainer">
-		<img src="images/nathan.jpg" alt="Avatar" id="profileImage">
+		<img src="images/profileImage.png" alt="Avatar" id="profileImage">
 	</div>
 
 	<!-- HEADER: HEADER COVER/IMAGE -->
@@ -65,8 +70,8 @@ HEADER
 
 	<!-- HEADER: USER INFORMATION -->
 	<div class="profileHeaderUserInfo">
-		<h1>Nathaniel Saludes</h1>
-		<h3>@GGMcdonie</h3>
+		<h1><%=user.firstName%> <%=user.lastName%></h1>
+		<h3><%=user.username%></h3>
 	</div>
 </HEADER>
 <!--
@@ -80,8 +85,8 @@ PROFILE FEED
 	<!-- PANEL: ABOUT USER -->
 	<div class="profileDetailsContainer">
 	<div class="accountDetails">
-		<h2 class="ui header">Intro</h2>
-		<p style="text-align: center">Pasahan na bukas sa Sflect hindi pa tayo tapos <br>- @DevsOfGrumblr</p>
+		<h2 class="ui header">Bio</h2>
+		<p style="text-align: center"><%=user.bio%></p>
 	</div>
 	<div class="ui divider"></div>
 	</div>
@@ -91,7 +96,7 @@ PROFILE FEED
 	<PANEL>
 	<div class="profilePosts">
 		<!-- PANEL: CREATE-A-POST -->
-		<form action="/send_blog" method="POST" class="createPostContainer ui form" enctype="multipart/form-data">
+		<form action="/send" method="POST" class="createPostContainer ui form" enctype="multipart/form-data">
 
 			<!-- CREATE-A-POST: text/caption -->
 			<div class="createPostField">
