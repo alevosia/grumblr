@@ -82,7 +82,7 @@ header .profileHeaderUserInfo {
 
 
 
-timeline {
+TIMELINE {
    /* background-color: brown; */
    width: 50em;
    border-radius: 10px;
@@ -153,9 +153,24 @@ timeline {
 
 
 
+#removeImageButton {
+   background-color: rgba(0, 0, 0, 0.35);
+   border-radius: 5px;
+   margin-top: 5px;
+   height: 20px;
+   width: 20px;
+   position: absolute;
+   right: 0;
+   color: rgb(226, 226, 226);
+   transition: all 0.2s ease-in-out;
+}#removeImageButton:hover {
+   color: #5ba8db;
+   cursor: pointer;
+}
 
-.imageAttachment {
+#imageAttachmentContainer {
    padding-top: 10px;
+   position: relative;
 }
 #imageAttachment {
    width: 100%;
@@ -245,7 +260,7 @@ timeline {
    grid-template-columns: 1fr 1fr;
 }
 
-.postMetaTime {
+.postMetaDate {
    justify-self: end;
    margin-right: 10px;
 }
@@ -257,12 +272,12 @@ timeline {
    /* height: 5em; */
 }
 
-.postContent {
+.postContentText {
    width: 100%;
    padding: 0px 10px;
 }
 
-#postContent {
+.postContentImage {
    width: 100%;
 }
 
@@ -275,12 +290,24 @@ timeline {
 }
 
 
-.postDetails, .postComments {
-   padding: 5px 10px;
-   width: 100%;
+.postDetails,  {
+	background-color: #5ba8db;
+	width: 100%;
 }
+
+
+
+
+
+
+
+
+
 .postComments {
-   margin-top: 20px;
+	/* background-color: #5ba8db; */
+	width: 100%;
+	height: auto;
+	display: grid;
 }
 
 .viewComments {
@@ -292,6 +319,15 @@ timeline {
    text-decoration: underline;
 }
 
+.postCommentsUserInfo {
+	position: relative;
+	width: 100%;
+	/* background-color: #6C4ED5; */
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
 
 #commentUserAvatar {
    margin-right: 10px;
@@ -299,7 +335,16 @@ timeline {
 
 #commentField {
    resize: none;
+   width: 98%;
+   height: 4em;
+   justify-self: center;
+   margin-bottom: 5px;
 }
+
+.replyButton {
+	justify-self: start;
+}
+
 
 
 
