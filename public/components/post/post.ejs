@@ -1,0 +1,123 @@
+<!-- L O O P  C O N T E N T -->
+<div class="post"> 
+
+    <!-- POST: META-DATA -->
+    <div class="postMeta">
+
+        <div class="postDetails">
+        <!-- USER: AVATAR --><img class="ui avatar image" src="/images/nathan.jpg" class="postMetaAvatar">
+        <!-- USER: USERNAME --><a href="" class="postMetaAuthorUsername"><strong>@GGMcdonie</strong></a>
+        <!-- META: DATE CREATED --><div class="postMetaDate">3hrs</div>
+        </div>
+
+        <div class="postEdit">
+            <div class="ui dropdown editDropDown">
+            <!-- POST: EDIT BUTTON -->          <i class="icon ellipsis horizontal editButton"></i>
+            <!-- POST: EDIT MENU DROPDOWN -->   <div class="menu left">
+                                                    <div class="item">Edit</div>
+                                                    <div class="item">Delete</div>
+                                                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    
+    <!-- POST: CONTENT -->
+    <div class="postContentContainer">
+        <!-- POST CONTENT: CAPTION/TEXT -->
+        <p class="ui postContentText input">
+            Insert Text Here...
+        </p>
+        <!-- POST CONTENT: IMAGE --><img class="postContentImage" src="images/placeholderimage2.png">
+        <!-- ==if there is an image attached to this post, insert an "img" tag with an attribute class="postContentImage" and the source-->
+    </div>
+
+
+    <!-- POST: COMMENT SECTION -->
+    <div class="postDetailsExtra">
+        <div class="postDetailsExtra"> 
+            <i class="comment outline icon" style="margin-left: 10px;"></i><span>1 Comment</span>
+        </div>
+        
+        <!-- VIEW COMMENTS HYPERTEXT -->
+        <a class="viewComments">View Comments</a>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- MODAL ====================================================================================================================================-->
+
+            <div class="ui modal longer">
+                <!-- modal content container -->
+                <div class="commentModal">
+                    <div class="modal_postCotent">
+                    <div class="postContentContainer">
+                        
+                        <!-- post meta data -->
+                        <div class="postMeta">
+                            <div class="author">
+                                <img class="ui avatar image" src="/images/nathan.jpg" class="postMetaAvatar">
+                                <a class="postMetaAuthorName" href=""><strong>@GGMcdonie</strong></a>
+                            </div>
+                            <div class="postMetaDate">24hr</div>
+                        </div>
+                        
+                        <!-- post image -->
+                        <!-- ==if there is an image attached to this post: insert "img" tag with class="postContentImage" and the source-->
+                        <img class="postContentImage" src="images/placeholderimage2.png">
+
+                        <!-- post caption -->
+                        <div class="captionContainer">
+                            <p class="caption">Insert Text Here...</p>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <!-- ================================================================================================================================= -->
+
+                    <div class="modal_commentSection scrolling content">
+                    <!-- comments section -->
+                    <div class="commentSection">
+                        <!-- C O M M E N T   L O O P (For any person that comments on the post)-->
+                        <div class="commentContent">
+                            <img class="ui avatar image" src="/images/alex.jpg" alt="avatar">
+                            <div>
+                                <a href="" class="modal_authorName">@Ålevosía#5780</a>
+                                <span>This is my comment. hehe</span>
+                            </div>
+                        </div>
+                        <!-- C O M M E N T   L O O P -->
+                    </div>
+
+                    <div class="ui divider"></div> <!-- =========================== DIVIDER =========================== -->
+
+                    <!-- comment text area -->
+                    <form class="postComments ui transparent form" action="/." method="POST">
+                        <!-- USER INFO -->
+                        <div class="postCommentsUserInfo">
+                            <img class="ui avatar image" src="/images/nathan.jpg" id="commentUserAvatar">
+                            <!-- COMMENT FIELD -->	<textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
+                        </div>
+                        <!-- REPLY BUTTON -->	<button class="ui primary submit icon labeled button replyButton" type="submit"><i class="icon reply"></i> Reply</button>
+                    </form>
+                    </div>
+                </div>
+            </div> 
+            <!-- MODAL ====================================================================================================================================-->
+            
+</div>

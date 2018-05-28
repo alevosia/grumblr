@@ -1,0 +1,30 @@
+<!-- NAVIGATION BAR COMPONENT -->
+<div id="navBarContainer">
+    <div class="ui menu inverted" id="navbar">
+        <div class="item">
+            <img src="images/brandlogo.png" alt="" id="brandLogo">
+        </div>
+        <a href="" class="item">DISCOVER</a>
+        <a href="" class="active item">PROFILE</a>
+
+        <div class="item right">
+            <form action="/search" method="POST" class="ui action left icon input">
+            <i class="search icon"></i>
+            <input type="text" id="" name="searchQuery">
+            <button class="ui button" id="searchButton">Search</button>
+            </form>
+        </div>
+
+        <div class="ui dropdown item right" tabindex="0">
+            <span id="userName">
+                <strong>@GGMcdonie</strong>
+            </span>
+            <img src="images/nathan.jpg" alt="Avatar" id="userAvatar">
+            
+            <div class="menu">
+                <div class="item">Account Settings</div>
+                <div class="item labeled icon">Logout</div>
+            </div>
+        </div>
+   </div>
+</div>
