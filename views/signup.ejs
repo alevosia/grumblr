@@ -8,18 +8,18 @@
   <title>Grumblr</title>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
-  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
   <div class="container">
-    <a href="/"> <!-- back to index-->
+    <a href="/"> <!-- back to login-->
       <h1 class="brand"><span>Grumblr</span></h1>
     </a>
     
     <div class="wrapper animated pulse">
       <div class="grumblr">
        
-        <a href="/"> <!-- back to index-->
+        <a href="/"> <!-- back to login-->
             <img src="/images/Logo2x.png" alt="GRUMBLR">
         </a>
           
@@ -27,34 +27,34 @@
       </div>
       <div class="contact">
         <h1 id="registerTitle">Register</h1>
-        <form action="/handle_registration" method="POST" id="regForm">
+        <form action="/auth/signup" method="POST" id="regForm">
           <p>
             <label>First Name</label>
-            <input type="text" name="firstName">
+            <input type="text" name="firstName" required="required">
           </p>
           <p>
             <label>Last Name</label>
-            <input type="text" name="lastName">
+            <input type="text" name="lastName" required="required">
           </p>
           <p>
             <label>Email Address</label>
-            <input type="email" name="email">
+            <input type="email" name="email" required="required">
           </p>
           <p>
             <label>Username</label>
-            <input type="text" name="userName">
+            <input type="text" name="username" required="required">
           </p>
           <p>
             <label>Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" required="required">
           </p>
           <p>
             <label>Confirm Password</label>
-            <input type="password" name="confirmPassword">
+            <input type="password" name="confirmPassword" required="required">
           </p>
           <p>
             <label>Gender</label>
-            <select name="gender">
+            <select name="gender" required="required">
               <option selected hidden></option>
               <option value="male">Male</option>
               <option value="female">Female</option>

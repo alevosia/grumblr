@@ -11,7 +11,7 @@
   <!-- semantic-ui styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
   <!-- main css -->
-  <link rel="stylesheet" type="text/css" media="screen" href="css/index.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/index.css" />
 
 </head>
 <body>
@@ -22,27 +22,33 @@
 
       <!-- logo -->
       <div class="logoContainer">
-        <img src="images/Logo2x.png" alt="GRUMBLR">
+        <img src="./images/Logo2x.png" alt="GRUMBLR">
       </div>
   
 
 
       <div class="formContainer">
-        <form action="/handle_login" method="POST" class="ui form">
+        <form action="/auth/" method="POST" class="ui form">
 
           <!-- Brand -->
+          <% if (locals.message) {
+            if (message.length > 0) { %>
+              <p>Signup successful!</p>
+            <%}
+          }
+          %>
           <div class="title"><h1>GRUMBLR</h1></div>
   
           <!-- username -->
           <div class="field">
             <label id="username">USERNAME</label>
-            <input type="text" name="username" autocomplete="off">
+            <input type="text" name="username" autocomplete="off" required="required">
           </div>
 
           <!-- password -->
           <div class="field">
             <label id="password">PASSWORD</label>
-            <input type="password" name="password" autocomplete="off">
+            <input type="password" name="password" autocomplete="off" required="required">
           </div>
 
                   <!-- remember me checkbox -->
@@ -57,7 +63,7 @@
           <button class="ui button fluid" type="submit" id="LoginButton">Login</button>
 
           <div class="registerAccount">
-            <a href="/register" class="ui button fluid" id="registerButton">
+            <a href="/auth/signup" class="ui button fluid" id="registerButton">
               Sign up for an account?
             </a>
           </div>
