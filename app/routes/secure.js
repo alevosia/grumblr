@@ -26,15 +26,15 @@ module.exports = function(router) {
     })
 
     router.get('/settings', function(req, res) {
-        res.send('Settings page');
+        res.render('settings.ejs', {user: req.user});
     })
 
     // USERS ======================================================
     // localhost:8080/users/<username>
     router.post('/search/users', function(req, res) {
-        User.find({'username':{'$regex': req.body.searchQuery, '$options':'i'}}, function(err, users) {
+        User.find({'username':{'$regex': 'alex', '$options':'i'}}, function(err, users) {
             if (err) throw err;
-            res.send(users);
+            res.render('search.ejs', {user: users});
         });
     })
 
