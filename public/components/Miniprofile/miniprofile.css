@@ -1,6 +1,20 @@
 /* Overrides any default css framework rules of Semantic UI */
 
+#card {
+    background-color: transparent;
+    height: 30em;
+    box-shadow: none;
+    width: 20em;
+    font-size: 0.8em;
+}
 
-div.card{
-   margin: 20px;
+.image {
+    background-color: transparent; 
+}
+
+.image #avatar {
+    border-radius: 500em;
+    height: 100%;
+    background-color: transparent;
+    margin-bottom: 10px;
 }
