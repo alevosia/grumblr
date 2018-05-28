@@ -1,6 +1,5 @@
 /* Overrides any default css framework rules of Semantic UI */
 
-
-div.card{
-   margin: 20px;
+#miniprofile {
+    position: fixed;
 }

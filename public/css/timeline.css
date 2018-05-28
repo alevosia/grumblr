@@ -40,8 +40,13 @@ div.post-area div.post-container {
 
 /* Overrides properties for class post in profile.css */
 
-body, div.content {
+body{
     width: 100%;
+    background-color: greenyellow;
+}
+
+#content {
+    background-color: brown;
 }
 
 .post {

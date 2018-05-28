@@ -12,15 +12,20 @@
    <link rel="stylesheet" href="./css/profile.css">
    <link rel="stylesheet" href="./components/Navbar/navbar.css">
    <link rel="stylesheet" href="../css/timeline.css">
+   <link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
+   
    <title>Grumblr</title>
 </head>
 
 <body>
       
+      <% include  ../public/components/Navbar/navbar.ejs %>
+      
+      <% include ../public/components/miniprofile/miniprofile.html %>
+
+
 
 <div id="content">
-            <% include  ../public/components/Navbar/navbar.html %>
-            <% include ../public/components/Miniprofile/miniprofile.html %>
       <div class="extra">
             <h3>Timeline</h3>
       </div>
