@@ -11,28 +11,6 @@
    <!-- main css -->
    <link rel="stylesheet" href="./css/profile.css">
    <link rel="stylesheet" href="./components/Navbar/navbar.css">
-
-   <script>
-    function showImage() {
-        var postContentImage = document.getElementById('postContentImage');
-        var modalImage = document.getElementById('postContent');
-
-        // POST
-        if(postContentImage.src != null || postContentImage.src != "") {
-            postContentImage.classList.remove('hidden');
-        } else {
-            postContentImage.classList.add('hidden');
-        }
-
-        // MODAL
-        if(modalImage.src != null || modalImage.src != "") {
-            modalImage.classList.remove('hidden');
-        } else {
-            modalImage.classList.add('hidden');
-        }
-    }
-   </script>
-
 </head>
 
 <body>
@@ -138,8 +116,8 @@ PROFILE FEED
 
 
 
-		<!-- SAMPLE CONTENT -->
-		<div class="post">
+		<!-- L O O P  C O N T E N T -->
+		<div class="post"> <!-- L O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O O P-->
 
 			<!-- POST: META-DATA -->
 			<div class="postMeta">
@@ -154,7 +132,9 @@ PROFILE FEED
 			<!-- POST: CONTENT -->
 			<div class="postContentContainer">
 				<!-- POST CONTENT: CAPTION/TEXT -->	<p class="ui postContentText input">This is the text of the content/post. this text should be reflected 																		to the caption inside the modal. this is inside a paragraph tag.</p>
-				<!-- POST CONTENT: IMAGE --> 		<img class="hidden" src="insert image url here..." alt="this is hidden by default" id="postContentImage" onload="showImage()">
+                <!-- POST CONTENT: IMAGE -->
+                <!-- ==if there is an image attached to this post, insert an "img" tag with an attribute class="postContentImage" and the source--> -->
+                <img class="postContentImage" src="images/placeholderimage1.jpg">
 			</div>
 
 
@@ -168,7 +148,7 @@ PROFILE FEED
 			<!-- VIEW COMMENTS HYPERTEXT -->	<a class="viewComments">View Comments</a>
 
 
-			<!-- MODAL |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+			<!-- MODAL ====================================================================================================================================-->
 			<div class="ui modal longer">
 				<!-- modal content container -->
 				<div class="commentModal">
@@ -186,8 +166,9 @@ PROFILE FEED
                             <div class="postMetaDate">date posted</div>
                         </div>
                         
-						<!-- post image -->
-						<img class="hidden" src="insert image url here..." alt="this must not be shown" id="postContent" style="width: 100%" onload="showImage()">
+                        <!-- post image -->
+                        <!-- ==if there is an image attached to this post: insert "img" tag with class="postContentImage" and the source-->
+						<img class="postContentImage" src="images/placeholderimage1.jpg">
 
 						<!-- post caption -->
 						<div class="captionContainer">
@@ -231,11 +212,11 @@ PROFILE FEED
 					</div>
 				</div>
 			</div> 
-			<!-- MODAL ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+			<!-- MODAL ====================================================================================================================================-->
 			
 			</div>
-		</div>
-		<!-- SAMPLE CONTENT -->
+        </div>
+        
 
 
 	</div>
