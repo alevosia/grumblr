@@ -1,0 +1,23 @@
+@import '../fonts/gotham-rounded.css';
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Gotham Rounded", sans-serif;
+    font-weight: normal;
+ }
+
+ body {
+     width: 100%;
+ }
+
+.image {
+    background-color: transparent; 
+}
+
+.image #avatar {
+    border-radius: 500em;
+    height: 100%;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
