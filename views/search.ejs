@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
    <meta charset="UTF-8">
@@ -9,9 +9,7 @@
 
    <!-- Infinite Scroll based on API calls with jQuery -->
    <script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>
-   <link rel="stylesheet" href="./css/profile.css">
    <link rel="stylesheet" href="./components/navbar/navbar.css">
-   <link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
    <link rel="stylesheet" href="../css/search.css">
    
    <link rel="shortcut icon" href="/images/favicon.ico" />
@@ -19,27 +17,26 @@
 </head>
 
 <body>
-    <% include ../public/components/Navbar/navbar.ejs %>
+    <% include ../public/components/navbar/navbar.ejs %>
 
-    <h2>Search Results</h2>
+    <h2 align="center">Search Results</h2>
     
-    <div class="searchContainer">
         <%
             if (locals.user) {
                 if (user.length > 0) { 
                     for (var i=0; i<user.length; i++) { %>
+                        <div class="searchContainer">
                         <div class="searchResult">
-                        <img class="ui avatar image" src="/images/avatar.png" id="avatar">
+                        <img class="ui avatar image" src="/images/profileImage.png" id="avatar">
                         <h2><%=user[i].firstName%> <%=user[i].lastName%></h2>
                         <h3>Username: <%=user[i].username%></h3>
                         <h3>Followers: <%=user[i].following%></h3>
                         <h3>Following: <%=user[i].followers%></h3>
                         </div>
+                        </div>
                     <%} 
                 }
             }
         %>
-        
-    </div>
 </body>
 </html>
