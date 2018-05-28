@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
    <meta charset="UTF-8">
@@ -14,6 +14,24 @@
    <link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
    <link rel="stylesheet" href="../css/search.css">
    
-   <link rel="shortcut icon" href="images/favicon.ico" />
+   <link rel="shortcut icon" href="/images/favicon.ico" />
    <title>Grumblr</title>
 </head>
+
+<body>
+    <% include ../public/components/Navbar/navbar.ejs %>
+
+    <h2>Search Results</h2>
+    
+    <div class="searchContainer">
+        <a href="">
+        <div class="searchResult">
+                <img class="ui avatar image" src="/images/avatar.png" id="avatar">
+                <h3>Alexander Paul(@aLeXpAuL)</h3>
+                <h3>Followers: 3</h3>
+                <h3>Following: 3</h3>
+        </div>
+        </a>
+    </div>
+</body>
+</html>

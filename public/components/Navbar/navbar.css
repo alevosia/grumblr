@@ -23,6 +23,7 @@
 #searchButton {
    background-color: #6C4ED5;
    color: white;
+   cursor: pointer;
 }
 
 #userAvatar {
