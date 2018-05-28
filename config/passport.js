@@ -42,12 +42,16 @@ module.exports = function(passport) {
                         defaultCoverImagePath = __dirname + '\\images\\placeholderImage2.png';
                         console.log(defaultCoverImagePath);
                         
-                        defaultProfileImage.SetBase64String(defaultProfileImagePath);
-                        defaultCoverImage.SetBase64String(defaultCoverImagePath);
+                        newUser.SetProfileImage(defaultProfileImagePath);
+                        newUser.SetCoverImage(defaultCoverImagePath);
                         newUser.username = username;
                         newUser.password = newUser.generateHash(password);
+                        newUser.firstName = req.body.firstName;
+                        newUser.lastName = req.body.lastName;
+                        newUser.emailAddress = req.body.email;
+                        newUser.gender = req.body.gender;
                         newUser.profileImage = defaultProfileImage;
-                        newUser.coverImagae = defaultCoverImage;
+                        newUser.coverImage = defaultCoverImage;
                         
                         newUser.save(function(err) {
                             if (err) throw err;
@@ -76,7 +80,7 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('loginMessage', 'Password does not match.'))
                     }
                     return done(null, user); // sends/binds the user object to the request
-                }) 
+                })
             })
         }
     ))
