@@ -42,27 +42,24 @@ div.post-area div.post-container {
 
 body{
     width: 100%;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
+}
+
+#miniprofile {
+    position: fixed;
+    padding: 5em 10px 0px 10px;
+    background-color: white;
+    display: grid;
+    height: 100%;
 }
 
 #content {
-    background-color: brown;
+    /* background-color: brown; */
+    width: 100%;
+    height: auto;
 }
 
-.post {
-   width: 39%;
+#postContainer {
+    /* background-color: gray; */
+    width: 40%;
 }
-
-div.extra {
-   padding-top: 10px;
-   padding-bottom: 20px;
-   /* font-size: 25px; */
-}
-
-div#content div.card {
-    position: fixed;
-}
-
-/* div.extra p {
-   font-size: 25px;
-} */
