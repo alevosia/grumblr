@@ -1,6 +1,8 @@
+@import url('../components/fonts/gotham-rounded.css');
+
 body{
     width: 100%;
-    /* background-color: greenyellow; */
+    background-color: #6C4ED5;
 }
 
 #miniprofile {
@@ -15,6 +17,9 @@ body{
     /* background-color: brown; */
     width: 100%;
     height: auto;
+    display: grid;
+    justify-items: center;
+    padding-top: 5em;
 }
 
 #postContainer {

@@ -30,3 +30,8 @@
    margin-left: 10px;
    border-radius: 100em;
 }
+
+#redirectLink {
+    font-weight: bolder;
+    font-family: "Gotham Rounded", sans-serif;
+}
