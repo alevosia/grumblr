@@ -5,18 +5,22 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="shortcut icon" href="images/favicon.ico" />
-   <title><%=user.firstName%> <%=user.lastName%></title>
+   <title>friend.firstname friend.Lastname</title>
 
    <!-- semantic-ui styles -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
    <!-- main css -->
-   <link rel="stylesheet" href="../css/profile.css">
+   <link rel="stylesheet" href="./css/visitedprofile.css">
    <link rel="stylesheet" href="./components/post/post.css">
 </head>
 
 <body>
 <!-- Navigation Bar Component -->
 <% include ../public/components/Navbar/navbar.ejs %>
+<!-- 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
 
 
 
@@ -46,6 +50,10 @@
 <div id="content">
 <!-- ======= HEADER ======================================================================================================================================= -->
 <HEADER>
+	<%
+		var profileImage = 'data:image/png;base64,' + user.profileImage.base64String;
+		console.log('base64String: ' + profileImage)
+	%>
 	<!-- HEADER: USER AVATAR -->
 	<div class="profileAvatarContainer">
 		<img src="images/profileImage.png" alt="Avatar" id="profileImage">
@@ -84,7 +92,7 @@
 
 			<!-- CREATE-A-POST: text/caption -->
 			<div class="createPostField">
-				<textarea name="text" id="text" placeholder="Write something..."></textarea>
+				<textarea name="blog_text" id="blog_text" placeholder="Write something..."></textarea>
 			</div>
 			
 			<!-- CREATE-A-POST: IMAGE ATTACHMENT (hidden by default)-->
@@ -97,18 +105,14 @@
 			<div class="createPostControls">
 				<div class="imageUpload">
 				<!-- UPLOAD IMAGE BUTTON -->    <label for="fileInput"><i class="icon image massive ui"></i></label>       
-				<!-- CHOOSE FILE INPUT -->      <input id="fileInput" type="file" accept="image/*" name="photo" onChange="loadImageAttachment(event)">
+				<!-- CHOOSE FILE INPUT -->      <input id="fileInput" type="file" accept="image/*" name="imageUploadInput" onChange="loadImageAttachment(event)">
 				</div>
 				
 				<!-- POST BUTTON --> <input type="submit" value="POST" class="ui button" id="postButton">
 			</div>
         </form>
-        <% if (locals.posts) {
-			for (var i=0; i<posts.length; i++) { %>
-				<% include ../public/components/post/post.ejs %>
-			<%}
-		}%>
         
+        <% include ../public/components/post/post.ejs %>
 	</div>
 	</PANEL>
 
@@ -146,15 +150,16 @@
 
 
 
-<!-- ======= MAIN SCRIPTS ========================================================================================================================== -->
+<!-- ======= MAIN SCRIPTS =================================================================================================================================-->
 <script>
 // SEMANTIC-UI dropdown function
 $('.ui.dropdown')
 	.dropdown()
 ;
 
-$('.ui.accordion')
-  .accordion()
+// MODAL: POST
+$('.ui.longer.modal')
+	.modal('attach events', '.viewComments', 'show')
 ;
 
 

@@ -46,90 +46,47 @@
     </div>
 
 
-    <!-- POST: COMMENT SECTION -->
-    <div class="postDetailsExtra">
-        <div class="postDetailsExtra"> 
-            <i class="comment outline icon" style="margin-left: 10px;"></i><span><%=posts[i].comments.length%> comments</span>
-        </div>
+    <div class="ui accordion">
         
-        <!-- VIEW COMMENTS HYPERTEXT -->
-        <a class="viewComments">View Comments</a>
-    </div>
+        <div class="title">
+            <div class="comment">
+                <i class="comment outline icon"></i>
+                <%=posts[i].comments.length%> Comments
+            </div>
+            <i class="caret down icon dropCommentsIcon"></i>
+        </div>
 
+        <div class="content">
+            <div class="commentSection">
+                <!-- ============================ COMMENT INSTANCE -->
+                <div class="personComment"> 
+                    <img src="/images/avatar.png" alt="" class="ui avatar image">
+                    <p>
+                        <a href="profile link">friendUsername</a><br>
+                        this is some comment...
+                    </p>
+                </div> 
+                <!-- ============================ COMMENT INSTANCE -->
 
+            </div>
 
+            <div class="ui divider"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- MODAL ====================================================================================================================================-->
-
-            <div class="ui modal longer">
-                <!-- modal content container -->
-                <div class="commentModal">
-                    <div class="modal_postCotent">
-                    <div class="postContentContainer">
-                        
-                        <!-- post meta data -->
-                        <div class="postMeta">
-                            <div class="author">
-                                <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
-                                <a class="postMetaAuthorName" href=""><strong><%=posts[i].username%></strong></a>
-                            </div>
-                            <div class="postMetaDate">UTC Date</div>
-                        </div>
-                        
-                        <!-- post image -->
-                        <!-- ==if there is an image attached to this post: insert "img" tag with class="postContentImage" and the source-->
-                        <img class="postContentImage" src="<%=postContentImage%>">
-
-                        <!-- post caption -->
-                        <div class="captionContainer">
-                            <p class="caption"><%=posts[i].text%></p>
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <!-- ================================================================================================================================= -->
-
-                    <div class="modal_commentSection scrolling content">
-                    <!-- comments section -->
-                    <div class="commentSection">
-                        <!-- C O M M E N T   L O O P (For any person that comments on the post)-->
-                        <div class="commentContent">
-                            <img class="ui avatar image" src="/images/alex.jpg" alt="avatar">
-                            <div>
-                                <a href="" class="modal_authorName">@Ålevosía#5780</a>
-                                <span>This is my comment. hehe</span>
-                            </div>
-                        </div>
-                        <!-- C O M M E N T   L O O P -->
-                    </div>
-
-                    <div class="ui divider"></div> <!-- =========================== DIVIDER =========================== -->
-
-                    <!-- comment text area -->
-                    <form class="postComments ui transparent form" action="/." method="POST">
-                        <!-- USER INFO -->
-                        <div class="postCommentsUserInfo">
-                            <img class="ui avatar image" src="/images/avatar.png" id="commentUserAvatar">
-                            <!-- COMMENT FIELD -->	<textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
-                        </div>
-                        <!-- REPLY BUTTON -->	<button class="ui primary submit icon labeled button replyButton" type="submit"><i class="icon reply"></i> Reply</button>
-                    </form>
+            <!-- comment form -->
+            <form class="reply ui form" id="replyForm">
+                <div class="field commentfield">
+                    <img src="/images/avatar.png" alt="" class="ui avatar image">
+                    <div class="ui right labeled left icon input">
+                        <!-- comment text area -->
+                        <textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>
+                        <!-- reply button -->
+                        <button class="ui button icon submit" type="submit" id="replyButton">
+                            <i class="reply icon"></i>
+                        </button>
                     </div>
                 </div>
-            </div> 
-            <!-- MODAL ====================================================================================================================================-->
-            
+            </form>
+        </div>
+
+    </div> <!-- ui accordion -->
 </div>
