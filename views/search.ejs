@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
 	<link rel="shortcut icon" href="/images/favicon.ico" />
 
-	<link rel="stylesheet" href="./components/navbar/navbar.css">
+	<link rel="stylesheet" href="../../public/components/navbar/navbar.css">
 	<link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
 	<link rel="stylesheet" href="../css/search.css">
 
@@ -16,7 +16,6 @@
 </head>
 
 <body>
-
 <!-- NAVIGATION BAR COMPONENT -->
 <div id="navBarContainer">
 		<div class="ui menu inverted" id="navbar">
@@ -40,7 +39,7 @@
 						<%=user.username%>
 					</strong>
 				</span>
-				<img src="../public/images/avatar.png" alt="Avatar" id="userAvatar">
+				<img src="images/avatar.png" alt="Avatar" id="userAvatar">
 	
 				<div class="menu">
 					<a href="/settings" class="item">Account Settings</a>
@@ -49,6 +48,10 @@
 			</div>
 		</div>
 	</div>
+<!-- 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
 
 <div id="miniprofile"><% include ../public/components/miniprofile/miniprofile.html %></div>
 
@@ -94,9 +97,9 @@ SEMANTIC-UI SCRIPTS ============================================================
 <script>
 
 // SEMANTIC-UI dropdown function
-// $('.ui.dropdown')
-// 	.dropdown()
-// ;
+$('.ui.dropdown')
+	.dropdown()
+;
 
 
 
