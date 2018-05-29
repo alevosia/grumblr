@@ -17,7 +17,38 @@
 
 <body>
 
-	<% include ../public/components/navbar/navbar.ejs %>
+<!-- NAVIGATION BAR COMPONENT -->
+<div id="navBarContainer">
+		<div class="ui menu inverted" id="navbar">
+			<div class="item">
+				<img src="images/brandlogo.png" alt="" id="brandLogo">
+			</div>
+			<a href="/timeline" class="item">DISCOVER</a>
+			<a href="/profile" class="item">PROFILE</a>
+	
+			<div class="item right">
+				<form action="/search/users" method="POST" class="ui action left icon input">
+					<i class="search icon"></i>
+					<input type="text" id="" name="searchQuery" placeholder="Search...">
+					<button class="ui button" id="searchButton" type="submit">Search</button>
+				</form>
+			</div>
+	
+			<div class="ui dropdown item right" tabindex="0">
+				<span id="userName">
+					<strong>
+						<%=user.username%>
+					</strong>
+				</span>
+				<img src="../public/images/avatar.png" alt="Avatar" id="userAvatar">
+	
+				<div class="menu">
+					<a href="/settings" class="item">Account Settings</a>
+					<a href="/auth/logout" class="item">Logout</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 <div id="miniprofile"><% include ../public/components/miniprofile/miniprofile.html %></div>
 
