@@ -27,22 +27,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div id="content">
 <!-- ======= HEADER ======================================================================================================================================= -->
 <HEADER>
@@ -62,6 +46,13 @@
 		<h3><%=user.username%></h3>
 	</div>
 </HEADER>
+
+
+
+
+
+
+
 
 <!-- ======= PROFILE FEED ================================================================================================================================= -->
 <TIMELINE id="timeline">
@@ -84,7 +75,7 @@
 
 			<!-- CREATE-A-POST: text/caption -->
 			<div class="createPostField">
-				<textarea name="text" id="text" placeholder="Write something..."></textarea>
+				<textarea name="text" id="blog_text" placeholder="Write something..."></textarea>
 			</div>
 			
 			<!-- CREATE-A-POST: IMAGE ATTACHMENT (hidden by default)-->
@@ -102,12 +93,19 @@
 				
 				<!-- POST BUTTON --> <input type="submit" value="POST" class="ui button" id="postButton">
 			</div>
-        </form>
+		</form>
+		
+
+
+
+
+		<!-- ===================================================================== USER POSTS -->
         <% if (locals.posts) {
 			for (var i=0; i<posts.length; i++) { %>
 				<% include ../public/components/post/post.ejs %>
 			<%}
 		}%>
+		<!-- ===================================================================== USER POSTS -->
         
 	</div>
 	</PANEL>
