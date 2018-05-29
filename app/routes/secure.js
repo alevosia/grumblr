@@ -92,15 +92,19 @@ module.exports = function(router) {
 
     // USERS ======================================================
     // localhost:8080/users/<username>
-    router.post('/search/users', function(req, res) {
-        User.find({'username':{'$regex': req.body.searchQuery, '$options':'i'}}, function(err, users) {
+    router.get('/users/:username', function(req, res) {
+        User.findOne({'username':req.param('username')}, function(err, user) {
             if (err) throw err;
-            console.log(users)
-            res.render('search.ejs', {user: req.user, searchUsers: users});
+            console.log(user)
+            res.render('profile.ejs', {user: user});
         });
     })
 
-    router.get('/*', function(req, res) {
-        res.redirect('/profile');
+    router.post('/search/users', function(req, res) {
+        User.find().exec(function(err, users) {
+            if (err) throw err;
+            console.log(users)
+            res.render('search.ejs', {user: req.user, searchUsers: users});
+        })
     })
 }
