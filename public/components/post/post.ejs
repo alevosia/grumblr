@@ -1,13 +1,20 @@
 <!-- L O O P  C O N T E N T -->
 <div class="post"> 
 
+    <%
+        var type = posts[i].image.img.contentType;
+        console.log(type);
+        var base64String = posts[i].image.img.data;
+        postContentImage = "data:"+type+";base64, "+base64String;
+        //console.log(postContentImage);
+    %>
     <!-- POST: META-DATA -->
     <div class="postMeta">
 
         <div class="postDetails">
         <!-- USER: AVATAR --><img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
-        <!-- USER: USERNAME --><a href="" class="postMetaAuthorUsername"><strong>@heyBarburat</strong></a>
-        <!-- META: DATE CREATED --><div class="postMetaDate">3hrs</div>
+        <!-- USER: USERNAME --><a href="" class="postMetaAuthorUsername"><strong><%=posts[i].username%></strong></a>
+        <!-- META: DATE CREATED --><div class="postMetaDate">UTC Date</div>
         </div>
 
         <div class="postEdit">
@@ -27,9 +34,10 @@
     <div class="postContentContainer">
         <!-- POST CONTENT: CAPTION/TEXT -->
         <p class="ui postContentText input">
-            Insert Text Here...
+            <%=posts[i].text%>
         </p>
-        <!-- POST CONTENT: IMAGE --><img class="postContentImage" src="images/placeholderimage2.png">
+        
+        <!-- POST CONTENT: IMAGE --><img class="postContentImage" src="<%=postContentImage%>">
         <!-- ==if there is an image attached to this post, insert an "img" tag with an attribute class="postContentImage" and the source-->
     </div>
 
@@ -37,7 +45,7 @@
     <!-- POST: COMMENT SECTION -->
     <div class="postDetailsExtra">
         <div class="postDetailsExtra"> 
-            <i class="comment outline icon" style="margin-left: 10px;"></i><span>1 Comment</span>
+            <i class="comment outline icon" style="margin-left: 10px;"></i><span><%=posts[i].comments.length%> comments</span>
         </div>
         
         <!-- VIEW COMMENTS HYPERTEXT -->
@@ -72,18 +80,18 @@
                         <div class="postMeta">
                             <div class="author">
                                 <img class="ui avatar image" src="/images/avatar.png" class="postMetaAvatar">
-                                <a class="postMetaAuthorName" href=""><strong>@heyBarburat</strong></a>
+                                <a class="postMetaAuthorName" href=""><strong><%=posts[i].username%></strong></a>
                             </div>
-                            <div class="postMetaDate">24hr</div>
+                            <div class="postMetaDate">UTC Date</div>
                         </div>
                         
                         <!-- post image -->
                         <!-- ==if there is an image attached to this post: insert "img" tag with class="postContentImage" and the source-->
-                        <img class="postContentImage" src="images/placeholderimage2.png">
+                        <img class="postContentImage" src="<%=postContentImage%>">
 
                         <!-- post caption -->
                         <div class="captionContainer">
-                            <p class="caption">Insert Text Here...</p>
+                            <p class="caption"><%=posts[i].text%></p>
                         </div>
                     </div>
                     </div>

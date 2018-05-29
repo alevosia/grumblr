@@ -8,14 +8,13 @@ var port            = process.env.PORT || 8080;         // set our port
 var authRouter      = express.Router();
 var secureRouter    = express.Router();  
 var session         = require('express-session');   
-var formidable      = require('express-formidable');    
-var cookieParser    = require('cookie-parser');
+var formidable      = require('express-formidable');
 var bodyParser      = require('body-parser');
 var morgan          = require('morgan');
 var passport        = require('passport');
 var flash           = require('connect-flash');
 var MongoStore      = require('connect-mongo')(session);
-var upload          = require('multer');
+var multer          = require('multer');
 
 // PASSPORT CONFIGURATION - for authentication
 // ======================================================================================
@@ -26,7 +25,8 @@ require('./config/passport.js')(passport);
 app.use(express.static('public'));                  // for serving files from public folder
 app.use(morgan('dev'));                             // for logging traffic in our app
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());               
+app.use(bodyParser.json());
+app.use(multer({dest: '/uploads/'}).single('photo'));               
 app.use(session({
     secret: 'anystringoftext',
     saveUninitialized: true,                        // allow persistence event at server restart if there's a persistence layer

@@ -53,10 +53,6 @@
 HEADER 
 -->
 <HEADER>
-	<%
-		var profileImage = 'data:image/png;base64,' + user.profileImage.base64String;
-		console.log('base64String: ' + profileImage)
-	%>
 	<!-- HEADER: USER AVATAR -->
 	<div class="profileAvatarContainer">
 		<img src="images/profileImage.png" alt="Avatar" id="profileImage">
@@ -97,7 +93,7 @@ PROFILE FEED
 
 			<!-- CREATE-A-POST: text/caption -->
 			<div class="createPostField">
-				<textarea name="blog_text" id="blog_text" placeholder="Write something..."></textarea>
+				<textarea name="text" id="text" placeholder="Write something..."></textarea>
 			</div>
 			
 			<!-- CREATE-A-POST: IMAGE ATTACHMENT (hidden by default)-->
@@ -110,14 +106,18 @@ PROFILE FEED
 			<div class="createPostControls">
 				<div class="imageUpload">
 				<!-- UPLOAD IMAGE BUTTON -->    <label for="fileInput"><i class="icon image massive ui"></i></label>       
-				<!-- CHOOSE FILE INPUT -->      <input id="fileInput" type="file" accept="image/*" name="blog_image" onChange="loadImageAttachment(event)">
+				<!-- CHOOSE FILE INPUT -->      <input id="fileInput" type="file" accept="image/*" name="photo" onChange="loadImageAttachment(event)">
 				</div>
 				
 				<!-- POST BUTTON --> <input type="submit" value="POST" class="ui button" id="postButton">
 			</div>
         </form>
+        <% if (locals.posts) {
+			for (var i=0; i<posts.length; i++) { %>
+				<% include ../public/components/post/post.ejs %>
+			<%}
+		}%>
         
-        <% include ../public/components/post/post.ejs %>
 	</div>
 	</PANEL>
 
