@@ -122,9 +122,12 @@
 	margin-bottom: 10px;
 }
 
+#avatarImage {
+	margin-right: 10px;
+}
+
 .commentfield {
-	display: grid;
-	grid-template-columns: 1fr 10fr;
+	display: flex;
 	align-items: start; 
 }
 

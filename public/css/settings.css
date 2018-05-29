@@ -1,9 +1,8 @@
 @import url('../components/fonts/gotham-rounded.css');
 
 body {
-    background: -webkit-linear-gradient(top left, #34adfe,#6C4ED5);
+    background: url('../images/patterns/geometry.png'),-webkit-linear-gradient(top left, #34adfe,#6C4ED5);
     background-attachment: fixed;
-    background-size: cover;
     /* background-color: #6C4ED5; */
 }
 
