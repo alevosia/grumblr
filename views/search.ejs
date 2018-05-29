@@ -65,8 +65,25 @@ SEMANTIC-UI SCRIPTS ============================================================
 
 // SEMANTIC-UI dropdown function
 $('.ui.dropdown')
-	.dropdown()
-;
+            .dropdown();
+
+      $('.ui.longer.modal')
+            .modal('attach events', '.viewComments', 'show');
+
+      $('.ui.modal.uploadImage')
+      .modal('attach events', '#uploadImageButton', 'show');
+
+      $('#content.post')
+      .visibility({
+            once: false,
+            // update size when new content loads
+            observeChanges: true,
+            // load content on bottom edge visible
+      onBottomVisible: function() {
+            // loads a max of 5 times
+            window.loadFakeContent();
+      }
+}); 
 
 
 
