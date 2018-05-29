@@ -5,11 +5,11 @@ var Image = require('./image');
 var Comment = require('./comment');
 
 var PostSchema = new mongoose.Schema({
-    user: User,
-    utcMS: {type: Date, default: Date().getTime()},                // the milliseconds in UTC
+    _id: mongoose.Schema.Types.ObjectId,
+    username: String,
+    utcMS: {type: Date, default: Date.now()},                // the milliseconds in UTC
     text: String,
-    base64ImageString: String,
-    filetype: {default: image/jpeg},
+    image: {type: mongoose.Schema.Types.Object, ref: 'Image'},
     comments: [] // Comment documents
 });
 

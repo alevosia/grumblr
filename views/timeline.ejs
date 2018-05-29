@@ -26,7 +26,11 @@
 <div id="content">
       
       <div id="postContainer">
-            <% include ../public/components/post/post.ejs %>
+            <% if (locals.posts) {
+			for (var i=0; i<posts.length; i++) { %>
+				<% include ../public/components/post/post.ejs %>
+			<%}
+		}%>
       </div>   
 </div>
       

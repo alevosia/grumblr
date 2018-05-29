@@ -27,10 +27,10 @@ module.exports = function(passport) {
                     console.log('Password confirm mismatch.')
                     return done(null, false) 
                 };
-                User.findOne({'username': username}, function(err, user) {
+                User.findOne({$or: [{'username': username}, {'emailAddress': req.body.email} ]}, function(err, user) {
                     if  (err) { return done(err); }
                     if (user) { // if the username already exists
-                        return done(null, false, req.flash('signupMessage', 'That username is already taken.'));
+                        return done(null, false, req.flash('signupMessage', 'Username or email address is already taken.'));
                     } 
                     else {
                         var newUser = User();
@@ -64,17 +64,18 @@ module.exports = function(passport) {
     ))
 
     passport.use('local-login', new LocalStrategy({
-        // default values, can be not declared
-        usernameField: 'username', 
+        // names of the fields in the form
+        usernameField: 'email', 
         passwordField: 'password',
         passReqToCallback: true // passses the request object to the callback
     },
-        function(req, username, password, done) {
+        function(req, email, password, done) {
             process.nextTick(function() {
-                User.findOne({'username': username}, function(err, user) {
+                console.log(email);
+                User.findOne({'emailAddress': email}, function(err, user) {
                     if (err) { return done(err); }
                     if (!user) {
-                        return done(null, false, req.flash('loginMessage', 'Username does not exist.'));
+                        return done(null, false, req.flash('loginMessage', 'Email does not exist.'));
                     }
                     if (!user.validPassword(password)) {
                         return done(null, false, req.flash('loginMessage', 'Password does not match.'))
