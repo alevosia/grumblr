@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -31,22 +31,10 @@
 		for (var i=0; i<user.length; i++) { %>
 			<div class="searchResult">
 				<img class="ui avatar image" src="/images/avatar.png" id="avatar">
-				<h2>
-					<%=user[i].firstName%>
-					<%=user[i].lastName%>
-				</h2>
-				<h3>
-					Username:
-					<%=user[i].username%>
-				</h3>
-				<h3>
-					Followers:
-					<%=user[i].following%>
-				</h3>
-				<h3>
-					Following:
-					<%=user[i].followers%>
-				</h3>
+				<h2><%=user[i].firstName%><%=user[i].lastName%></h2>
+				<h3>Username:<%=user[i].username%></h3>
+				<h3>Followers:<%=user[i].following%></h3>
+				<h3>Following:<%=user[i].followers%></h3>
 			</div>
 		<%} 
 		}

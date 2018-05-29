@@ -22,9 +22,24 @@ body {
  }
 
 .searchContainer {
-    margin: 10px 0px;
-    padding: 10px;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: white;
     border-radius: 10px;
     width: 40%;
+    margin-bottom: 30px;
  }
+
+.searchResult {
+    font-family: "Gotham Rounded", sans-serif;
+    font-weight: normal;
+    padding: 10px;
+ }
+
+.image #avatar {
+    border-radius: 500em;
+    margin-bottom: 10px;
+    height: 100%;
+    background-color: transparent;
+}
