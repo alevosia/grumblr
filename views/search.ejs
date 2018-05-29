@@ -26,8 +26,8 @@
 	<h2>Search Results</h2>
 
 	<%
-		if (searchUsers) {
-		if (searchUsers.length > 0) { 
+		if (locals.searchUsers) {
+			if (searchUsers.length > 0) { 
 		for (var i=0; i<searchUsers.length; i++) { %>
             <div class="searchContainer">
 			    <div class="searchResult">
@@ -39,10 +39,13 @@
 			    	<h3>Username: <%=searchUsers[i].username%></h3>
 			    	<h3>Followers: <%=searchUsers[i].following%></h3>
 			    	<h3>Following: <%=searchUsers[i].followers%></h3>
-                </div>
+		    </div>
+		    
+		    <!-- if naubos na yung users accounts na ididisplay, etong posts naman  -->
+		    <% include ../public/components/post/post.ejs %>
             </div>
 		<%} 
-		}
+			}
 		}
 		%>
 

@@ -9,6 +9,7 @@
 		<a href="/timeline" class="item" id="redirectLink">DISCOVER</a>
 		<a href="/profile" class="item" id="redirectLink">PROFILE</a>
 
+
 		<div class="item right">
 			<form action="/search/users" method="POST" class="ui action left icon input">
 				<i class="search icon"></i>
@@ -17,10 +18,16 @@
 			</form>
 		</div>
 
+		<!-- Search Suggestions -->
 		<div class="ui dropdown item right" tabindex="0">
 			<span id="userName">
 				<strong>
 					<%=user.username%>
+				</strong>
+			</span>
+			<span id="posts">
+				<strong>
+					<% %> <!-- suggested search of posts -->
 				</strong>
 			</span>
 			<img src="../images/avatar.png" alt="Avatar" id="userAvatar">
