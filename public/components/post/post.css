@@ -49,9 +49,10 @@
 				/* =========================================================================================================================== */
 				
 				.postContentContainer {
-					/* background-color: black;  */
+					background-color: black; 
 					width: 100%;
 					overflow: hidden;
+					height: auto;
 				}
 				
 							.postContentText {
@@ -78,79 +79,49 @@
 								margin-right: 10px;
 							}
 				/* =========================================================================================================================== */
-				
 
+.accordion {
+	/* background-color: aquamarine; */
+	padding: 0px 10px;
+}
 
-
-
-
-
-.postComments {
-/* background-color: #5ba8db; */
-width: 100%;
-height: auto;
-display: grid;
+.title {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.dropCommentsIcon {
+	justify-self: end;
 }
 
 
-.postCommentsUserInfo {
-position: relative;
-width: 100%;
-/* background-color: #6C4ED5; */
-display: flex;
-align-items: center;
-margin-bottom: 5px;
+.personComment {
+	display: grid;
+	grid-template-columns: 1fr 10fr;
 }
 
 
-#commentUserAvatar {
-margin-right: 10px;
-align-self: flex-start;
+
+
+
+
+#replyForm {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	/* background-color: violet; */
+	margin-bottom: 10px;
 }
 
+.commentfield {
+	display: grid;
+	grid-template-columns: 1fr 10fr;
+	align-items: start; 
+}
 #commentField {
-resize: none;
-width: 98%;
-height: 4em;
-justify-self: center;
+	resize: none;
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
 }
-
-.replyButton {
-justify-self: end;
-width: 88%;
-}
-
-
-
-
-
-.commentSection {
-display: grid;
-}
-
-
-.commentModal {
-width: 100%;
-display: grid;
-grid-template-columns: 1.5fr 1fr;
-overflow: hidden;
-}
-
-.modal_commentSection {
-padding: 10px;
-}
-
-.captionContainer {
-padding: 5px 10px 10px 10px;
-}
-
-
-.commentContent {
-display: grid;
-grid-template-columns: 1fr 8fr;
-padding-bottom: 10px;
-}
-
-.modal_authorName {
-font-weight: bolder;
+#replyButton {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
 }
