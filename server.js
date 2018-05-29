@@ -1,14 +1,13 @@
 //server.js (root directory)
 
 // call the packages we need
-var express         = require('express');               // call express
-var mongoose        = require('mongoose');              // schema and database connection
-var app             = express();                        // define our app using express
-var port            = process.env.PORT || 8080;         // set our port
+var express         = require('express');                                   // call express
+var mongoose        = require('mongoose').set('debug', true);               // schema and database connection
+var app             = express();                                            // define our app using express
+var port            = process.env.PORT || 8080;                             // set our port
 var authRouter      = express.Router();
 var secureRouter    = express.Router();  
-var session         = require('express-session');   
-var formidable      = require('express-formidable');
+var session         = require('express-session');
 var bodyParser      = require('body-parser');
 var morgan          = require('morgan');
 var passport        = require('passport');
