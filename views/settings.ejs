@@ -31,7 +31,7 @@
 <div class="settingsContainer">
 <form action="" class="ui form" method="POST">
     <!-- ==================================================================== -->
-    <h1 class="ui top attached header">
+    <h1 class="ui top attached header" id="generalSettingsHeaderSegment">
         General Settings
         <div class="sub header">Manage your account settings</div>
     </h1>
@@ -47,10 +47,6 @@
                 <input type="text" placeholder="Last Name" value="<%=user.lastName%>" required>
             </div>
         </div>
-        <div class="field">
-            <label>Username</label>
-            <input type="text" placeholder="Change Username" value="<%=user.username%>" required>
-        </div>
     </div>
     <!-- ==================================================================== -->
     <div class="ui attached header" id="changePasswordHeader">
@@ -64,7 +60,7 @@
         </button>
     </div>
     <!-- ==================================================================== -->
-    <div class="ui attached segment">
+    <div class="ui attached segment" id="changePasswordSettingsSegment">
         <div class="field">
             <div class="field disabled" id="currentPassword">
                 <label>Current Password</label>
@@ -83,7 +79,14 @@
         </div>
     </div>
     <!-- ==================================================================== -->
-    <h1 class="ui top attached header">
+
+
+
+
+
+
+
+    <h1 class="ui top attached header" id="profileSettingsHeaderSegment">
         Profile Settings
     </h1>
     <!-- ==================================================================== -->
@@ -117,7 +120,7 @@
         </div>
 
     </div>
-    <div class="ui attached segment">
+    <div class="ui attached segment" id="saveChangesSegment">
         <div class="ui input">
             <input type="submit" value="Save" class="ui button teal">
             <input type="reset" value="cancel" class="ui button" id="cancelButton" onclick="resetImages()">
