@@ -35,6 +35,6 @@ module.exports = function(router, passport) {
 
     // invalid GET url
     router.get('/*', function(req, res) {
-        res.redirect('/');
+        res.redirect('/auth');
     })
 }

@@ -49,7 +49,7 @@
 				/* =========================================================================================================================== */
 				
 				.postContentContainer {
-					background-color: black; 
+					/* background-color: black;  */
 					width: 100%;
 					overflow: hidden;
 					height: auto;
@@ -94,9 +94,11 @@
 }
 
 
+
 .personComment {
 	display: grid;
 	grid-template-columns: 1fr 10fr;
+	margin-bottom: 15px;
 }
 
 
@@ -116,6 +118,7 @@
 	grid-template-columns: 1fr 10fr;
 	align-items: start; 
 }
+
 #commentField {
 	resize: none;
 	border-top-right-radius: 0px; 
