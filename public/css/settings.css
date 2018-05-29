@@ -21,17 +21,29 @@ body {
 
 
 
-.imageUpload {
+.profilePictureUpload {
     /* background-color: #6C4ED5; */
     width: 100%;
-    grid-template-columns: 1fr 3.5fr;
+    grid-template-columns: 1fr 3fr;
     display: grid;
+    margin-bottom: 10px;
 }
 
-            #profileImage {
-                /* background-color: red; */
-            }
-
-            #uploadProfileImageContainer {
-                /* background-color: blue; */
-            }
+        #profileImageContainer {
+            height: 100%;
+            display: grid;
+            /* background-color: red; */
+            justify-items: center;
+            align-items: center;
+        }
+                #profileImage {
+                    border-radius: 500em;
+                    width: 10em;
+                }
+        
+        #uploadProfileImageContainer {
+            display: grid;
+            /* background-color: blue;   */
+            align-self: center;
+            justify-items: start;
+        }

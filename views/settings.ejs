@@ -66,13 +66,24 @@
     </h1>
     <!-- ==================================================================== -->
     <div class="ui attached segment">
-        <div class="imageUpload">
+        <div class="profilePictureUpload">
             <div class="ui image" id="profileImageContainer">
                 <img src="images/profileImage.png" alt="avatar" id="profileImage">
             </div>
-            <div class="field" id="uploadProfileImage">
-                <label>Change Profile Picture</label>
+            <div class="field" id="uploadProfileImageContainer">
+                <label><strong>Change Avatar Image</strong></label>
                 <input type="file" accept="image/*" id="uploadProfileImageInput" onchange="changeProfilePicture(event)">
+            </div>
+        </div>
+        
+
+        <div class="headerImageUpload">
+            <div class="ui image" id="headerImageContainer">
+                <img src="images/headerImage.png" alt="" id="headerImage">
+            </div>
+            <div class="field" id="uploadHeaderImageContainer">
+                <label><strong>Change Header Image</strong></label>
+                <input type="file" accept="images/*" name="" id="uploadHeaderImageInput" onchange="changeHeaderImage(event)">
             </div>
         </div>
 
@@ -105,8 +116,20 @@ $('.ui.dropdown')
 	.dropdown()
 ;
 
-var uploadImageInput = $('#uploadProfileImageInput');
-uploadImageInput.addEventListener('click')
+
+function changeProfilePicture(event) {
+    var image = document.getElementById("profileImage");
+
+    image.src = URL.createObjectURL(event.target.files[0]);
+}
+function changeHeaderImage(event) {
+    var image = document.getElementById("headerImage");
+
+    image.src = URL.createObjectURL(event.target.files[0]);
+}
+
+
+
 </script>
 </body>
 

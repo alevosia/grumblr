@@ -55,8 +55,8 @@ HEADER
 -->
 <HEADER>
 	<%
-	var profileImage = 'data:image/png;base64,' + user.profileImage.base64String;
-	console.log('base64String: ' + profileImage)
+		var profileImage = 'data:image/png;base64,' + user.profileImage.base64String;
+		console.log('base64String: ' + profileImage)
 	%>
 	<!-- HEADER: USER AVATAR -->
 	<div class="profileAvatarContainer">
@@ -84,10 +84,8 @@ PROFILE FEED
 	<PANEL>
 	<!-- PANEL: ABOUT USER -->
 	<div class="profileDetailsContainer">
-	<div class="accountDetails">
 		<h2 class="ui header">Bio</h2>
 		<p style="text-align: center"><%=user.bio%></p>
-	</div>
 	<div class="ui divider"></div>
 	</div>
 	</PANEL>

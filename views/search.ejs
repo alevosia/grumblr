@@ -2,44 +2,84 @@
 <html>
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+	<link rel="shortcut icon" href="/images/favicon.ico" />
 
-   <!-- Infinite Scroll based on API calls with jQuery -->
-   <script src="//unpkg.com/jscroll/dist/jquery.jscroll.min.js"></script>
-   <link rel="stylesheet" href="./css/profile.css">
-   <link rel="stylesheet" href="./components/navbar/navbar.css">
-   <link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
-   <link rel="stylesheet" href="../css/search.css">
-   
-   <link rel="shortcut icon" href="/images/favicon.ico" />
-   <title>Grumblr</title>
+	<link rel="stylesheet" href="./components/navbar/navbar.css">
+	<link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
+	<link rel="stylesheet" href="../css/search.css">
+
+	<title>Grumblr</title>
 </head>
 
 <body>
-    <% include ../public/components/Navbar/navbar.ejs %>
 
-    <h2>Search Results</h2>
-    
-    <div class="searchContainer">
-        <%
-            if (locals.user) {
-                if (user.length > 0) { 
-                    for (var i=0; i<user.length; i++) { %>
-                        <div class="searchResult">
-                        <img class="ui avatar image" src="/images/avatar.png" id="avatar">
-                        <h2><%=user[i].firstName%> <%=user[i].lastName%></h2>
-                        <h3>Username: <%=user[i].username%></h3>
-                        <h3>Followers: <%=user[i].following%></h3>
-                        <h3>Following: <%=user[i].followers%></h3>
-                        </div>
-                    <%} 
-                }
-            }
-        %>
-        
-    </div>
+	<% include ../public/components/navbar/navbar.ejs %>
+
+<div id="miniprofile"><% include ../public/components/miniprofile/miniprofile.html %></div>
+
+<div id="content">
+	<h2>Search Results</h2>
+
+	<div class="searchContainer">
+	<%
+		if (locals.user) {
+		if (user.length > 0) { 
+		for (var i=0; i<user.length; i++) { %>
+			<div class="searchResult">
+				<img class="ui avatar image" src="/images/avatar.png" id="avatar">
+				<h2>
+					<%=user[i].firstName%>
+					<%=user[i].lastName%>
+				</h2>
+				<h3>
+					Username:
+					<%=user[i].username%>
+				</h3>
+				<h3>
+					Followers:
+					<%=user[i].following%>
+				</h3>
+				<h3>
+					Following:
+					<%=user[i].followers%>
+				</h3>
+			</div>
+		<%} 
+		}
+		}
+		%>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+<!--
+SEMANTIC-UI SCRIPTS ==========================================================================================================================================-->
+<!-- jquery should be above the semantic.js due to having dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- semantic-ui javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+
+<!--MAIN SCRIPTS =============================================================================================================================================-->
+<script>
+
+// SEMANTIC-UI dropdown function
+// $('.ui.dropdown')
+// 	.dropdown()
+// ;
+
+
+
+</script>
 </body>
 </html>
