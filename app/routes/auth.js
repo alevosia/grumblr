@@ -4,12 +4,13 @@ module.exports = function(router, passport) {
     // LOGIN   ====================================================
     // localhost:8080/auth/
     router.get('/', function(req, res) {
-        res.render('login.ejs');
+        res.render('login.ejs', {message: req.flash('loginMessage')});
     })
 
     router.post('/', passport.authenticate('local-login', {
         successRedirect: '/profile',
-        failureRedirect: '/auth/'
+        failureRedirect: '/auth/',
+        failureFlash: true
     }))
 
     // SIGNUP   ===================================================
