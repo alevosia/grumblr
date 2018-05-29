@@ -9,8 +9,6 @@
 	<link rel="shortcut icon" href="images/favicon.ico" />
 	<title>Grumblr</title>
 
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	<!-- load bootstrap css -->
 	<!-- semantic-ui styles -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
 
@@ -36,49 +34,52 @@
 
 			<div class="formContainer">
 				<form action="/auth/" method="POST" class="ui form">
-
-					<!-- Alerts/Message -->
-					<% if (locals.message) {
-						if (message.length > 0) { %>
-						<div class="alert alert-danger">
-							<%= message %>
-						</div>
-						<%}
-					}%>
-
+							
 							<!-- Brand -->
 							<div class="title">
 								<h1>GRUMBLR</h1>
 							</div>
 
+							<!-- message/alert -->
+							<% if (locals.message) {
+								if (message.length > 0) { %>
+								<div class="ui negative message">
+									<i class="close icon"></i>
+									<div class="header">
+										<%= message%>
+									</div>
+								</div>
+								<%}
+							}%>
+
 							<!-- username -->
 							<div class="field">
-								<label id="username">EMAIL ADDRESS</label>
-								<input type="text" name="email" autocomplete="off" required="required">
-							</div>
+						<label id="username">EMAIL ADDRESS</label>
+						<input type="text" name="email" autocomplete="off" required="required">
+					</div>
 
-							<!-- password -->
-							<div class="field">
-								<label id="password">PASSWORD</label>
-								<input type="password" name="password" autocomplete="off" required="required">
-							</div>
+					<!-- password -->
+					<div class="field">
+						<label id="password">PASSWORD</label>
+						<input type="password" name="password" autocomplete="off" required="required">
+					</div>
 
-							<!-- remember me checkbox -->
-							<div class="field">
-								<div class="ui checkbox">
-									<input type="checkbox" tabindex="0">
-									<label style="font-size: 0.8em; color:#859CAB;"> &nbsp;Remember Me</label>
-								</div>
-							</div>
+					<!-- remember me checkbox -->
+					<div class="field">
+						<div class="ui checkbox">
+							<input type="checkbox" tabindex="0">
+							<label style="font-size: 0.8em; color:#859CAB;"> &nbsp;Remember Me</label>
+						</div>
+					</div>
 
-							<!-- login button -->
-							<button class="ui button fluid" type="submit" id="LoginButton">Login</button>
+					<!-- login button -->
+					<button class="ui button fluid" type="submit" id="LoginButton">Login</button>
 
-							<div class="registerAccount">
-								<a href="/auth/signup" class="ui button fluid" id="registerButton">
-									Sign up for an account?
-								</a>
-							</div>
+					<div class="registerAccount">
+						<a href="/auth/signup" class="ui button fluid" id="registerButton">
+							Sign up for an account?
+						</a>
+					</div>
 
 				</form>
 			</div>
@@ -89,6 +90,25 @@
 
 	</div>
 	<!-- wrapper -->
+
+
+
+
+	
+<!-- ======= SEMANTIC UI SCRIPTS ========================================================================================================================== -->
+<!-- jquery should be above the semantic.js due to having dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- semantic-ui javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+
+<!-- ======= MAIN SCRIPTS ================================================================================================================================= -->
+<script>
+	$('.close.icon')
+		.click(function(){
+			$('.ui.negative.message').hide();
+		})
+	;
+</script>
 
 </body>
 
