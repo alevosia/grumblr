@@ -1,7 +1,10 @@
 @import '../fonts/gotham-rounded.css';
 
 body {
-    background-color: #6C4ED5;
+    background: -webkit-linear-gradient(top left, #34adfe,#6C4ED5);
+    background-attachment: fixed;
+    background-size: cover;
+    /* background-color: #6C4ED5; */
 }
 
 #content {
@@ -33,6 +36,19 @@ body {
 
 
 
+#generalSettingsHeaderSegment {
+    border-radius: 10px 10px 0px 0px;
+}
+#changePasswordSettingsSegment {
+    border-radius: 0px 0px 10px 10px;
+}
+#profileSettingsHeaderSegment{
+    border-radius: 10px 10px 0px 0px;
+}
+#saveChangesSegment {
+    border-radius: 0px 0px 10px 10px;
+    margin-bottom: 100px;
+}
 
 .profilePictureUpload {
     /* background-color: #6C4ED5; */
