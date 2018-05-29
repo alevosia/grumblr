@@ -32,7 +32,10 @@
             <div class="searchContainer">
 			    <div class="searchResult">
 				    <img class="ui avatar image" src="/images/avatar.png" id="avatar">
-			    	<h2><%=searchUsers[i].firstName%> <%=searchUsers[i].lastName%></h2>
+				    <a href="/searchedUserRouteLink">
+					<h2><%=searchUsers[i].firstName%> <%=searchUsers[i].lastName%></h2>
+				    </a>
+			    	
 			    	<h3>Username: <%=searchUsers[i].username%></h3>
 			    	<h3>Followers: <%=searchUsers[i].following%></h3>
 			    	<h3>Following: <%=searchUsers[i].followers%></h3>
