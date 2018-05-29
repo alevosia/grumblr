@@ -1,4 +1,4 @@
-@import '../fonts/gotham-rounded.css';
+@import url('../components/fonts/gotham-rounded.css');
 
 * {
    margin: 0px;
