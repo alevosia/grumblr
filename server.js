@@ -15,6 +15,7 @@ var morgan          = require('morgan');
 var passport        = require('passport');
 var flash           = require('connect-flash');
 var MongoStore      = require('connect-mongo')(session);
+var upload          = require('multer');
 
 // PASSPORT CONFIGURATION - for authentication
 // ======================================================================================
@@ -24,7 +25,6 @@ require('./config/passport.js')(passport);
 // ======================================================================================
 app.use(express.static('public'));                  // for serving files from public folder
 app.use(morgan('dev'));                             // for logging traffic in our app
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());               
 app.use(session({

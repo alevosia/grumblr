@@ -35,7 +35,7 @@ module.exports = function(router) {
         User.find({'username':{'$regex': req.body.searchQuery, '$options':'i'}}, function(err, users) {
             if (err) throw err;
             console.log(users)
-            res.render('search.ejs', {user: users});
+            res.render('search.ejs', {user: req.user, searchUsers: users});
         });
     })
 
