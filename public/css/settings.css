@@ -13,7 +13,20 @@ body {
 
 .settingsContainer {
     width: 50em;
-    background-color: #6DC4FF;
+    /* background-color: #6DC4FF; */
+}
+
+
+
+#changePasswordHeader {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    /* background-color: blue; */
+    align-items: center;
+}
+
+#editIconButton {
+    width: 10em;
 }
 
 
@@ -26,7 +39,7 @@ body {
     width: 100%;
     grid-template-columns: 1fr 3fr;
     display: grid;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
         #profileImageContainer {
@@ -47,3 +60,46 @@ body {
             align-self: center;
             justify-items: start;
         }
+
+.headerImageUpload {
+    /* background-color: #6C4ED5; */
+    width: 100%;
+    grid-template-columns: 1fr 2fr;
+    display: grid;
+    margin-bottom: 30px;
+}
+
+        #uploadHeaderImageContainer {
+            /* background-color: blue; */
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+        }
+                #headerImage {
+                    border-radius: 10px;
+                    height: 100%;
+                }
+        
+        #headerImageContainer {
+            /* background-color: red; */
+            display: grid;
+            justify-items: center;
+        }
+
+
+.biographySection {
+    /* background-color: #6C4ED5; */
+}
+        #biographyField {
+            resize: none;
+            /* background-color: #dfdfdf; */
+        }
+
+#cancelButton {
+    margin-left: 10px;
+    background-color: #dfdfdf;
+    /* color: #8d8d8d; */
+}
+#cancelButton:hover {
+    background-color: #c5c5c5;
+}

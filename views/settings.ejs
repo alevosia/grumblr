@@ -30,7 +30,7 @@
 
 <div id="content">
 <div class="settingsContainer">
-<form action="" class="ui form">
+<form action="" class="ui form" method="POST">
     <!-- ==================================================================== -->
     <h1 class="ui top attached header">
         General Settings
@@ -41,28 +41,50 @@
         <div class="two fields">
             <div class="field">
                 <label>First name</label>
-                <input type="text" placeholder="First Name">
+                <input type="text" placeholder="First Name" value="<%=user.firstName%>" required>
             </div>
             <div class="field">
                 <label>Last name</label>
-                <input type="text" placeholder="Last Name">
+                <input type="text" placeholder="Last Name" value="<%=user.lastName%>" required>
             </div>
         </div>
         <div class="field">
-            <div class="field">
-                <label>Password</label>
-                <input type="password" placeholder="Change Password">
+            <label>Username</label>
+            <input type="text" placeholder="Change Username" value="<%=user.username%>" required>
+        </div>
+    </div>
+    <!-- ==================================================================== -->
+    <div class="ui attached header" id="changePasswordHeader">
+        <h3 class="ui header">
+            Password Settings
+            <div class="sub header">Manage your account settings</div>
+        </h3>
+        <button type="button" class="ui button teal" id="editIconButton" onclick="changePassword()">
+            <i class="edit icon"></i>
+            edit
+        </button>
+    </div>
+    <!-- ==================================================================== -->
+    <div class="ui attached segment">
+        <div class="field">
+            <div class="field disabled" id="currentPassword">
+                <label>Current Password</label>
+                <input type="password" placeholder="Current Password" required="required">
             </div>
         </div>
-        <div class="field">
-            <div class="field">
+        <div class="two fields">
+            <div class="field disabled" id="newPassword">
+                <label>New Password</label>
+                <input type="password" placeholder="New Password" required="required">
+            </div>
+            <div class="field disabled" id="confirmPassword">
                 <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm Password">
+                <input type="password" placeholder="Confirm Password" required="required">
             </div>
         </div>
     </div>
     <!-- ==================================================================== -->
-    <h1 class="ui attached header">
+    <h1 class="ui top attached header">
         Profile Settings
     </h1>
     <!-- ==================================================================== -->
@@ -72,7 +94,7 @@
                 <img src="images/profileImage.png" alt="avatar" id="profileImage">
             </div>
             <div class="field" id="uploadProfileImageContainer">
-                <label><strong>Change Avatar Image</strong></label>
+                <h4><strong>Avatar Image</strong></h4>
                 <input type="file" accept="image/*" id="uploadProfileImageInput" onchange="changeProfilePicture(event)">
             </div>
         </div>
@@ -83,13 +105,23 @@
                 <img src="images/headerImage.png" alt="" id="headerImage">
             </div>
             <div class="field" id="uploadHeaderImageContainer">
-                <label><strong>Change Header Image</strong></label>
+                <h4><strong>Header Image</strong></h4>
                 <input type="file" accept="images/*" name="" id="uploadHeaderImageInput" onchange="changeHeaderImage(event)">
             </div>
         </div>
 
+        <div class="biographySection">
+            <div class="field">
+                <h4>Biography</h4>
+                <textarea name="biography" id="biographyField" cols="30" rows="10"><%=user.bio%></textarea>
+            </div>
+        </div>
+
+    </div>
+    <div class="ui attached segment">
         <div class="ui input">
             <input type="submit" value="Save" class="ui button teal">
+            <input type="reset" value="cancel" class="ui button" id="cancelButton" onclick="resetImages()">
         </div>
     </div>
 
@@ -118,15 +150,33 @@ $('.ui.dropdown')
 ;
 
 
+// Change Profile Picture Function
 function changeProfilePicture(event) {
     var image = document.getElementById("profileImage");
-
     image.src = URL.createObjectURL(event.target.files[0]);
 }
 function changeHeaderImage(event) {
     var image = document.getElementById("headerImage");
-
     image.src = URL.createObjectURL(event.target.files[0]);
+}
+
+// Change Password Function
+function changePassword() {
+var currentPassword = document.getElementById('currentPassword');
+var newPassword = document.getElementById('newPassword');
+var confirmPassword = document.getElementById('confirmPassword');
+
+currentPassword.classList.toggle('disabled');
+newPassword.classList.toggle('disabled');
+confirmPassword.classList.toggle('disabled');
+}
+
+function resetImages() {
+    var profileimage = document.getElementById("profileImage");    
+    var headerimage = document.getElementById("headerImage");
+
+    profileimage.src = "images/profileImage.png";
+    headerimage.src = "images/headerImage.png";
 }
 
 
