@@ -2,11 +2,15 @@
 <div class="post"> 
 
     <%
-        var type = posts[i].image.img.contentType;
-        console.log(type);
-        var base64String = posts[i].image.img.data;
-        postContentImage = "data:"+type+";base64, "+base64String;
-        //console.log(postContentImage);
+        if (posts[i].image != null) {
+            var type = posts[i].image.img.contentType;
+            console.log(type);
+            var base64String = posts[i].image.img.data;
+            var postContentImage = "data:"+type+";base64, "+base64String;
+            //console.log(postContentImage);
+        } else {
+            var postContentImage = "";
+        }
     %>
     <!-- POST: META-DATA -->
     <div class="postMeta">
