@@ -60,6 +60,7 @@ header .profileAvatarContainer {
    align-items: center;
    justify-items: center;
    display: flex;
+   object-fit: contain
 }
 
 #profileImage {
