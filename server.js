@@ -52,7 +52,6 @@ console.log('Application configured!')
 // DATABASE CONFIGURATION AND CONNECTION
 // ======================================================================================
 var configDB = require('./config/database.js');
-console.log(configDB.url);
 mongoose.connect(configDB.url, function(err) {
     if (err) return console.log(err);
     console.log('Connected to database!');
