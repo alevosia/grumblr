@@ -68,7 +68,7 @@
         <div class="ui modal tiny">
             <div class="header">Edit Post</div>
             <form action="/edit/<%=posts[i]._id%>" method="POST" class="content">
-                <textarea name="" id="editPostTextArea" rows="10" placeholder="Write Something..." value=""><%=posts[i].text%></textarea>
+                <textarea name="editText" id="editPostTextArea" rows="10" placeholder="Write Something..." value=""><%=posts[i].text%></textarea>
                 <div class="actions">
                     <button class="ui approve button teal labeled icon" type="submit"><i class="check icon"></i>Save Changes</button>
                     <div class="ui cancel button labeled icon"><i class="close icon"></i> Cancel</div>
@@ -124,7 +124,7 @@
             <div class="ui divider"></div>
 
             <!-- comment form -->
-            <form class="reply ui form" id="replyForm">
+            <form class="reply ui form" id="replyForm" action="/comment" post="POST">
                 <div class="field commentfield">
                     <img src="<%= profileImage %>" alt="" class="ui avatar image" id="avatarImage">
                     <div class="ui right labeled left icon input">

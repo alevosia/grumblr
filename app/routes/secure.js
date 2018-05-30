@@ -128,6 +128,10 @@ module.exports = function(router) {
                 console.log('Else: ' + req.files.length);
             }
         }
+
+        if(req.body) {
+            console.log(req.body);
+        }
         res.redirect('/settings');
     })
 
@@ -154,8 +158,19 @@ module.exports = function(router) {
     })
 
     // deleting a post
-    router.get('/edit/:_id', function(req, res) {
-        res.redirect('/timeline');
+    router.post('/edit/:_id', function(req, res) {
+        Post.findById({'_id': req.params._id}).exec(function(err, post) {
+            if (err) throw err;
+            if (post) {
+                post.set({'text': req.body.editText});
+                post.save(function(err, newPost) {
+                    console.log('Post edited text to ' + req.body.editText);
+                    res.redirect('/timeline');
+                })
+            } else {
+                console.log('No post found.');
+            }
+        })
     })
 
     router.post('/search', function(req, res) {
