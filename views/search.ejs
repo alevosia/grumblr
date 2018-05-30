@@ -65,8 +65,10 @@
 
 					<div id="personInstance">
 						<div class="ui card">
-							<div id="profileImageContainer">
-								<img src="<%= profileImage %>" id="profileImage">
+							<div id="profileImageContainer"
+								 style="background-image: url('<%= profileImage %>');
+										 background-size: cover;
+										 background-position: center;">
 							</div>
 							<div class="content">
 								<a class="header" href="/users/<%= searchUsers[i].username%>">
@@ -106,14 +108,14 @@
 					<div id="postInstance">
 						<%for (var i=0; i<posts.length; i++) { %>
 							<% include ../public/components/post/post.ejs %>
-						<%}
+						<%}%>
 					</div>
-		<%}
 				</div>
-	}%>
 			</div>
+			<%}
+		}%>
 </div>
-
+		
 
 
 

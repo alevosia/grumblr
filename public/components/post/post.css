@@ -21,28 +21,35 @@
 					padding: 10px;
 					display: grid;
 					align-items: center;
-					grid-template-columns: 1fr 1fr;
+					grid-template-columns: 1fr 1fr 1fr;
 				}
 							.postDetails {
 								/* background-color: #5ba8db; */
 								display: flex;
 								align-items: center;
 							}
-										#avatarImage {
-											width: 2em;
-											height: 2em;
-											border-radius: 50em;
+
+										.userDetails {
+											display: flex;
+											align-items: center;
 										}
 
-										.postMetaAuthorUsername {
-											margin-left: 3px;
-										}
+												#avatarImage {
+													background-color: aqua;
+													width: 2em;
+													height: 2em;
+													border-radius: 50em;
+												}
 
-										.postMetaDate {
-											color: #00000058;
-											font-weight: bolder;
-											margin-left: 10px;
-										}
+												.postMetaAuthorUsername {
+													/* margin-left: 3px; */
+												}
+
+							.postMetaDate {
+								color: #00000058;
+								font-weight: bolder;
+								margin-left: 10px;
+							}
 
 							.postEdit {
 								/* background-color: blue; */

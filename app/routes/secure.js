@@ -57,7 +57,7 @@ module.exports = function(router) {
     router.get('/users/:username', function(req, res) {
         User.findById({'_id': req.user._id}).populate('coverImage').exec(function(err, user) {
             if (err) throw err;
-            USer.findOne({'username': req.param.username}).populate('profileImage coverImage').exec(function(err, visitedUser) {
+            User.findOne({'username': req.param.username}).populate('profileImage coverImage').exec(function(err, visitedUser) {
                 if (err) throw err;
             Post.find({}).sort({'utcMS': -1}).populate('image').populate({
                 path: 'User',
@@ -138,10 +138,6 @@ module.exports = function(router) {
 
     // deleting a post
     router.get('/edit/:_id', function(req, res) {
-        var postId = req.params._id;
-        Post.findOneAndRemove({'_id': postId}, function(err, deletedPost) {
-            console.log('Deleted' + deletedPost.text);
-        })
         res.redirect('/timeline');
     })
 
