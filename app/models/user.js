@@ -86,7 +86,7 @@ UserSchema.methods.SendNewPost = function(req, res) {
                 req.user.set({'posts': req.user.posts+1})
                 req.user.save(function(err, updatedUser) {
                 if (err) throw err;
-                console.log('Updated ' + updatedUser.username + '\'s post count.');
+                console.log('Updated ' + updatedUser.username + '\'s post count to' + updatedUser.posts);
             });
             })
         });

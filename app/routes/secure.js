@@ -144,6 +144,11 @@ module.exports = function(router) {
         var postId = req.params._id;
         Post.findOneAndRemove({'_id': postId}, function(err, deletedPost) {
             console.log('Deleted' + deletedPost.text);
+            req.user.set({'posts': req.user.posts-1})
+            req.user.save(function(err, updatedUser) {
+                if (err) throw err;
+                console.log('Updated ' + updatedUser.username + '\'s post count to ' + updatedUser.posts);
+            })
         })
         res.redirect('/timeline');
     })
