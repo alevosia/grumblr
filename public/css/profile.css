@@ -226,3 +226,12 @@ TIMELINE {
             #postButton:hover {
                 background-color: #5ba8db;
             }
+
+.postCOntainerEnd {
+    /* background-color: rgba(0, 0, 0, 0.481); */
+    padding: 3em 0px 5em 0px;
+    width: 100%;
+    font-family: "Gotham ROunded", sans-serif;
+    font-weight: bolder;
+    color: #ffffff80;
+}

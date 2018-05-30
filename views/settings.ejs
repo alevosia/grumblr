@@ -36,11 +36,6 @@
 
 <!-- Navigation Bar Component -->
 <% include ../public/components/navbar/navbar.ejs %>
-<!-- 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
-
 
 
 
@@ -81,18 +76,35 @@
     </div>
     <!-- ==================================================================== -->
     <div class="ui attached segment" id="changePasswordSettingsSegment">
+
+        <!-- SHOW THIS MESSAGE WHERE THERE IS AN ERROR IN PASSWORD CHANGE VALIDATION ===============================================================
+         -->
+        <!-- <div class="field" id="errorMessage">
+            <div class="ui negative message">
+                <i class="close icon"></i>
+                <div class="header">
+                    Invalid Input!
+                </div>
+                <p>there are 2 possible reasons:</p>
+                <ul>
+                    <li>Entered an invalid current password</li>
+                    <li>New password and confirm password did <strong>NOT</strong> match</li>
+                </ul>
+            </div>
+        </div> -->
+
         <div class="field">
-            <div class="field disabled" id="currentPassword">
+            <div class="field disabled required" id="currentPassword">
                 <label>Current Password</label>
                 <input type="password" name="currentPassword" placeholder="Current Password">
             </div>
         </div>
         <div class="two fields">
-            <div class="field disabled" id="newPassword">
+            <div class="field disabled required negative" id="newPassword">
                 <label>New Password</label>
                 <input type="password" name="newPassword1" placeholder="New Password">
             </div>
-            <div class="field disabled" id="confirmPassword">
+            <div class="field disabled required negative" id="confirmPassword">
                 <label>Confirm Password</label>
                 <input type="password" name="newPassword2" placeholder="Confirm Password">
             </div>
@@ -156,23 +168,32 @@
 
 
 <!--
-SEMANTIC-UI SCRIPTS ==========================================================================================================================================-->
+SEMANTIC-UI SCRIPTS =======================================================================================================================================-->
 <!-- jquery should be above the semantic.js due to having dependencies -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- semantic-ui javascript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
-<!--MAIN SCRIPTS =============================================================================================================================================-->
 
-<!-- main script -->
+
+
+<!--MAIN SCRIPTS ==========================================================================================================================================-->
 <script>
+var currentPassword = document.getElementById('currentPassword');
+var newPassword = document.getElementById('newPassword');
+var confirmPassword = document.getElementById('confirmPassword');
+var currentPasswordInput = document.getElementById('currentPasswordInput');
+var newPasswordInput = document.getElementById('newPasswordInput');
+var confirmPasswordInput = document.getElementById('confirmPasswordInput');
 
-// SEMANTIC-UI dropdown function
+
+// SEMANTIC-UI DROPDOWN SCRIPT
 $('.ui.dropdown')
 	.dropdown()
 ;
 
 
-// Change Profile Picture Function
+
+// CHANGE PROFILE PICTURE SCRIPT
 function changeProfilePicture(event) {
     var image = document.getElementById("profileImage");
     image.src = URL.createObjectURL(event.target.files[0]);
@@ -182,16 +203,35 @@ function changeHeaderImage(event) {
     image.src = URL.createObjectURL(event.target.files[0]);
 }
 
-// Change Password Function
-function changePassword() {
-var currentPassword = document.getElementById('currentPassword');
-var newPassword = document.getElementById('newPassword');
-var confirmPassword = document.getElementById('confirmPassword');
 
-currentPassword.classList.toggle('disabled');
-newPassword.classList.toggle('disabled');
-confirmPassword.classList.toggle('disabled');
+
+
+// CHANGE PASSWORD SCRIPT
+function changePassword() {
+    // toggle class disabled to blur/unblur
+    currentPassword.classList.toggle('disabled');
+    newPassword.classList.toggle('disabled');
+    confirmPassword.classList.toggle('disabled');
+
+    if( !currentPasswordInput.required || !newPasswordInput.required || !confirmPasswordInput.required) {
+        currentPasswordInput.required = "required";
+        newPasswordInput.required = "required";
+        confirmPasswordInput.required = "required";
+    } else {
+        currentPasswordInput.removeAttribute('required');
+        newPasswordInput.removeAttribute('required');
+        confirmPasswordInput.removeAttribute('required');
+    }
 }
+
+
+// CLOSE ERROR MESSAGE
+$('.close.icon')
+    .click(function(){
+        $('.ui.negative.message').hide();
+    })
+;
+
 
 function resetImages() {
     var profileimage = document.getElementById("profileImage");    
@@ -204,6 +244,11 @@ function resetImages() {
 
 
 </script>
-</body>
+<!--MAIN SCRIPTS ==========================================================================================================================================-->
 
+
+
+
+
+</body>
 </html>
