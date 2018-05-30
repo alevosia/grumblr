@@ -35,16 +35,11 @@ header {
 
 header .profileHeaderImageContainer {
    height: 15em;
-   background-color: aquamarine;
+   background-color: white;
    overflow: hidden;
    display: grid;
    justify-items: center;
    align-items: center;
-}
-
-#headerImage {
-    width: 100%;
-    align-self: center;
 }
 
 /* AVATAR */
@@ -56,16 +51,6 @@ header .profileAvatarContainer {
    border-radius: 20em;
    width: 8em;
    height: 8em;
-   overflow: hidden;
-   align-items: center;
-   justify-items: center;
-   display: flex;
-   object-fit: contain
-}
-
-#profileImage {
-   height: 100%;
-   width: 100%;
 }
 
 header .profileHeaderUserInfo {

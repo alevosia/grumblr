@@ -1,0 +1,164 @@
+/* TIMELINE POSTS OR CONTENTS */
+#leftRail {
+    margin-right: 6.5em;
+}
+
+#leftPanel {
+    border-radius: 10px;
+}
+
+.profileImage {
+    height: 10em;
+    width: 10em;
+    border-radius: 300em;
+    margin-bottom: 10px;
+}
+.bio {
+    display: grid;
+    justify-items: center;
+}
+.accountStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
+}
+
+#post {
+	background-color: white;
+	border-radius: 10px;
+	width: 100%;
+	/* overflow: hidden; */
+	padding-bottom: 5px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.post:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+				/* =========================================================================================================================== */
+
+				.postMeta {
+					width: 100%;
+					/* background-color: rgb(235, 235, 235); */
+					padding: 10px;
+					display: grid;
+					align-items: center;
+					grid-template-columns: 1fr 1fr;
+				}
+							.postDetails {
+								/* background-color: #5ba8db; */
+								display: flex;
+								align-items: center;
+							}
+										.postMetaAuthorUsername {
+											margin-left: 3px;
+										}
+
+										.postMetaDate {
+											color: #00000058;
+											font-weight: bolder;
+											margin-left: 10px;
+										}
+
+							.postEdit {
+								/* background-color: blue; */
+								display: grid;
+								justify-items: end;
+								align-self: start;
+							}
+										.editDropDown {
+											display: grid;
+										}
+												.editButton {
+													color: #aeaeae;
+												}
+											
+				
+				/* =========================================================================================================================== */
+				
+				.postContentContainer {
+					/* background-color: black;  */
+					width: 100%;
+					overflow: hidden;
+					height: auto;
+				}
+				
+							.postContentText {
+								width: 100%;
+								margin-left: 10px;
+							}
+							
+							.postContentImage {
+								width: 100%;
+							}
+				
+				/* =========================================================================================================================== */
+				
+				.postDetailsExtra {
+					/* background-color: red; */
+					display: grid;
+					padding: 5px 0px;
+					grid-template-columns: 1fr 2.7fr;
+					align-items: center;
+				}							
+							.viewComments {
+								cursor: pointer;
+								justify-self: end;
+								margin-right: 10px;
+							}
+				/* =========================================================================================================================== */
+
+.accordion {
+	/* background-color: aquamarine; */
+	padding: 0px 10px;
+}
+
+.title {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.dropCommentsIcon {
+	justify-self: end;
+}
+
+
+
+.personComment {
+	display: flex;
+	/* grid-template-columns: 1fr 10fr; */
+	margin-bottom: 15px;
+}
+#personAvatar {
+	margin-right: 10px;
+}
+
+
+
+
+
+
+#replyForm {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	/* background-color: violet; */
+	margin-bottom: 10px;
+}
+
+#avatarImage {
+	margin-right: 10px;
+}
+
+.commentfield {
+	display: flex;
+	align-items: start; 
+}
+
+#commentField {
+	resize: none;
+	border-top-right-radius: 0px; 
+	border-bottom-right-radius: 0px;
+}
+#replyButton {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+}
