@@ -3,7 +3,7 @@
 body{
     width: 100%;
     /* background-color: #6C4ED5; */
-    background: url('../images/patterns/shattered.png'),-webkit-linear-gradient(top left, #5188ff,#6C4ED5);
+    background: url('../images/patterns/cartographer.png'),-webkit-linear-gradient(top left, #5188ff,#6C4ED5);
     background-attachment: fixed;
 }
 
