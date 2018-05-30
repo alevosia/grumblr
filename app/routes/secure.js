@@ -7,7 +7,6 @@ module.exports = function(router) {
     var Image = require('../models/image.js');
     var Post = require('../models/post.js');
     var User = require('../models/user.js');
-    var async = require('async');
     // AUTHENTICATION ===========================================
     router.use(function(req, res, next) {
         if (req.isAuthenticated()) {
