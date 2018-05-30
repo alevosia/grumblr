@@ -74,8 +74,8 @@
 	<!-- HEADER: USER INFORMATION -->
 	<div class="profileHeaderUserInfo">
 		<div class="userNameHeader">
-			<h1><%= visitedUser.firstName %>  <%= visitedUser.lastName %></h1>
-			<h3>@username</h3>
+			<h1><%= visitedUser.firstName %> <%= visitedUser.lastName %></h1>
+			<h3>@u<%=visitedUser.username%></h3>
 		</div>
 		<div class="userfollow">
 			<button class="ui button icon labeled" id="followButton" href="/follow/<%=visitedUser.username%>">
