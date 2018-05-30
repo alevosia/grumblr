@@ -20,7 +20,7 @@ body{
 #postContainer {
     /* background-color: gray; */
     background-color: transparent;
-    padding: 0px;
+    padding-bottom: 30em;
     border: transparent;
     box-shadow: none;
     width: 40em;
