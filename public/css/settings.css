@@ -1,7 +1,7 @@
 @import url('../components/fonts/gotham-rounded.css');
 
 body {
-    background: url('../images/patterns/geometry.png'),-webkit-linear-gradient(top left, #34adfe,#6C4ED5);
+    background: url('../images/patterns/subtle-zebra-3d.png'),-webkit-linear-gradient(top left, #34adfe,#6C4ED5);
     background-attachment: fixed;
     /* background-color: #6C4ED5; */
 }
