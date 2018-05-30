@@ -6,8 +6,10 @@
 }
 
 body {
-   height: 200vh;
-   background-color: #6C4ED5;
+    height: auto;
+    background: url('../images/patterns/cartographer.png'),-webkit-linear-gradient(top left, #5188ff,#6C4ED5);
+    background-attachment: fixed;
+    background-repeat: repeat;
 }
 
 

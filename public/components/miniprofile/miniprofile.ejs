@@ -1,16 +1,16 @@
 <div class="ui card" id="card">
 	<div class="image" style="background-color: transparent;">
-		<img src="/images/avatar.png" id="avatar"> <!-- Placeholder Image Path -->
+		<img src="../images/profileImage.png" id="avatar"> <!-- Placeholder Image Path -->
 	</div>
 
 	<div class="ui content">
-		<a class="header"><%=user.username%></a>
+		<a class="header"><h3><%=user.username%></h3></a>
 		<div class="description">
 			<%=user.bio%>
 		</div>
 	</div>
 
-	<div class="extra content">
+	<div class="extra content" id="accountInfo">
 		<a><i class="comment icon"></i># Posts</a>
 		<a><i class="user icon"></i><%=user.following%> Following</a>
 		<a><i class="address book outline icon"></i><%=user.followers%> Followers</a>

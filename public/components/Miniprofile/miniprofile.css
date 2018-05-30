@@ -4,8 +4,8 @@
     background-color: transparent;
     height: 30em;
     box-shadow: none;
-    width: 20em;
-    font-size: 0.8em;
+    width: 15em;
+    font-size: 1em;
 }
 
 .image {
@@ -15,6 +15,13 @@
 .image #avatar {
     border-radius: 500em;
     height: 100%;
+    width: 11em;
     background-color: transparent;
     margin-bottom: 10px;
+}
+
+#accountInfo {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
