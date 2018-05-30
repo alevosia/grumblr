@@ -1,6 +1,5 @@
 <!-- L O O P  C O N T E N T -->
 <div class="post"> 
-
     <%
         if (posts[i].image != null) {
             if (posts[i].image.img) {
@@ -9,10 +8,34 @@
                 var base64String = posts[i].image.img.data;
                 var postContentImage = "data:"+type+";base64, "+base64String;
             }
+
         } else {
+            console.log()
             var postContentImage = "";
         }
+
+        if (posts[i].User.profileImage.img) {
+            console.log(posts[i].User.username + ' has profile image');
+
+            if (posts[i].User.profileImage.img) {
+                console.log('Has img');
+
+                if (posts[i].User.profileImage.img.data) {
+                    var type = posts[i].User.profileImage.img.contentType;
+                    console.log(type);
+                    var base64String = posts[i].User.profileImage.img.data;
+                    var postersProfileImage = "data:"+type+";base64, "+base64String;
+                } else {
+
+                }
+            } else {
+                console.log('No img');
+            }
+        } else {
+            console.log(posts[i].User.username + ' has NO profile image');
+        }
     %>
+
     <!-- POST: META-DATA -->
     <div class="postMeta">
 
@@ -26,16 +49,20 @@
         <!-- USER: USERNAME -->     <a href="/users/<%=posts[i].username%>" class="postMetaAuthorUsername"><strong>@<%=posts[i].username%></strong></a>
         <!-- META: DATE CREATED --> <div class="postMetaDate">UTC Date</div>
         </div>
-
+        <% if (posts[i].User.username == user.username) {%>
         <div class="postEdit">
             <div class="ui dropdown editDropDown">
             <!-- POST: EDIT BUTTON -->          <i class="icon ellipsis horizontal editButton"></i>
             <!-- POST: EDIT MENU DROPDOWN -->   <div class="menu left">
-                                                    <a href="/delete/<%=posts[i]._id%>" class="item">Edit</a>
+                                                    <a href="/edit/<%=posts[i]._id%>" class="item">Edit</a>
                                                     <a href="/delete/<%=posts[i]._id%>" class="item">Delete</a>
                                                 </div>
             </div>
         </div>
+        <%} else {
+            console.log(posts[i].User.username+'\n'+user.username);
+            console.log('Not your post');
+        }%>
 
     </div>
     
@@ -82,7 +109,7 @@
             <!-- comment form -->
             <form class="reply ui form" id="replyForm">
                 <div class="field commentfield">
-                    <img src="/images/avatar.png" alt="" class="ui avatar image" id="avatarImage">
+                    <img src="<%= profileImage %>" alt="" class="ui avatar image" id="avatarImage">
                     <div class="ui right labeled left icon input">
                         <!-- comment text area -->
                         <textarea placeholder="Add Comment..." rows="1" id="commentField"></textarea>

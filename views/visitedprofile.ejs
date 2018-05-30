@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+		if (locals.user.profileImage && locals.user.coverImage) {
+			if (locals.user.profileImage.img) {
+				console.log(user.profileImage);
+				var type = user.profileImage.img.contentType
+				console.log(type);
+				var base64String = user.profileImage.img.data;
+				var profileImage = "data:"+type+";base64, "+base64String;
+			}
+		}
+
+		if (locals.visitedUser) {
+			console.log(visitedUser.username + 'is present');
+			if (locals.visitedUser.profileImage.img) {
+				console.log(visitedUser.username + 'has a profile image');
+				var type = visitedUser.profileImage.img.contentType
+				console.log(type);
+				var base64String = visitedUser.profileImage.img.data;
+				var visitedUserProfileImage = "data:"+type+";base64, "+base64String;
+			} else {
+				console.log(visitedUser.username + 'has NO profile image');
+			}
+			
+			if (locals.visitedUser.coverImage.img) {
+				console.log(visitedUser.username + 'has a cover image');
+				var type2 = visitedUser.coverImage.img.contentType
+				console.log(type2);
+				var base64String2 = visitedUser.coverImage.img.data;
+				var visitedUserCoverImage = "data:"+type+";base64, "+base64String2;
+			} else {
+				console.log(visitedUser.username + 'has NO cover image');
+			}
+		} else {
+			console.log('No visited user');
+		}
+%>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="shortcut icon" href="images/favicon.ico" />
-   <title>friend.firstname friend.Lastname</title>
+   <title><%= visitedUser.firstName %> <%= visitedUser.lastName %></title>
 
    <!-- semantic-ui styles -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
@@ -25,28 +61,24 @@
 <div id="content">
 <!-- ======= HEADER ======================================================================================================================================= -->
 <HEADER>
-	<%
-		var profileImage = 'data:image/png;base64,' + user.profileImage.base64String;
-		console.log('base64String: ' + profileImage)
-	%>
 	<!-- HEADER: USER AVATAR -->
 	<div class="profileAvatarContainer">
-		<img src="images/profileImage.png" alt="Avatar" id="profileImage">
+		<img src="<%= visitedUserProfileImage %>" alt="Avatar" id="profileImage">
 	</div>
 
 	<!-- HEADER: HEADER COVER/IMAGE -->
 	<div class="profileHeaderImageContainer">
-		<img src="images/headerImage.png" alt="Header Image" id="headerImage">
+		<img src="<%= visitedUserProfileImage %>" alt="Header Image" id="headerImage">
 	</div>
 
 	<!-- HEADER: USER INFORMATION -->
 	<div class="profileHeaderUserInfo">
 		<div class="userNameHeader">
-			<h1>Firstname Lastname</h1>
+			<h1><%= visitedUser.firstName %>  <%= visitedUser.lastName %></h1>
 			<h3>@username</h3>
 		</div>
 		<div class="userfollow">
-			<button class="ui button icon labeled" id="followButton">
+			<button class="ui button icon labeled" id="followButton" href="/follow/<%=visitedUser.username%>">
 				<i class="plus icon"></i>
 				<span><strong>Follow</strong></span>
 			</button>
@@ -62,7 +94,7 @@
 	<!-- PANEL: ABOUT USER -->
 	<div class="profileDetailsContainer">
 		<h2 class="ui header">Bio</h2>
-		<p style="text-align: center">user.biography</p>
+		<p style="text-align: center"><%=visitedUser.bio%></p>
 	<div class="ui divider"></div>
 	</div>
 	</PANEL>
@@ -70,32 +102,11 @@
 
 	<PANEL>
 	<div class="profilePosts">
-		<!-- PANEL: CREATE-A-POST -->
-		<form action="/send" method="POST" class="createPostContainer ui form" enctype="multipart/form-data">
-
-			<!-- CREATE-A-POST: text/caption -->
-			<div class="createPostField">
-				<textarea name="blog_text" id="blog_text" placeholder="Write something..."></textarea>
-			</div>
-			
-			<!-- CREATE-A-POST: IMAGE ATTACHMENT (hidden by default)-->
-			<div class="hidden" id="imageAttachmentContainer">
-				<!-- REMOVE BUTTON -->  <i class="delete icon" id="removeImageButton" onClick="removeAttachedImage(event)"></i>
-				<!-- IMAGE -->			<img src="image url here" alt="Image Placeholder (visible: false)" id="imageAttachment">
-			</div>
-
-			<!-- CREATE-A-POST: controls -->
-			<div class="createPostControls">
-				<div class="imageUpload">
-				<!-- UPLOAD IMAGE BUTTON -->    <label for="fileInput"><i class="icon image massive ui"></i></label>       
-				<!-- CHOOSE FILE INPUT -->      <input id="fileInput" type="file" accept="image/*" name="imageUploadInput" onChange="loadImageAttachment(event)">
-				</div>
-				
-				<!-- POST BUTTON --> <input type="submit" value="POST" class="ui button" id="postButton">
-			</div>
-        </form>
-        
-        <% include ../public/components/post/post.ejs %>
+	<% if (locals.posts) {
+		for (var i=0; i<posts.length; i++) { %>
+			<% include ../public/components/post/post.ejs %>
+		<%}
+	}%>
 	</div>
 	</PANEL>
 
