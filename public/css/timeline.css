@@ -22,6 +22,7 @@ body{
     background-color: transparent;
     padding: 0px;
     border: transparent;
+    box-shadow: none;
     width: 40em;
     display: grid;
     margin-left: 5em;
