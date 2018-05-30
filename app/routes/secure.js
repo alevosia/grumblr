@@ -37,12 +37,14 @@ module.exports = function(router) {
                             model: 'Image'}
             }).sort({'utcMS':-1}).exec(function(err, resultPosts) {
                 var posts = [];
-                for (var i=0; i<resultPosts.length; i++) {
-                    if (resultPosts[i].User.username == user.username) {
-                        posts.push(resultPosts[i])
-                        console.log('Posts ' + posts.length);
-                    } else {
-                        console.log(resultPosts[i].User._id + ' ' + user._id);
+                if (resultPosts.length > 0) {
+                    for (var i=0; i<resultPosts.length; i++) {
+                        if (resultPosts[i].User.username == user.username) {
+                            posts.push(resultPosts[i])
+                            console.log('Posts ' + posts.length);
+                        } else {
+                            console.log(resultPosts[i].User._id + ' ' + user._id);
+                        }
                     }
                 }
                 res.render('profile.ejs', { user:user, posts:posts})
