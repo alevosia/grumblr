@@ -75,13 +75,19 @@ UserSchema.methods.SendNewPost = function(req, res) {
             var post = new Post({
                 _id: new mongoose.Types.ObjectId(),
                 User: req.user._id,
-                text:  req.body.text,
+                text: req.body.text,
+                utcMS: Date.now(),
                 image: imageDocument._id,
                 comments: []
             });
 
             post.save(function (err) {
                 if (err) throw err;
+                req.user.set({'posts': req.user.posts+1})
+                req.user.save(function(err, updatedUser) {
+                if (err) throw err;
+                console.log('Updated ' + updatedUser.username + '\'s post count.');
+            });
             })
         });
         
@@ -91,12 +97,17 @@ UserSchema.methods.SendNewPost = function(req, res) {
             _id: new mongoose.Types.ObjectId(),
             User: req.user._id,
             text:  req.body.text,
+            utcMS: Date.now(),
             comments: []
         });
 
         post.save(function (err) {
             if (err) throw err;
-            this.posts += 1; // updates the posts counter of the user
+            req.user.set({'posts': req.user.posts+1})
+            req.user.save(function(err, updatedUser) {
+                if (err) throw err;
+                console.log('Updated ' + updatedUser.username + '\'s post count.');
+            });
         })
     }
 }
