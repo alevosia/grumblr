@@ -40,15 +40,18 @@
     <div class="postMeta">
 
         <div class="postDetails">
+            <div class="userDetails">
+                <!-- USER: AVATAR -->       <div class="postMetaAvatar" id="avatarImage"
+                                                 style="background: url('<%=postersProfileImage%>');
+                                                        background-size: cover;
+                                                        background-position: center;">
+                                            </div>
+                <!-- USER: USERNAME -->     <a href="/users/<%=posts[i].username%>" class="postMetaAuthorUsername"><strong>@<%=posts[i].User.username%></strong></a>
+            </div>
         
-        <!-- USER: AVATAR -->       <div class="postMetaAvatar" id="avatarImage"
-                                         style="background: url('<%=postersProfileImage%>');
-                                                background-size: cover;
-                                                background-position: center;">
-                                    </div>
-        <!-- USER: USERNAME -->     <a href="/users/<%=posts[i].username%>" class="postMetaAuthorUsername"><strong>@<%=posts[i].User.username%></strong></a>
-        <!-- META: DATE CREATED --> <div class="postMetaDate"><%=posts[i].utcMS.toUTCString()%></div>
         </div>
+        <!-- META: DATE CREATED --> <div class="postMetaDate"><%=posts[i].utcMS.toUTCString()%></div>
+        
         <% if (posts[i].User.username == user.username) {%>
         <div class="postEdit">
             <div class="ui dropdown editDropDown">
