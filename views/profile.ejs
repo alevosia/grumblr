@@ -48,13 +48,17 @@
 <HEADER>
 	
 	<!-- HEADER: USER AVATAR -->
-	<div class="profileAvatarContainer">
-		<img src="<%= profileImage %>" alt="Avatar" id="profileImage">
+	<div class="profileAvatarContainer"
+		 style="background: url('<%=profileImage%>'); 
+				background-position: center;
+				background-size: cover;">
 	</div>
 
 	<!-- HEADER: HEADER COVER/IMAGE -->
-	<div class="profileHeaderImageContainer">
-		<img src="<%= coverImage %>" alt="Header Image" id="headerImage">
+	<div class="profileHeaderImageContainer" 
+		 style="background: url('<%=coverImage%>'); 
+				background-position: center;
+				background-size: cover;">
 	</div>
 
 	<!-- HEADER: USER INFORMATION -->

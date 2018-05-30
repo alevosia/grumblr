@@ -13,39 +13,37 @@
             }
       }
 %>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" />
 
-   <link rel="stylesheet" href="../css/timeline.css">
-   <link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
-   <link rel="stylesheet" href="./components/post/post.css">
-   
-   <link rel="shortcut icon" href="images/favicon.ico" />
-   <title>Grumblr</title>
+		<link rel="stylesheet" href="../css/timeline.css">
+		<link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
+		<link rel="stylesheet" href="./components/post/timeline_post.css">
+
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		<title>Grumblr</title>
 </head>
 
 <body>
 
 
-<% include  ../public/components/navbar/navbar.ejs %>
+	<% include  ../public/components/navbar/navbar.ejs %>
 
-<div id="miniprofile"><% include ../public/components/miniprofile/miniprofile.ejs %></div>
-
-<div id="content">
-      <div id="postContainer">
-            <% if (locals.posts) {
+		<div id="content">
+			<div id="postContainer">
+				<% if (locals.posts) {
 			for (var i=0; i<posts.length; i++) { %>
-				<% include ../public/components/post/post.ejs %>
-			<%}
-            }%>
-            
-            <h1 class="postCOntainerEnd">No more posts to show...</h1>
-      </div>   
-</div>
-      
-   
+					<% include ../public/components/post/timeline_post.ejs %>
+						<%}
+		}%>
+
+				<h1 class="postCOntainerEnd">No more posts to show...</h1>
+			</div>
+		</div>
+
+
 
 
 <!-- API to get all the posts from the MongoDB -->
@@ -57,23 +55,33 @@
 
 <script>
 // dropdown function
-      $('.ui.dropdown')
-            .dropdown();
+$('.ui.dropdown')
+.dropdown();
 
-      $('.ui.accordion')
-            .accordion()
-      ;
+$('.ui.accordion')
+.accordion()
+;
 
-      $('#content.post')
-      .visibility({
-            once: false,
-            // update size when new content loads
-            observeChanges: true,
-            // load content on bottom edge visible
-      onBottomVisible: function() {
-            // loads a max of 5 times
-            window.loadFakeContent();
-      }
+$('.ui.sticky')
+  .sticky({
+	offset       : 71,
+    bottomOffset : 50,
+    context      : '#element-to-follow',
+	context: '#content'
+	
+  })
+;
+
+$('#content.post')
+.visibility({
+	once: false,
+	// update size when new content loads
+	observeChanges: true,
+	// load content on bottom edge visible
+	onBottomVisible: function () {
+		// loads a max of 5 times
+		window.loadFakeContent();
+	}
 }); 
 </script>
 </body>

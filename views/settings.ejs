@@ -124,9 +124,14 @@
     <!-- ==================================================================== -->
     <div class="ui attached segment">
         <div class="profilePictureUpload">
-            <div class="ui image" id="profileImageContainer">
-                <img src="<%= profileImage %>" alt="avatar" id="profileImage">
+
+            <!-- Profile Picture -->
+            <div class="ui image" id="profileImageContainer"
+                 style="background: url('<%=profileImage%>'); 
+                        background-position: center;
+                        background-size: cover;">
             </div>
+
             <div class="field" id="uploadProfileImageContainer">
                 <h4><strong>Avatar Image</strong></h4>
                 <input type="file" accept="image/*" name="photo" id="uploadProfileImageInput" onchange="changeProfilePicture(event)">
@@ -135,9 +140,14 @@
         
 
         <div class="headerImageUpload">
-            <div class="ui image" id="headerImageContainer">
-                <img src="<%= coverImage %>" alt="" id="headerImage">
+
+            <!-- Cover Image -->
+            <div class="ui image" id="headerImageContainer"
+                 style="background: url('<%=coverImage%>');
+                        background-position: center;
+                        background-size: cover;">
             </div>
+
             <div class="field" id="uploadHeaderImageContainer">
                 <h4><strong>Header Image</strong></h4>
                 <input type="file" accept="images/*" name="coverImage" id="uploadHeaderImageInput" onchange="changeHeaderImage(event)">
@@ -195,12 +205,18 @@ $('.ui.dropdown')
 
 // CHANGE PROFILE PICTURE SCRIPT
 function changeProfilePicture(event) {
-    var image = document.getElementById("profileImage");
-    image.src = URL.createObjectURL(event.target.files[0]);
+    $('#profileImageContainer')
+        .css('background', 'url(' + URL.createObjectURL(event.target.files[0]) + ')')
+        .css('background-position', 'center')
+        .css('background-size', 'cover')
+    ;
 }
 function changeHeaderImage(event) {
-    var image = document.getElementById("headerImage");
-    image.src = URL.createObjectURL(event.target.files[0]);
+    $('#headerImageContainer')
+        .css('background', 'url(' + URL.createObjectURL(event.target.files[0]) + ')')
+        .css('background-position', 'center')
+        .css('background-size', 'cover')
+    ;
 }
 
 

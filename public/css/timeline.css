@@ -7,14 +7,6 @@ body{
     background-attachment: fixed;
 }
 
-#miniprofile {
-    position: fixed;
-    padding: 5em 10px 0px 10px;
-    background-color: white;
-    display: grid;
-    height: 100%;
-}
-
 #content {
     /* background-color: brown; */
     width: 100%;
@@ -27,8 +19,12 @@ body{
 
 #postContainer {
     /* background-color: gray; */
-    width: 45em;
-    margin-left: 15em;
+    width: 40em;
+    display: grid;
+    margin-left: 5em;
+    /* grid-template-columns: 1fr 2fr; */
+    /* grid-column-gap: 15px; */
+    /* margin-left: 15em; */
 }
 
 .postCOntainerEnd {
