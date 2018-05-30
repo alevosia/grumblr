@@ -38,12 +38,7 @@
 
 
 <% include ../public/components/Navbar/navbar.ejs %>
-
-
-
-
-
-
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 
 
@@ -64,8 +59,13 @@
 
 	<!-- HEADER: USER INFORMATION -->
 	<div class="profileHeaderUserInfo">
-		<h1><%=user.firstName%> <%=user.lastName%></h1>
-		<h3><%=user.username%></h3>
+		<div class="userNameHeader">
+			<h1><%=user.firstName%> <%=user.lastName%></h1>
+			<h3><%=user.username%></h3>
+		</div>
+		<div class="userfollow">
+			<!-- FOLLOW BUTTON SHOULD ONLY BE SHOWN ON A FRIEND's TIMELINE -->
+		</div>
 	</div>
 </HEADER>
 

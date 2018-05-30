@@ -1,8 +1,10 @@
 @import url('../components/fonts/gotham-rounded.css');
 
 body {
-    width: 100%;
-    background-color: #6C4ED5;
+    height: auto;
+    background: url('../images/patterns/cartographer.png'),-webkit-linear-gradient(top left, #5188ff,#6C4ED5);
+    background-attachment: fixed;
+    background-repeat: repeat;
 }
 
 #content {
@@ -17,9 +19,8 @@ body {
     margin: auto;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: white;
-    border-radius: 10px;
-    width: 40%;
+    /* background-color: rgba(0, 0, 0, 0.412); */
+    width: 75%;
     margin-bottom: 30px;
  }
 
@@ -27,11 +28,34 @@ body {
     font-family: "Gotham Rounded", sans-serif;
     font-weight: normal;
     padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    /* background-color: #8c7cf78e; */
+    justify-items: center;
  }
 
-.image #avatar {
-    border-radius: 500em;
-    margin-bottom: 10px;
+ #profileImageContainer {
+     height: 20em;
+     overflow: hidden;
+     display: grid;
+     align-items: center;
+     justify-items: center;
+ }
+#profileImage {
+    /* background-color: blue; */
     height: 100%;
-    background-color: transparent;
+    width: 100%;
+    /* margin-bottom: 10px; */
+}
+
+
+
+
+#personInstance {
+    /* background-color: #ff5151; */
+    padding: 10px;
+    height: 100%;
+    width: 
 }

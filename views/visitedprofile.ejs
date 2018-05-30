@@ -17,10 +17,7 @@
 <body>
 <!-- Navigation Bar Component -->
 <% include ../public/components/Navbar/navbar.ejs %>
-<!-- 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
+<!-- ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 
 
@@ -44,8 +41,16 @@
 
 	<!-- HEADER: USER INFORMATION -->
 	<div class="profileHeaderUserInfo">
-		<h1><%=user.firstName%> <%=user.lastName%></h1>
-		<h3><%=user.username%></h3>
+		<div class="userNameHeader">
+			<h1>Firstname Lastname</h1>
+			<h3>@username</h3>
+		</div>
+		<div class="userfollow">
+			<button class="ui button icon labeled" id="followButton">
+				<i class="plus icon"></i>
+				<span><strong>Follow</strong></span>
+			</button>
+		</div>
 	</div>
 </HEADER>
 
@@ -57,7 +62,7 @@
 	<!-- PANEL: ABOUT USER -->
 	<div class="profileDetailsContainer">
 		<h2 class="ui header">Bio</h2>
-		<p style="text-align: center"><%=user.bio%></p>
+		<p style="text-align: center">user.biography</p>
 	<div class="ui divider"></div>
 	</div>
 	</PANEL>
