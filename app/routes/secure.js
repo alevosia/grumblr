@@ -20,8 +20,17 @@ module.exports = function(router) {
 
     // PROFILE ====================================================
     // localhost:8080/profile
-    router.get('/profile', function(req, res){
+    router.get('/', function(req, res){
         Post.find({'username': req.user.username}).sort({'utcMS': -1}).populate('image')
+        .exec(function(err, posts) {
+            if (err) throw err;
+            console.log(posts);
+            res.render('profile.ejs', {user: req.user, posts: posts}
+        )}
+    )});
+
+    router.get('/profile', function(req, res){
+        Post.find({'_id': req.user._id}).sort({'utcMS': -1}).populate('image')
         .exec(function(err, posts) {
             if (err) throw err;
             console.log(posts);
@@ -38,57 +47,33 @@ module.exports = function(router) {
         )}
     )});
 
+    router.post('/send', function(req, res) {
+        
+        req.user.SendNewPost(req, res);
+        
+        res.render('profile.ejs', {user: req.user});
+    })
+
     router.get('/settings', function(req, res) {
         res.render('settings.ejs', {user: req.user});
     })
 
-    router.post('/send', function(req, res) {
-        
-       
-        if (req.file) {
-            console.log(req.file);
-            var data = fs.readFileSync(req.file.path, {encoding: 'base64'});
-
-            var imageDocument = new Image({
-                _id: new mongoose.Types.ObjectId(),
-                img: {
-                    data: data,
-                    contentType: req.file.mimetype
-                }
-            });
-
-            imageDocument.save(function(err) {
-                if (err) throw err;
-
-                var post = new Post({
-                    _id: new mongoose.Types.ObjectId(),
-                    username: req.user.username,
-                    text:  req.body.text,
-                    image: imageDocument._id,
-                    comments: []
-                });
-
-                post.save(function (err) {
-                    if (err) throw err;
-                })
-            });
-            
+    router.post('/settings', function(req, res) {
+        if (req.files) {
+            console.log(req.files);
         } else {
             console.log('No image uploaded.');
-            var post = new Post({
-                _id: new mongoose.Types.ObjectId(),
-                username: req.user.username,
-                text:  req.body.text,
-                image: null,
-                comments: []
-            });
-
-            post.save(function (err) {
-                if (err) throw err;
-            })
         }
-        res.redirect('/profile');
     })
+
+    router.post('/follow/:username', function(req, res) {
+
+    })
+
+    router.post('/unfollow/:username', function(req, res) {
+        
+    })
+
 
     // USERS ======================================================
     // localhost:8080/users/<username>
@@ -96,15 +81,20 @@ module.exports = function(router) {
         User.findOne({'username':req.param('username')}, function(err, user) {
             if (err) throw err;
             console.log(user)
-            res.render('profile.ejs', {user: user});
+            res.render('visitedprofile.ejs', {user: user});
         });
     })
 
     router.post('/search/users', function(req, res) {
-        User.find().exec(function(err, users) {
+        User.find({'username': req.body.searchQuery}).exec(function(err, users) {
             if (err) throw err;
             console.log(users)
             res.render('search.ejs', {user: req.user, searchUsers: users});
         })
+    })
+
+    // invalid GET url
+    router.get('/*', function(req, res) {
+        res.redirect('/');
     })
 }

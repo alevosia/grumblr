@@ -1,6 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 var fs = require('fs');
+var mongoose = require('mongoose');
 var User = require('../app/models/user');
 var Image = require('../app/models/image');
 
@@ -33,25 +34,41 @@ module.exports = function(passport) {
                         return done(null, false, req.flash('signupMessage', 'Username or email address is already taken.'));
                     } 
                     else {
-                        var newUser = User();
-                        var defaultProfileImage = Image();
-                        var defaultCoverImage = Image();
 
                         defaultProfileImagePath = __dirname + '\\images\\profileImage.png';
                         console.log(defaultProfileImagePath);
                         defaultCoverImagePath = __dirname + '\\images\\placeholderImage2.png';
                         console.log(defaultCoverImagePath);
-                        
-                        newUser.SetProfileImage(defaultProfileImagePath);
-                        newUser.SetCoverImage(defaultCoverImagePath);
-                        newUser.username = username;
-                        newUser.password = newUser.generateHash(password);
-                        newUser.firstName = req.body.firstName;
-                        newUser.lastName = req.body.lastName;
-                        newUser.emailAddress = req.body.email;
-                        newUser.gender = req.body.gender;
-                        newUser.profileImage = defaultProfileImage;
-                        newUser.coverImage = defaultCoverImage;
+
+                        var profileImageData = fs.readFileSync(defaultProfileImagePath, {encoding: 'base64'});
+                        var defaultProfileImage = new Image({
+                            _id: new mongoose.Types.ObjectId(),
+                            img: {
+                                data: profileImageData,
+                                contentType: 'image/png'
+                            }
+                        });
+
+                        var coverImageData = fs.readFileSync(defaultCoverImagePath, {encoding: 'base64'});
+                        var defaultCoverImage = new Image({
+                            _id: new mongoose.Types.ObjectId(),
+                            img: {
+                                data: coverImageData,
+                                contentType: 'image/png'
+                            }
+                        });
+
+                        var newUser = new User({
+                            _id: new mongoose.Types.ObjectId(),
+                            username: username,
+                            password: User.generateHash(password),
+                            firstName: req.body.firstName,
+                            lastName: req.body.lastName,
+                            emailAddress: req.body.email,
+                            gender: req.body.gender,
+                            profileImage: defaultProfileImage._id,
+                            coverImage: defaultCoverImage._id
+                        })
                         
                         newUser.save(function(err) {
                             if (err) throw err;

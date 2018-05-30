@@ -25,7 +25,7 @@ app.use(express.static('public'));                  // for serving files from pu
 app.use(morgan('dev'));                             // for logging traffic in our app
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(multer({dest: '/uploads/'}).single('photo'));               
+app.use(multer({dest: '/uploads/'}).any());               
 app.use(session({
     secret: 'anystringoftext',
     saveUninitialized: true,                        // allow persistence event at server restart if there's a persistence layer

@@ -27,10 +27,10 @@ module.exports = function(router, passport) {
     }));
 
     // LOGOUT  ===================================================
-    // localhost:8080/auth/logout
+    // localhost:8080/logout
     router.get('/logout', function(req, res) {
         req.logout();
-        res.redirect('/auth');
+        res.redirect('/');
     })
 
     // invalid GET url
