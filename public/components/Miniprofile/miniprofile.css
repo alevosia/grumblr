@@ -1,5 +1,15 @@
 /* Overrides any default css framework rules of Semantic UI */
 
+#profileImageContainer {
+    background-color: blue;
+    width: 10em;
+    height: 10em;
+    border-radius: 500em;
+    overflow: hidden;
+    display: grid;
+    margin-bottom: 10px;
+}
+
 #card {
     background-color: transparent;
     height: 30em;
@@ -15,9 +25,7 @@
 .image #avatar {
     border-radius: 500em;
     height: 100%;
-    width: 11em;
-    background-color: transparent;
-    margin-bottom: 10px;
+    width: 100%;
 }
 
 #accountInfo {

@@ -63,7 +63,7 @@ header .profileAvatarContainer {
 }
 
 #profileImage {
-   height: auto;
+   height: 100%;
    width: 100%;
 }
 
@@ -73,8 +73,8 @@ header .profileHeaderUserInfo {
    margin: 5px 0px 5px 9.5em;
    height: 5em;
    display: grid;
-   grid-template-columns: 1fr 1fr;
    align-items: center;
+   flex-wrap: nowrap;
 }
 
 .profileHeaderUserInfo h1, h3 {

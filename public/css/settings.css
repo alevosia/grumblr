@@ -58,15 +58,18 @@ body {
 }
 
         #profileImageContainer {
-            height: 100%;
+            border-radius: 500em;
+            width: 10em;
+            height: 10em;
             display: grid;
-            /* background-color: red; */
+            background-color: red;
             justify-items: center;
             align-items: center;
+            margin-right: 20px;
+            overflow: hidden;
         }
                 #profileImage {
-                    border-radius: 500em;
-                    width: 10em;
+                    width: 100%;
                 }
         
         #uploadProfileImageContainer {
@@ -76,6 +79,7 @@ body {
             justify-items: start;
         }
 
+
 .headerImageUpload {
     /* background-color: #6C4ED5; */
     width: 100%;
@@ -83,6 +87,21 @@ body {
     display: grid;
     margin-bottom: 30px;
 }
+        #headerImageContainer {
+            border-radius: 5px;
+            width: 15em;
+            height: 7em;
+            display: grid;
+            /* background-color: red; */
+            justify-items: center;
+            align-items: center;
+            margin-right: 20px;
+            overflow: hidden;
+        }
+
+                #headerImage {
+                    width: 100%;
+                }
 
         #uploadHeaderImageContainer {
             /* background-color: blue; */
@@ -90,16 +109,7 @@ body {
             flex-direction: column;
             justify-items: center;
         }
-                #headerImage {
-                    border-radius: 10px;
-                    height: 100%;
-                }
         
-        #headerImageContainer {
-            /* background-color: red; */
-            display: grid;
-            justify-items: center;
-        }
 
 
 .biographySection {
