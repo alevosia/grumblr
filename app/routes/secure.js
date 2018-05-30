@@ -164,6 +164,7 @@ module.exports = function(router) {
             if (post) {
                 post.set({'text': req.body.editText});
                 post.save(function(err, newPost) {
+                    if (err) throw err;
                     console.log('Post edited text to ' + req.body.editText);
                     res.redirect('/timeline');
                 })
@@ -178,12 +179,16 @@ module.exports = function(router) {
                           {'lastName': {'$regex': req.body.searchQuery, '$options':'i'}},
                           {'username': {'$regex': req.body.searchQuery, '$options':'i'}}]})
         .populate('profileImage').exec(function(err, users) {
+            var usernames = [];
             for (var i = 0; i < users.length; i++) {
-                var usernames = [];
                 usernames.push(users[i].username);
             }
-
-            Post.find({'username':{'$in': usernames}}).populate('image').exec(function(err, posts) {
+            Post.find({}).populate('image User')
+                .populate({
+                        path: 'User',
+                        populate: {path: 'profileImage',
+                        model: 'Image'}})
+                .exec(function(err, posts) {
                     if (err) throw err;
                     console.log(users)
                     res.render('search.ejs', {user: req.user, searchUsers: users, posts: posts});
