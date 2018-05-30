@@ -48,24 +48,37 @@ module.exports = function(router) {
     router.post('/send', function(req, res) {
         
         req.user.SendNewPost(req, res);
-        res.render('profile.ejs', {user: req.user});
+        res.redirect('/profile');
     })
 
     router.get('/settings', function(req, res) {
         User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
             Post.find().populate('image').exec(function(err, posts) {
-                res.render('settings.ejs', { user:user, posts:posts})
+                res.render('settings.ejs', { user:user})
             })
         })
     })
 
     router.post('/settings', function(req, res) {
-        if (req.file) {
-            console.log(req.file);
-        } else {
-            console.log('No image uploaded.');
+        if (req.files) {
+            console.log(req.files.length + ' pictures uploaded in settings.');
+            if (req.files.length == 2) {
+                console.log(req.files.length + ' pictures uploaded in settings.');
+                req.user.UpdateProfileImage(req, res);
+                req.user.UpdateCoverImage(req, res);
+
+            } else if (req.files.length == 1) {
+                console.log('Fieldname: ' + req.files[0].fieldname);
+                if (req.files[0].fieldname == 'photo') {
+                    req.user.UpdateProfileImage(req, res);
+                } else if (req.files[0].fieldname == 'coverImage') {
+                    req.user.UpdateCoverImage(req, res);
+                }
+            } else {
+                console.log('Else: ' + req.files.length);
+            }
         }
-        res.redirect('settings.ejs');
+        res.redirect('/settings');
     })
 
     router.post('/follow/:username', function(req, res) {
@@ -88,7 +101,9 @@ module.exports = function(router) {
     })
 
     router.post('/search/users', function(req, res) {
-        User.find({'username':{'$regex': req.body.searchQuery, '$options':'i'}})
+        User.find({'$or':[{'firstName': {'$regex': req.body.searchQuery, '$options':'i'}},
+                          {'lastName': {'$regex': req.body.searchQuery, '$options':'i'}},
+                          {'username': {'$regex': req.body.searchQuery, '$options':'i'}}]})
         .populate('profileImage').exec(function(err, users) {
             for (var i = 0; i < users.length; i++) {
                 var usernames = [];
@@ -101,10 +116,5 @@ module.exports = function(router) {
                     res.render('search.ejs', {user: req.user, searchUsers: users, posts: posts});
             })
         })
-    })
-
-    // invalid GET url
-    router.get('/*', function(req, res) {
-        res.redirect('/');
     })
 }

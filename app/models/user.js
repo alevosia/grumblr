@@ -102,13 +102,85 @@ UserSchema.methods.SendNewPost = function(req, res) {
 }
 
 UserSchema.methods.UpdateProfileImage = function(req, res) {
-    if (req.files) {
-        console.log(req.files)
+    
+    console.log('Entered Update Profile Image');
+    if (req.files[0].fieldname == 'photo') {
+        var data = fs.readFileSync(req.files[0].path, {encoding: 'base64'});
+
+        var imageDocument = new Image({
+            _id: new mongoose.Types.ObjectId(),
+            img: {
+                data: data,
+                contentType: req.files[0].mimetype
+            }
+        });
+
+        imageDocument.save(function(err) {
+            if (err) throw err;
+            req.user.set({'profileImage': imageDocument._id})
+            req.user.save(function (err, updatedUser) {
+                if (err) throw err;
+                console.log('Updated profileImage of ' + updatedUser.username);
+            })
+        })
+    } else {
+        console.log('Wrong fieldname in UpdateProfileImage!');
     }
+
 }
 
-UserSchema.methods.UpdateCoverImage = function(Image) {
-    this.coverImage = Image
+UserSchema.methods.UpdateCoverImage = function(req, res) {
+    if (req.files.length == 1) {
+        console.log(req.files[0]);
+        if (req.files[0].fieldname == 'coverImage') {
+            var data = fs.readFileSync(req.files[0].path, {encoding: 'base64'});
+
+            var imageDocument = new Image({
+                _id: new mongoose.Types.ObjectId(),
+                img: {
+                    data: data,
+                    contentType: req.files[0].mimetype
+                }
+            });
+
+            imageDocument.save(function(err) {
+                if (err) throw err;
+
+                req.user.set({'coverImage': imageDocument._id})
+                req.user.save(function (err, updatedUser) {
+                    if (err) throw err;
+                    console.log('Updated profileImage of ' + updatedUser.username);
+                })
+            })
+        } else {
+            console.log('Wrong fieldname in UpdateCoverImage');
+        }
+    } else if (req.files.length == 2) {
+        console.log(req.files[1]);
+        if (req.files[1].fieldname == 'coverImage') {
+            var data = fs.readFileSync(req.files[1].path, {encoding: 'base64'});
+
+            var imageDocument = new Image({
+                _id: new mongoose.Types.ObjectId(),
+                img: {
+                    data: data,
+                    contentType: req.files[1].mimetype
+                }
+            });
+
+            imageDocument.save(function(err) {
+                if (err) throw err;
+                req.user.set({'coverImage': imageDocument._id})
+                req.user.save(function (err, updatedUser) {
+                    if (err) throw err;
+                    console.log('Updated profileImage of ' + updatedUser.username);
+                })
+            })
+        } else {
+            console.log('Wrong fieldname in UpdateCoverImage');
+        }
+    }
+    
 }
 
 module.exports = mongoose.model('User', UserSchema);
