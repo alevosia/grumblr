@@ -19,7 +19,7 @@ body {
     margin: auto;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: rgba(0, 0, 0, 0.412);
+    /* background-color: rgba(0, 0, 0, 0.412); */
     width: 75%;
     margin-bottom: 30px;
  }
