@@ -3,8 +3,10 @@ var fs          = require('fs');
 var bcrypt      = require('bcrypt');
 const rounds    = 10; // WARNING! Don't go above 10
 var Image       = require('./image');
+var Post        = require('./post');
 
 var UserSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     username: String,
     password: String,
     firstName: String,
@@ -12,46 +14,16 @@ var UserSchema = new mongoose.Schema({
     emailAddress: String,
     gender: String,
     bio: {type: String, default: 'Update your bio'},
-    profileImage: {
-        base64String: String,
-        fileName: String,
-        fileType: String
-    },
-    coverImage: {
-        base64String: String,
-        fileName: String,
-        fileType: String
-    },
-
+    profileImage: {type: mongoose.Schema.Types.Object, ref: 'Image'},
+    coverImage: {type: mongoose.Schema.Types.Object, ref: 'Image'},
+    posts: {type:Number, default: 0},
     following: {type: Number, default: 0},
-    followers: {type: Number, default: 0}
+    followers: {type: Number, default: 0},
+    followedUsers: []
+    
 });
 
-UserSchema.methods.SetProfileImage = function(imagePath) {
-    console.log(imagePath);
-    this.profileImage.base64String = fs.readFileSync(imagePath, {encoding: 'base64'});
-    var i = imagePath.lastIndexOf('\\')+1;
-    console.log(imagePath.substr(i));
-    this.profileImage.fileName = imagePath.substr(i);
-    console.log('File Name: ' + this.profileImage.fileName);
-    var i = this.profileImage.fileName.lastIndexOf('.')+1;
-    this.profileImage.fileType = this.profileImage.fileName.substr(i);
-    console.log('File Type: ' + this.profileImage.fileType);
-}
-
-UserSchema.methods.SetCoverImage = function(imagePath) {
-    this.coverImage.base64String = fs.readFileSync(imagePath, {encoding: 'base64'});
-    console.log(imagePath);
-    var i = imagePath.lastIndexOf('\\')+1;
-    console.log(imagePath.substr(i));
-    this.coverImage.fileName = imagePath.substr(i);
-    console.log('File Name: ' + this.coverImage.fileName);
-    var i = this.coverImage.fileName.lastIndexOf('.')+1;
-    this.coverImage.fileType = this.coverImage.fileName.substr(i);
-    console.log('File Type: ' + this.coverImage.fileType);
-}
-
-UserSchema.methods.generateHash = function(password) {
+UserSchema.statics.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(rounds));
 }
 
@@ -83,8 +55,56 @@ UserSchema.methods.MinusFollowers = function() {
     this.followers -= 1;
 }
 
-UserSchema.methods.UpdateProfileImage = function(Image) {
-    this.profileImage = Image
+UserSchema.methods.SendNewPost = function(req, res) {
+    if (req.files) {
+        console.log(req.files);
+        var data = fs.readFileSync(req.files[0].path, {encoding: 'base64'});
+
+        var imageDocument = new Image({
+            _id: new mongoose.Types.ObjectId(),
+            img: {
+                data: data,
+                contentType: req.files[0].mimetype
+            }
+        });
+
+        imageDocument.save(function(err) {
+            if (err) throw err;
+
+            var post = new Post({
+                _id: new mongoose.Types.ObjectId(),
+                username: req.user.username,
+                text:  req.body.text,
+                image: imageDocument._id,
+                comments: []
+            });
+
+            post.save(function (err) {
+                if (err) throw err;
+            })
+        });
+        
+    } else {
+        console.log('No image uploaded.');
+        var post = new Post({
+            _id: new mongoose.Types.ObjectId(),
+            username: req.user.username,
+            text:  req.body.text,
+            image: null,
+            comments: []
+        });
+
+        post.save(function (err) {
+            if (err) throw err;
+            this.posts += 1; // updates the posts counter of the user
+        })
+    }
+}
+
+UserSchema.methods.UpdateProfileImage = function(req, res) {
+    if (req.files) {
+        console.log(req.files)
+    }
 }
 
 UserSchema.methods.UpdateCoverImage = function(Image) {

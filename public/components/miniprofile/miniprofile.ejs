@@ -1,10 +1,10 @@
 <div class="ui card" id="card">
 	<div class="image" style="background-color: transparent;">
-		<img src="../images/profileImage.png" id="avatar"> <!-- Placeholder Image Path -->
+		<img src="<%= profileImage%>" id="avatar"> <!-- Placeholder Image Path -->
 	</div>
 
 	<div class="ui content">
-		<a class="header"><h3>@<%=user.username%></h3></a>
+		<a class="header" href="/profile"><h3><%=user.username%></h3></a>
 		<div class="description">
 			<%=user.bio%>
 		</div>

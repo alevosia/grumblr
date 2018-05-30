@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+    if (locals.user.profileImage && locals.user.coverImage) {
+        if (locals.user.profileImage.img) {
+            console.log(user.profileImage);
+            var type = user.profileImage.img.contentType
+            console.log(type);
+            var base64String = user.profileImage.img.data;
+            var profileImage = "data:"+type+";base64, "+base64String;
+    }
+    
+    if (locals.user.coverImage.img) {
+            console.log(user.coverImage);
+            var type2 = user.coverImage.img.contentType
+            console.log(type2);
+            var base64String2 = user.coverImage.img.data;
+            var coverImage = "data:"+type+";base64, "+base64String2;
+    }
+}
+%>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,13 +33,9 @@
 </head>
 
 <body>
+
 <!-- Navigation Bar Component -->
 <% include ../public/components/navbar/navbar.ejs %>
-<!-- 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
--->
-
 
 
 
@@ -29,7 +44,7 @@
 
 <div id="content">
 <div class="settingsContainer">
-<form action="" class="ui form" method="POST">
+<form action="/settings" class="ui form" method="POST" enctype="multipart/form-data">
     <!-- ==================================================================== -->
     <h1 class="ui top attached header" id="generalSettingsHeaderSegment">
         General Settings
@@ -81,17 +96,17 @@
         <div class="field">
             <div class="field disabled required" id="currentPassword">
                 <label>Current Password</label>
-                <input type="password" placeholder="Current Password" id="currentPasswordInput">
+                <input type="password" name="currentPassword" placeholder="Current Password">
             </div>
         </div>
         <div class="two fields">
             <div class="field disabled required negative" id="newPassword">
                 <label>New Password</label>
-                <input type="password" placeholder="New Password" id="newPasswordInput">
+                <input type="password" name="newPassword1" placeholder="New Password">
             </div>
             <div class="field disabled required negative" id="confirmPassword">
                 <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm Password" id="confirmPasswordInput">
+                <input type="password" name="newPassword2" placeholder="Confirm Password">
             </div>
         </div>
     </div>
@@ -110,22 +125,22 @@
     <div class="ui attached segment">
         <div class="profilePictureUpload">
             <div class="ui image" id="profileImageContainer">
-                <img src="images/profileImage.png" alt="avatar" id="profileImage">
+                <img src="<%= profileImage %>" alt="avatar" id="profileImage">
             </div>
             <div class="field" id="uploadProfileImageContainer">
                 <h4><strong>Avatar Image</strong></h4>
-                <input type="file" accept="image/*" id="uploadProfileImageInput" onchange="changeProfilePicture(event)">
+                <input type="file" accept="image/*" name="photo" id="uploadProfileImageInput" onchange="changeProfilePicture(event)">
             </div>
         </div>
         
 
         <div class="headerImageUpload">
             <div class="ui image" id="headerImageContainer">
-                <img src="images/headerImage.png" alt="" id="headerImage">
+                <img src="<%= coverImage %>" alt="" id="headerImage">
             </div>
             <div class="field" id="uploadHeaderImageContainer">
                 <h4><strong>Header Image</strong></h4>
-                <input type="file" accept="images/*" name="" id="uploadHeaderImageInput" onchange="changeHeaderImage(event)">
+                <input type="file" accept="images/*" name="coverImage" id="uploadHeaderImageInput" onchange="changeHeaderImage(event)">
             </div>
         </div>
 
@@ -140,7 +155,7 @@
     <div class="ui attached segment" id="saveChangesSegment">
         <div class="ui input">
             <input type="submit" value="Save" class="ui button teal">
-            <input type="reset" value="cancel" class="ui button" id="cancelButton" onclick="resetImages()">
+            <input type="reset" value="Cancel" class="ui button" id="cancelButton" onclick="resetImages()">
         </div>
     </div>
 

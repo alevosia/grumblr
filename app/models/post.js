@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var fs      = require('fs');
 // Models
 var User = require('./user');
 var Image = require('./image');
