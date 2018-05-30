@@ -234,4 +234,6 @@ TIMELINE {
     font-family: "Gotham ROunded", sans-serif;
     font-weight: bolder;
     color: #ffffff80;
+    display: grid;
+    justify-items: center;
 }
