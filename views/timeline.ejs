@@ -28,7 +28,7 @@
 
 		<link rel="stylesheet" href="../css/timeline.css">
 		<link rel="stylesheet" href="./components/miniprofile/miniprofile.css">
-		<link rel="stylesheet" href="./components/post/timeline_post.css">
+		<link rel="stylesheet" href="./components/post/post.css">
 
 		<link rel="shortcut icon" href="images/favicon.ico" />
 		<title>Grumblr</title>
@@ -40,14 +40,19 @@
 	<% include  ../public/components/navbar/navbar.ejs %>
 
 		<div id="content">
-			<div id="postContainer">
-				<% if (locals.posts) {
-			for (var i=0; i<posts.length; i++) { %>
-					<% include ../public/components/post/timeline_post.ejs %>
-						<%}
-		}%>
+			<div id="postContainer" class="segment ui">
+				<% include ../public/components/miniprofile/miniprofile.ejs %>
 
-				<h1 class="postCOntainerEnd">No more posts to show...</h1>
+				<% if (locals.posts) {
+					if(posts.length > 0) {
+						for (var i=0; i<posts.length; i++) { %>
+								<% include ../public/components/post/post.ejs %>
+						<%} 
+					} else {%>
+						<h1 class="postCOntainerEnd">No more posts to show...</h1>
+					<%}
+				}%>
+
 			</div>
 		</div>
 
@@ -72,12 +77,16 @@ $('.ui.accordion')
 
 $('.ui.sticky')
   .sticky({
-	offset       : 71,
+	offset       : 78,
     bottomOffset : 50,
     context      : '#element-to-follow',
 	context: '#content'
 	
   })
+;
+
+$('.postCOntainerEnd')
+  .transition('shake')
 ;
 
 $('#content.post')

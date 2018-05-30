@@ -1,37 +1,23 @@
-/* Overrides any default css framework rules of Semantic UI */
+#leftRail {
+    margin-right: 6.5em;
+}
 
-#profileImageContainer {
-    background-color: blue;
-    width: 10em;
+#leftPanel {
+    border-radius: 10px;
+}
+
+.profileImage {
     height: 10em;
-    border-radius: 500em;
-    overflow: hidden;
-    display: grid;
+    width: 10em;
+    border-radius: 300em;
     margin-bottom: 10px;
 }
-
-#card {
-    background-color: transparent;
-    height: 30em;
-    box-shadow: none;
-    width: 16em;
-    font-size: 1em;
-}
-
-.image {
-    background-color: transparent; 
-}
-
-.image #avatar {
-    border-radius: 500em;
-    height: 100%;
-    width: 100%;
-}
-
-#accountInfo {
+.bio {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    grid-column-gap: 10px;
+    justify-items: center;
+}
+.accountStats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: start;
 }

@@ -28,6 +28,12 @@
 								display: flex;
 								align-items: center;
 							}
+										#avatarImage {
+											width: 2em;
+											height: 2em;
+											border-radius: 50em;
+										}
+
 										.postMetaAuthorUsername {
 											margin-left: 3px;
 										}

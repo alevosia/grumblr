@@ -1,21 +1,52 @@
-<div class="ui card" id="card">
-	<div class="image" style="background-color: transparent;" id="profileImageContainer"
-		 style="background: url('<%=profileImage%>'); 
-				background-position: center;
-				background-size: cover;">
-		<img src="<%= profileImage%>" id="avatar"> <!-- Placeholder Image Path -->
-	</div>
+<!-- MAKE SURE ITS PARENT CONTAINER HAS A CLASS OS "UI SEGMENT" -->
+<div class="ui left rail" id="leftRail">
+        <div class="ui segment sticky" id="leftPanel">
+            <!-- PROFILE PICTURE -->
+            <div class="profileImage"
+                style="background-color: gray;
+                        background-image: url('<%=profileImage%>');
+                        background-position: center;
+                        background-size: cover;">
+            </div>
 
-	<div class="ui content">
-		<a class="header" href="/profile"><h3><%=user.username%></h3></a>
-		<div class="description">
-			<%=user.bio%>
-		</div>
-	</div>
+            <!-- USER INFORMATION -->
+            <a href="/profile" class="ui header" id="userNames">
+                <%=user.firstName %>
+                <%=user.lastName %>
+                <div href="/profile" class="sub header">
+                    @<%=user.username%>
+                </div href="sdfsdf">
+            </a>
 
-	<div class="extra content" id="accountInfo">
-		<a><i class="comment icon"></i><%=user.posts%> Posts</a>
-		<a><i class="user icon"></i><%=user.following%> Following</a>
-		<a><i class="address book outline icon"></i><%=user.followers%> Followers</a>
-	</div>
+            <div class="ui divider"></div> <!-- ========================================================================================================== -->
+            
+            <!-- BIOGRAPHY -->
+            <p class="bio">
+                <%=user.bio%>
+            </p>
+
+            <div class="ui divider"></div> <!-- ========================================================================================================== -->
+
+            <!-- ACCOUNT STATISTICS -->
+            <div class="accountStats ui content">
+                    <a>
+                        <strong>
+                            Posts <br>
+                            <%=user.posts%>
+                        </strong>
+                    </a>
+                    <a>
+                        <strong>
+                            Following <br>
+                            <%=user.following%>
+                        </strong>
+                    </a>
+                    <a>
+                        <strong>
+                            Followers <br>
+                            <%=user.followers%>
+                        </strong>
+                    </a>
+            </div>
+        </div>
 </div>

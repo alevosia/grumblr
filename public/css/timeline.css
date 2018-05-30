@@ -19,6 +19,9 @@ body{
 
 #postContainer {
     /* background-color: gray; */
+    background-color: transparent;
+    padding: 0px;
+    border: transparent;
     width: 40em;
     display: grid;
     margin-left: 5em;

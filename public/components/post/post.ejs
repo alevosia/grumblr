@@ -17,9 +17,14 @@
     <div class="postMeta">
 
         <div class="postDetails">
-        <!-- USER: AVATAR --><img class="ui avatar image" src="<%= profileImage %>" class="postMetaAvatar">
-        <!-- USER: USERNAME --><a href="/users/<%=posts[i].username%>" class="postMetaAuthorUsername"><strong><%=posts[i].username%></strong></a>
-        <!-- META: DATE CREATED --><div class="postMetaDate">UTC Date</div>
+        
+        <!-- USER: AVATAR -->       <div class="postMetaAvatar" id="avatarImage"
+                                         style="background: url('<%=profileImage%>');
+                                                background-size: cover;
+                                                background-position: center;">
+                                    </div>
+        <!-- USER: USERNAME -->     <a href="/users/<%=posts[i].username%>" class="postMetaAuthorUsername"><strong>@<%=posts[i].username%></strong></a>
+        <!-- META: DATE CREATED --> <div class="postMetaDate">UTC Date</div>
         </div>
 
         <div class="postEdit">
