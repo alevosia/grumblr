@@ -2,7 +2,7 @@
 <html>
 <head>
 <%
-		if (locals.user.profileImage && locals.user.coverImage) {
+		if (locals.user.profileImage) {
 			if (locals.user.profileImage.img) {
 				console.log(user.profileImage);
 				var type = user.profileImage.img.contentType
@@ -10,31 +10,22 @@
 				var base64String = user.profileImage.img.data;
 				var profileImage = "data:"+type+";base64, "+base64String;
 			}
-		}
-
-		if (locals.visitedUser) {
-			console.log(visitedUser.username + 'is present');
-			if (locals.visitedUser.profileImage.img) {
-				console.log(visitedUser.username + 'has a profile image');
-				var type = visitedUser.profileImage.img.contentType
-				console.log(type);
-				var base64String = visitedUser.profileImage.img.data;
-				var visitedUserProfileImage = "data:"+type+";base64, "+base64String;
-			} else {
-				console.log(visitedUser.username + 'has NO profile image');
-			}
 			
+			if (locals.visitedUser.profileImage.img) {
+				console.log(visitedUser.profileImage);
+				var type2 = visitedUser.profileImage.img.contentType
+				console.log(type2);
+				var base64String2 = visitedUser.profileImage.img.data;
+				var visitedUserProfileImage = "data:"+type+";base64, "+base64String2;
+			}
+
 			if (locals.visitedUser.coverImage.img) {
-				console.log(visitedUser.username + 'has a cover image');
+				console.log(visitedUser.coverImage);
 				var type2 = visitedUser.coverImage.img.contentType
 				console.log(type2);
 				var base64String2 = visitedUser.coverImage.img.data;
 				var visitedUserCoverImage = "data:"+type+";base64, "+base64String2;
-			} else {
-				console.log(visitedUser.username + 'has NO cover image');
 			}
-		} else {
-			console.log('No visited user');
 		}
 %>
    <meta charset="UTF-8">
@@ -66,14 +57,14 @@
 
 	<!-- HEADER: HEADER COVER/IMAGE -->
 	<div class="profileHeaderImageContainer">
-		<img src="<%= visitedUserProfileImage %>" alt="Header Image" id="headerImage">
+		<img src="<%= visitedUserCoverImage %>" alt="Header Image" id="headerImage">
 	</div>
 
 	<!-- HEADER: USER INFORMATION -->
 	<div class="profileHeaderUserInfo">
 		<div class="userNameHeader">
 			<h1><%= visitedUser.firstName %> <%= visitedUser.lastName %></h1>
-			<h3>@u<%=visitedUser.username%></h3>
+			<h3><%=visitedUser.username%></h3>
 		</div>
 		<div class="userfollow">
 			<button class="ui button icon labeled" id="followButton" href="/follow/<%=visitedUser.username%>">
@@ -98,7 +89,7 @@
 	</PANEL>
 
 
-	<PANEL>
+	<!--<PANEL>
 	<div class="profilePosts">
 	<% if (locals.posts) {
 		for (var i=0; i<posts.length; i++) { %>
@@ -106,7 +97,7 @@
 		<%}
 	}%>
 	</div>
-	</PANEL>
+	</PANEL>-->
 
 
 </TIMELINE>

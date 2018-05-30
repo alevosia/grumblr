@@ -21,21 +21,17 @@ module.exports = function(router) {
     // PROFILE ====================================================
     // localhost:8080/profile
     router.get('/', function(req, res){
-        Post.find({'username': req.user.username}).sort({'utcMS': -1}).populate('image')
-        .exec(function(err, posts) {
-            if (err) throw err;
-            console.log(posts);
-            res.render('profile.ejs', {user: req.user, posts: posts}
-        )}
-    )});
+        res.redirect('/profile');
+    });
 
     router.get('/profile', function(req, res){
         User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
-            Post.find({}).populate('image').populate({
+            Post.find({}).populate('image User').populate({
                 path: 'User',
                 populate: { path: 'profileImage',
                             model: 'Image'}
             }).sort({'utcMS':-1}).exec(function(err, resultPosts) {
+                if (err) throw err;
                 var posts = [];
                 if (resultPosts.length > 0) {
                     for (var i=0; i<resultPosts.length; i++) {
@@ -57,15 +53,31 @@ module.exports = function(router) {
     router.get('/users/:username', function(req, res) {
         User.findById({'_id': req.user._id}).populate('coverImage').exec(function(err, user) {
             if (err) throw err;
-            User.findOne({'username': req.param.username}).populate('profileImage coverImage').exec(function(err, visitedUser) {
+
+            User.findOne({'username': req.params.username}).populate('profileImage coverImage').exec(function(err, visitedUser) {
                 if (err) throw err;
-            Post.find({}).sort({'utcMS': -1}).populate('image').populate({
-                path: 'User',
-                populate: { path: 'profileImage',
-                            model: 'Image'}
-                }).sort({'utcMS':-1}).exec(function(err, posts) {
+
+                Post.find({}).sort({'utcMS': -1}).populate('image User').populate({
+                    path: 'User',
+                    populate: { path: 'profileImage',
+                                model: 'Image'}
+                }).sort({'utcMS':-1}).exec(function(err, resultPosts) {
                     if (err) throw err;
-                    res.render('visitedprofile.ejs', {user: req.user, visitedUser: visitedUser, posts: posts});
+                    var posts = [];
+                    if (resultPosts.length > 0) {
+                        for (var i=0; i<resultPosts.length; i++) {
+                            if (resultPosts[i].User) {
+                                if (resultPosts[i].User.username) {
+                                    if (resultPosts[i].User.username == visitedUser.username) {
+                                        posts.push(resultPosts[i])
+                                        console.log('Posts ' + posts.length);
+                                    }
+                                } else {
+                                    console.log(resultPosts[i].User._id + ' ' + visitedUser._id);
+                                }
+                            }
+                        }
+                    } res.render('visitedprofile.ejs', {user: req.user, visitedUser: visitedUser, posts: posts});
                 })
             })
         })
@@ -159,7 +171,4 @@ module.exports = function(router) {
         })
     })
 
-    router.get('/*', function(req, res) {
-        res.redirect('/');
-    })
 }
