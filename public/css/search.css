@@ -36,11 +36,18 @@ body {
     justify-items: center;
  }
 
-#avatar {
+ #profileImageContainer {
+     height: 20em;
+     overflow: hidden;
+     display: grid;
+     align-items: center;
+     justify-items: center;
+ }
+#profileImage {
     /* background-color: blue; */
+    height: 100%;
     width: 100%;
     /* margin-bottom: 10px; */
-    width: 100%;
 }
 
 

@@ -75,7 +75,9 @@
 
 					<div id="personInstance">
 						<div class="ui card">
-							<img src="<%= profileImage %>" id="avatar">
+							<div id="profileImageContainer">
+								<img src="<%= profileImage %>" id="profileImage">
+							</div>
 							<div class="content">
 								<a class="header" href="/users/<%= searchUsers[i].username%>">
 									<%=searchUsers[i].firstName%> <%=searchUsers[i].lastName%>
@@ -84,7 +86,7 @@
 								<span class="username"><%=searchUsers[i].username%></span>
 								</div>
 								<div class="description">
-									some biography n shites
+									<%= searchUsers[i].bio %>
 								</div>
 							</div>
 							<div class="extra content" id="accountInformation">
@@ -105,15 +107,17 @@
 	<!-- if naubos na yung users accounts na ididisplay, etong posts naman  -->
 	<% if (locals.posts) {
 		if (posts.length > 0) {%>
+			<br/>
+			<h2>Posts Results</h2>
 			<div class="searchContainer">
-				<div class="searchResult">
-					<%for (var i=0; i<posts.length; i++) { %>
-						<% include ../public/components/post/post.ejs %>
-						<%}
-				</div>
+			<div class="searchResult">
+			<%for (var i=0; i<posts.length; i++) { %>
+				<% include ../public/components/post/post.ejs %>
+			<%}
 		}
 	}%>
-			</div>
+	</div>
+	</div>
 </div>
 
 

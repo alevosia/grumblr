@@ -38,10 +38,13 @@ header .profileHeaderImageContainer {
    background-color: aquamarine;
    overflow: hidden;
    display: grid;
+   justify-items: center;
+   align-items: center;
 }
 
 #headerImage {
-   width: 100%;
+    width: 100%;
+    align-self: center;
 }
 
 /* AVATAR */
