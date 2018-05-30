@@ -40,7 +40,7 @@ module.exports = function(router) {
     router.get('/timeline', function(req, res){
         User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
             Post.find().populate('image').exec(function(err, posts) {
-                res.render('timeline.ejs', { user:user, posts:posts})
+                res.render('timeline.ejs', {user: user, posts: posts})
             })
         })
     });
@@ -93,10 +93,10 @@ module.exports = function(router) {
     // USERS ======================================================
     // localhost:8080/users/<username>
     router.get('/users/:username', function(req, res) {
-        User.findOne({'username':req.param('username')}, function(err, user) {
+        User.findOne({'username':req.param('username')}, function(err, visitedUser) {
             if (err) throw err;
             console.log(user)
-            res.render('visitedprofile.ejs', {user: user});
+            res.render('visitedprofile.ejs', {user: req.user, visitedUser: visitedUser});
         });
     })
 
