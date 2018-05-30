@@ -68,15 +68,14 @@ $('.ui.accordion')
 ;
 
 $('.ui.modal')
-  .modal('attach events','#editTrigger','show')
+  .modal('attach events','.editTrigger','show')
 ;
 
 $('.ui.sticky')
   .sticky({
 	offset       : 78,
     bottomOffset : 50,
-    context      : '.postContainer'
-	
+    context      : '#postContainer'
   })
 ;
 
