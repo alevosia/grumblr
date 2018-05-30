@@ -46,7 +46,9 @@
                                                         background-size: cover;
                                                         background-position: center;">
                                             </div>
-                <!-- USER: USERNAME -->     <a href="/users/<%=posts[i].User.username%>" class="postMetaAuthorUsername"><strong>@<%=posts[i].User.username%></strong></a>
+                                            <%if(posts[i].User.username == user.username) { var link = '/profile' } 
+                                            else { var link = '/users/' + posts[i].User.username; } %>
+                <!-- USER: USERNAME -->     <a href="<%= link %>" class="postMetaAuthorUsername"><strong>@<%=posts[i].User.username%></strong></a>
             </div>
         
         </div>
