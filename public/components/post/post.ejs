@@ -57,11 +57,23 @@
             <div class="ui dropdown editDropDown">
             <!-- POST: EDIT BUTTON -->          <i class="icon ellipsis horizontal editButton"></i>
             <!-- POST: EDIT MENU DROPDOWN -->   <div class="menu left">
-                                                    <a href="/edit/<%=posts[i]._id%>" class="item">Edit</a>
+                                                    <div class="item" id="editTrigger">Edit</div>
                                                     <a href="/delete/<%=posts[i]._id%>" class="item">Delete</a>
                                                 </div>
             </div>
         </div>
+
+        <div class="ui modal tiny">
+            <div class="header">Edit Post</div>
+            <form action="/edit/<%=posts[i]._id%>" method="POST" class="content">
+                <textarea name="" id="editPostTextArea" rows="10" placeholder="Write Something..." value=""><%=posts[i].text%></textarea>
+                <div class="actions">
+                    <button class="ui approve button teal labeled icon" type="submit"><i class="check icon"></i>Save Changes</button>
+                    <div class="ui cancel button labeled icon"><i class="close icon"></i> Cancel</div>
+                </div>
+            </form>
+        </div>
+
         <%} else {
             console.log(posts[i].User.username+'\n'+user.username);
             console.log('Not your post');

@@ -67,12 +67,15 @@ $('.ui.accordion')
 .accordion()
 ;
 
+$('.ui.modal')
+  .modal('attach events','#editTrigger','show')
+;
+
 $('.ui.sticky')
   .sticky({
 	offset       : 78,
     bottomOffset : 50,
-    context      : '#element-to-follow',
-	context: '#content'
+    context      : '.postContainer'
 	
   })
 ;
@@ -91,7 +94,8 @@ $('#content.post')
 		// loads a max of 5 times
 		window.loadFakeContent();
 	}
-}); 
+});
+
 </script>
 </body>
 
