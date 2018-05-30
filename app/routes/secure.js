@@ -30,40 +30,42 @@ module.exports = function(router) {
     )});
 
     router.get('/profile', function(req, res){
-        Post.find({'_id': req.user._id}).sort({'utcMS': -1}).populate('image')
-        .exec(function(err, posts) {
-            if (err) throw err;
-            console.log(posts);
-            res.render('profile.ejs', {user: req.user, posts: posts}
-        )}
-    )});
+        User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
+            Post.find({'username': req.user.username}).populate('image').exec(function(err, posts) {
+                res.render('profile.ejs', { user:user, posts:posts})
+            })
+        })
+    });
 
     router.get('/timeline', function(req, res){
-        Post.find().sort({'utcMS': -1}).populate('image')
-        .exec(function(err, posts) {
-            if (err) throw err;
-            console.log(posts);
-            res.render('timeline.ejs', {user: req.user, posts: posts}
-        )}
-    )});
+        User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
+            Post.find().populate('image').exec(function(err, posts) {
+                res.render('timeline.ejs', { user:user, posts:posts})
+            })
+        })
+    });
 
     router.post('/send', function(req, res) {
         
         req.user.SendNewPost(req, res);
-        
         res.render('profile.ejs', {user: req.user});
     })
 
     router.get('/settings', function(req, res) {
-        res.render('settings.ejs', {user: req.user});
+        User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
+            Post.find().populate('image').exec(function(err, posts) {
+                res.render('settings.ejs', { user:user, posts:posts})
+            })
+        })
     })
 
     router.post('/settings', function(req, res) {
-        if (req.files) {
-            console.log(req.files);
+        if (req.file) {
+            console.log(req.file);
         } else {
             console.log('No image uploaded.');
         }
+        res.redirect('settings.ejs');
     })
 
     router.post('/follow/:username', function(req, res) {
@@ -86,10 +88,18 @@ module.exports = function(router) {
     })
 
     router.post('/search/users', function(req, res) {
-        User.find({'username': req.body.searchQuery}).exec(function(err, users) {
-            if (err) throw err;
-            console.log(users)
-            res.render('search.ejs', {user: req.user, searchUsers: users});
+        User.find({'username':{'$regex': req.body.searchQuery, '$options':'i'}})
+        .populate('profileImage').exec(function(err, users) {
+            for (var i = 0; i < users.length; i++) {
+                var usernames = [];
+                usernames.push(users[i].username);
+            }
+
+            Post.find({'username':{'$in': usernames}}).populate('image').exec(function(err, posts) {
+                    if (err) throw err;
+                    console.log(users)
+                    res.render('search.ejs', {user: req.user, searchUsers: users, posts: posts});
+            })
         })
     })
 

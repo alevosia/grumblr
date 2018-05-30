@@ -35,7 +35,7 @@ module.exports = function(passport) {
                     } 
                     else {
 
-                        defaultProfileImagePath = __dirname + '\\images\\profileImage.png';
+                        defaultProfileImagePath = __dirname + '\\images\\alex.jpg';
                         console.log(defaultProfileImagePath);
                         defaultCoverImagePath = __dirname + '\\images\\placeholderImage2.png';
                         console.log(defaultCoverImagePath);
@@ -45,7 +45,7 @@ module.exports = function(passport) {
                             _id: new mongoose.Types.ObjectId(),
                             img: {
                                 data: profileImageData,
-                                contentType: 'image/png'
+                                contentType: 'image/jpg'
                             }
                         });
 
@@ -57,22 +57,27 @@ module.exports = function(passport) {
                                 contentType: 'image/png'
                             }
                         });
-
-                        var newUser = new User({
-                            _id: new mongoose.Types.ObjectId(),
-                            username: username,
-                            password: User.generateHash(password),
-                            firstName: req.body.firstName,
-                            lastName: req.body.lastName,
-                            emailAddress: req.body.email,
-                            gender: req.body.gender,
-                            profileImage: defaultProfileImage._id,
-                            coverImage: defaultCoverImage._id
-                        })
                         
-                        newUser.save(function(err) {
-                            if (err) throw err;
-                            return done(null, newUser); // return the new user
+                        defaultProfileImage.save(function (err) {
+                            defaultCoverImage.save(function (err) {
+
+                                var newUser = new User({
+                                    _id: new mongoose.Types.ObjectId(),
+                                    username: username,
+                                    password: User.generateHash(password),
+                                    firstName: req.body.firstName,
+                                    lastName: req.body.lastName,
+                                    emailAddress: req.body.email,
+                                    gender: req.body.gender,
+                                    profileImage: defaultProfileImage._id,
+                                    coverImage: defaultCoverImage._id
+                                })
+                                
+                                newUser.save(function(err) {
+                                    if (err) throw err;
+                                    return done(null, newUser); // return the new user
+                                })
+                            })
                         })
                     }
                 })

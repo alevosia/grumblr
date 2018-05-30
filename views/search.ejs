@@ -12,6 +12,26 @@
     <link rel="stylesheet" href="../css/search.css">
 
 	<title>Grumblr</title>
+
+<%
+    if (locals.user.profileImage && locals.user.coverImage) {
+        if (locals.user.profileImage.img) {
+            console.log(user.profileImage);
+            var type = user.profileImage.img.contentType
+            console.log(type);
+            var base64String = user.profileImage.img.data;
+            var profileImage = "data:"+type+";base64, "+base64String;
+    }
+    
+    if (locals.user.coverImage.img) {
+            console.log(user.coverImage);
+            var type2 = user.coverImage.img.contentType
+            console.log(type2);
+            var base64String2 = user.coverImage.img.data;
+            var coverImage = "data:"+type+";base64, "+base64String2;
+    }
+}
+%>
 </head>
 
 <body>
@@ -23,32 +43,55 @@
 -->
 
 <div id="content">
-	<h2>Search Results</h2>
-
 	<%
-		if (locals.searchUsers) {
-			if (searchUsers.length > 0) { 
-		for (var i=0; i<searchUsers.length; i++) { %>
-            <div class="searchContainer">
-			    <div class="searchResult">
-				    <img class="ui avatar image" src="/images/avatar.png" id="avatar">
-				    <a href="/searchedUserRouteLink">
-					<h2><%=searchUsers[i].firstName%> <%=searchUsers[i].lastName%></h2>
-				    </a>
-			    	
-			    	<h3>Username: <%=searchUsers[i].username%></h3>
-			    	<h3>Followers: <%=searchUsers[i].following%></h3>
-			    	<h3>Following: <%=searchUsers[i].followers%></h3>
-		    </div>
-		    
-		    <!-- if naubos na yung users accounts na ididisplay, etong posts naman  -->
-		    <% include ../public/components/post/post.ejs %>
-            </div>
-		<%} 
-			}
-		}
-		%>
+	if (locals.searchUsers) {
+		if (searchUsers.length > 0) { %>
+			<h2>User Results</h2>
+			<div class="searchContainer">
+			<div class="searchResult">
+			<%for (var i=0; i<searchUsers.length; i++) { 
+				if (searchUsers[i].profileImage) {
+					if (searchUsers[i].profileImage.img) {
+						console.log('======= Search User\'s Profile Image ==========');
+						console.log(searchUsers[i].profileImage);
+						var type = searchUsers[i].profileImage.img.contentType
+						console.log(type);
+						var base64String = searchUsers[i].profileImage.img.data;
+						var profileImage = "data:"+type+";base64, "+base64String;
+					}
+				} 
+				else { 
+					var profileImage = ""
+				}%>
 
+				<img class="ui avatar image" src="<%= profileImage %>" id="avatar">
+				<a href="/users/<%= searchUsers[i].username%>">
+				<h2><%=searchUsers[i].firstName%> <%=searchUsers[i].lastName%></h2>
+				</a>
+				
+				<h3>Username: <%=searchUsers[i].username%></h3>
+				<h3>Followers: <%=searchUsers[i].following%></h3>
+				<h3>Following: <%=searchUsers[i].followers%></h3>
+    		<%	}
+				
+		}
+	}%>
+	</div>
+	</div>
+	
+	<!-- if naubos na yung users accounts na ididisplay, etong posts naman  -->
+	<% if (locals.posts) {
+		if (posts.length > 0) {%>
+			<br/>
+			<h2>Posts Results</h2>
+			<div class="searchContainer">
+			<div class="searchResult">
+			<%for (var i=0; i<posts.length; i++) { %>
+				<% include ../public/components/post/post.ejs %>
+			<%}
+		}
+	}%>
+	</div>
 	</div>
 </div>
 

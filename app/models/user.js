@@ -3,6 +3,7 @@ var fs          = require('fs');
 var bcrypt      = require('bcrypt');
 const rounds    = 10; // WARNING! Don't go above 10
 var Image       = require('./image');
+var Post        = require('./post');
 
 var UserSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,

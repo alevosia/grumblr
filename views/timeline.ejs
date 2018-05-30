@@ -2,6 +2,25 @@
 <html lang="en">
 
 <head>
+<%
+      if (locals.user.profileImage && locals.user.coverImage) {
+            if (locals.user.profileImage.img) {
+                  console.log(user.profileImage);
+                  var type = user.profileImage.img.contentType
+                  console.log(type);
+                  var base64String = user.profileImage.img.data;
+                  var profileImage = "data:"+type+";base64, "+base64String;
+            }
+            
+            if (locals.user.coverImage.img) {
+                  console.log(user.coverImage);
+                  var type2 = user.coverImage.img.contentType
+                  console.log(type2);
+                  var base64String2 = user.coverImage.img.data;
+                  var coverImage = "data:"+type+";base64, "+base64String2;
+            }
+      }
+%>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,6 +35,8 @@
 </head>
 
 <body>
+
+
 <% include  ../public/components/navbar/navbar.ejs %>
 
 <div id="miniprofile"><% include ../public/components/miniprofile/miniprofile.ejs %></div>
