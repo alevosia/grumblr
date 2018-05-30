@@ -11,14 +11,6 @@
                   var base64String = user.profileImage.img.data;
                   var profileImage = "data:"+type+";base64, "+base64String;
             }
-            
-            if (locals.user.coverImage.img) {
-                  console.log(user.coverImage);
-                  var type2 = user.coverImage.img.contentType
-                  console.log(type2);
-                  var base64String2 = user.coverImage.img.data;
-                  var coverImage = "data:"+type+";base64, "+base64String2;
-            }
       }
 %>
    <meta charset="UTF-8">

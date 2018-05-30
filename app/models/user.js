@@ -63,6 +63,7 @@ UserSchema.methods.SendNewPost = function(req, res) {
         var imageDocument = new Image({
             _id: new mongoose.Types.ObjectId(),
             img: {
+                name: req.files[0].originalname,
                 data: data,
                 contentType: req.files[0].mimetype
             }
@@ -73,7 +74,7 @@ UserSchema.methods.SendNewPost = function(req, res) {
 
             var post = new Post({
                 _id: new mongoose.Types.ObjectId(),
-                username: req.user.username,
+                User: req.user._id,
                 text:  req.body.text,
                 image: imageDocument._id,
                 comments: []
@@ -88,9 +89,8 @@ UserSchema.methods.SendNewPost = function(req, res) {
         console.log('No image uploaded.');
         var post = new Post({
             _id: new mongoose.Types.ObjectId(),
-            username: req.user.username,
+            User: req.user._id,
             text:  req.body.text,
-            image: null,
             comments: []
         });
 

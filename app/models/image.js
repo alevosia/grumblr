@@ -3,6 +3,7 @@ var fs = require('fs');
 
 var ImageSchema = new mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
+    name: String,
     img: { data: Buffer, contentType: String }
 });
 
