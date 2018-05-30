@@ -80,6 +80,14 @@ header .profileHeaderUserInfo {
    margin: 0px;
 }
 
+#followButton {
+    background-color: #6DC4FF;
+    color: rgba(255, 255, 255, 0.768);
+    transition: all 0.4s ease-in-out cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}#followButton:hover {
+    color: white;
+}
+
 
 
 
