@@ -40,7 +40,23 @@ module.exports = function(router) {
     router.get('/timeline', function(req, res){
         User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
             Post.find().populate('image').exec(function(err, posts) {
-                res.render('timeline.ejs', { user:user, posts:posts})
+                function removeDuplicates(arr){
+                    let unique_array = []
+                    for(let i = 0;i < arr.length; i++){
+                        if(unique_array.indexOf(arr[i]) == -1){
+                            unique_array.push(arr[i])
+                        }
+                    }
+                    return unique_array
+                }
+                for (var i = 0; i < posts.length; i++) {
+                    var usernames = posts[i].username;
+                }
+                usernames = removeDuplicates(usernames);
+                console.log(usernames);
+                User.find({'username':{'$in': usernames}}).populate('profileImage').exec(function(err, postUsers) {
+                    res.render('timeline.ejs', { user:user, post:posts, postUsers: postUsers})
+                })
             })
         })
     });
@@ -93,10 +109,10 @@ module.exports = function(router) {
     // USERS ======================================================
     // localhost:8080/users/<username>
     router.get('/users/:username', function(req, res) {
-        User.findOne({'username':req.param('username')}, function(err, user) {
+        User.findOne({'username':req.param('username')}, function(err, visitedUser) {
             if (err) throw err;
             console.log(user)
-            res.render('visitedprofile.ejs', {user: user});
+            res.render('visitedprofile.ejs', {user: req.user, visitedUser: visitedUser});
         });
     })
 

@@ -56,7 +56,7 @@ UserSchema.methods.MinusFollowers = function() {
 }
 
 UserSchema.methods.SendNewPost = function(req, res) {
-    if (req.files) {
+    if (req.files.length > 0) {
         console.log(req.files);
         var data = fs.readFileSync(req.files[0].path, {encoding: 'base64'});
 
