@@ -26,9 +26,20 @@
    cursor: pointer;
 }
 
+#avatarContainer {
+    overflow: hidden;
+    height: 2em;
+    width: 2em;
+    border-radius: 100em;
+    margin-left: 10px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: #6C4ED5;
+}
+
 #userAvatar {
-   margin-left: 10px;
-   border-radius: 100em;
+    height: 100%;
 }
 
 #redirectLink {

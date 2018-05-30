@@ -34,7 +34,6 @@
 <div id="content">
 	<%
 	if (locals.searchUsers) {
-		<!-- if users are -->
 		if (searchUsers.length > 0) { %>
 			<div class="searchContainer">
 				<div class="searchResult">
@@ -90,7 +89,11 @@
 					<!-- =========================================================================================================== -->
 				<%}
 					
-		}
+		} else {%>
+			<div class="emptyResultContainer">
+				<h1 class="header" id="emptyResult">No matched results... :(</h1>
+			</div>
+		<%}
 	}%>
 				</div>
 			</div>
@@ -141,6 +144,10 @@ $('.ui.modal.uploadImage')
 	.modal('attach events', '#uploadImageButton', 'show')
 ;
 
+$('.emptyResultContainer')
+  .transition('shake')
+;
+
 $('#content.post')
 	.visibility({
 		once: false,
@@ -151,7 +158,8 @@ $('#content.post')
 			// loads a max of 5 times
 			window.loadFakeContent();
 		}
-	});
+});
+
 
 
 
