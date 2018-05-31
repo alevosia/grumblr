@@ -9,10 +9,18 @@
 ---
 
 ## Dependencies
-
+* bcrypt
 * body-parser
+* connect-flash
+* connect-mongo
+* ejs
+* express-session
 * express
-* mongodb
+* mongoose
+* morgan
+* multer
+* passport
+* passport-local
 
 ## devDependency
 
