@@ -35,7 +35,7 @@ module.exports = function(passport) {
                     } 
                     else {
 
-                        defaultProfileImagePath = __dirname + '\\images\\alex.jpg';
+                        defaultProfileImagePath = __dirname + '\\images\\profileImage.png';
                         console.log(defaultProfileImagePath);
                         defaultCoverImagePath = __dirname + '\\images\\placeholderImage2.png';
                         console.log(defaultCoverImagePath);
@@ -45,7 +45,7 @@ module.exports = function(passport) {
                             _id: new mongoose.Types.ObjectId(),
                             img: {
                                 data: profileImageData,
-                                contentType: 'image/jpg'
+                                contentType: 'image/png'
                             }
                         });
 

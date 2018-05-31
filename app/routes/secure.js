@@ -7,6 +7,7 @@ module.exports = function(router) {
     var Image = require('../models/image.js');
     var Post = require('../models/post.js');
     var User = require('../models/user.js');
+    var Comment =  require('../models/comment.js');
     // AUTHENTICATION ===========================================
     router.use(function(req, res, next) {
         if (req.isAuthenticated()) {
@@ -26,10 +27,15 @@ module.exports = function(router) {
 
     router.get('/profile', function(req, res){
         User.findById({'_id': req.user._id}).populate('profileImage coverImage').exec(function(err, user) {
-            Post.find({}).populate('image User').populate({
+            Post.find({}).populate('image User')
+            .populate({
                 path: 'User',
                 populate: { path: 'profileImage',
                             model: 'Image'}
+            }).populate({
+                path: 'comments',
+                populate: { path: 'User',
+                            model: 'User' }
             }).sort({'utcMS':-1}).exec(function(err, resultPosts) {
                 if (err) throw err;
                 var posts = [];
@@ -42,6 +48,7 @@ module.exports = function(router) {
                             console.log(resultPosts[i].User._id + ' ' + user._id);
                         }
                     }
+                   
                 }
                 res.render('profile.ejs', { user:user, posts:posts})
             })
@@ -51,17 +58,21 @@ module.exports = function(router) {
     // USERS ======================================================
     // localhost:8080/users/<username>
     router.get('/users/:username', function(req, res) {
-        User.findById({'_id': req.user._id}).populate('coverImage').exec(function(err, user) {
+        User.findById({'_id': req.user._id}).populate('profileImage').exec(function(err, user) {
             if (err) throw err;
 
             User.findOne({'username': req.params.username}).populate('profileImage coverImage').exec(function(err, visitedUser) {
                 if (err) throw err;
 
-                Post.find({}).sort({'utcMS': -1}).populate('image User').populate({
+                Post.find({}).sort({'utcMS': -1}).populate('image comments').populate({
                     path: 'User',
                     populate: { path: 'profileImage',
                                 model: 'Image'}
-                }).sort({'utcMS':-1}).exec(function(err, resultPosts) {
+                }).populate({
+                    path: 'comments',
+                    populate: { path: 'User',
+                            model: 'User'}})
+                .sort({'utcMS':-1}).exec(function(err, resultPosts) {
                     if (err) throw err;
                     var posts = [];
                     if (resultPosts.length > 0) {
@@ -85,10 +96,14 @@ module.exports = function(router) {
 
     router.get('/timeline', function(req, res){
         User.findById({'_id': req.user._id}).populate('profileImage').exec(function(err, user) {
-            Post.find({}).populate('image').populate({
+            Post.find({}).populate('image comments').populate({
                 path: 'User',
                 populate: { path: 'profileImage',
                             model: 'Image'}
+            }).populate({
+                path: 'comments',
+                populate: { path: 'User',
+                            model: 'User' }
             }).sort({'utcMS':-1}).exec(function(err, posts) {
                 console.log(posts);
                 res.render('timeline.ejs', {user: user, posts: posts});
@@ -100,6 +115,28 @@ module.exports = function(router) {
         
         req.user.SendNewPost(req, res);
         res.redirect('/profile');
+    })
+
+    router.post('/comment/:_id', function(req, res) {
+        Post.findById({'_id':req.params._id}).populate('comments').exec(function(err, post) {
+            console.log(req.body.commentText);
+            var comment = new Comment({
+                _id: new mongoose.Types.ObjectId(),
+                User: req.user._id,
+                text: req.body.commentText,
+                utcMS: Date.now()
+            });
+
+            comment.save(function(err, comment) {
+                console.log(comment.text + ' has been saved.');
+                post.comments.push(comment._id);
+                post.save(function(err, newPost) {
+                    if (err) throw err;
+                    console.log('newPost comments: ' + newPost.comments.length);
+                    res.redirect('/timeline');
+                })
+            })
+        })
     })
 
     router.get('/settings', function(req, res) {
@@ -179,21 +216,16 @@ module.exports = function(router) {
                           {'lastName': {'$regex': req.body.searchQuery, '$options':'i'}},
                           {'username': {'$regex': req.body.searchQuery, '$options':'i'}}]})
         .populate('profileImage').exec(function(err, users) {
-            var usernames = [];
-            for (var i = 0; i < users.length; i++) {
-                usernames.push(users[i].username);
-            }
+            if (err) throw err;
             Post.find({}).populate('image User')
-                .populate({
-                        path: 'User',
-                        populate: {path: 'profileImage',
-                        model: 'Image'}})
-                .exec(function(err, posts) {
-                    if (err) throw err;
-                    console.log(users)
-                    res.render('search.ejs', {user: req.user, searchUsers: users, posts: posts});
+            .populate({
+                    path: 'User',
+                    populate: {path: 'profileImage',
+                    model: 'Image'}}).sort({'utcMS': -1})
+            .exec(function(err, posts) {
+                if (err) throw err;
+                res.render('search.ejs', {user: req.user, searchUsers: users, posts: posts});
             })
         })
     })
-
 }
