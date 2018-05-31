@@ -20,7 +20,6 @@ var UserSchema = new mongoose.Schema({
     following: {type: Number, default: 0},
     followers: {type: Number, default: 0},
     followedUsers: []
-    
 });
 
 UserSchema.statics.generateHash = function(password) {
@@ -29,10 +28,6 @@ UserSchema.statics.generateHash = function(password) {
 
 UserSchema.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
-}
-
-UserSchema.methods.UpdatePassword = function(password) {
-    this.password = this.generateHash(password);
 }
 
 UserSchema.methods.UpdateBio = function(bio) {
