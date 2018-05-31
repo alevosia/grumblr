@@ -167,7 +167,46 @@ module.exports = function(router) {
         }
 
         if(req.body) {
-            console.log(req.body);
+            if(req.body.firstName && req.body.firstName != req.user.firstName) {
+                req.user.set({'firstName': req.body.firstName});
+                req.user.save(function(err, newUser) {
+                    if (err) throw err;
+                    console.log(newUser.username + '\'s firstName has been updated to ' + req.body.firstName);
+                })
+            }
+            if(req.body.lastName && req.body.lastName != req.user.lastName) {
+                req.user.set({'lastName': req.body.lastName});
+                req.user.save(function(err, newUser) {
+                    if (err) throw err;
+                    console.log(newUser.username + '\'s lastName has been updated to ' + req.body.lastName);
+                })
+            }
+            if (req.body.currentPassword && req.body.newPassword1 &&req.body.newPassword2) {
+                var cp = req.body.currentPassword;
+                var np1 = req.body.newPassword1;
+                var np2 = req.body.newPassword2;
+
+                if (req.user.validPassword(cp)) {
+                    if (np1 == np2) {
+                        req.user.set({'password': User.generateHash(np1)});
+                        req.user.save(function(err, newUser) {
+                            if (err) throw err;
+                            console.log(req.user.username + '\'s password has been changed to ' + np1);
+                        })
+                    } else {
+                        res.redirect('/settings');
+                    }
+                } else {
+                    res.redirect('/settings');
+                }
+            }
+            if(req.body.biography && req.body.biography != req.user.biography) {
+                req.user.set({'bio': req.body.biography});
+                req.user.save(function(err, newUser) {
+                    if (err) throw err;
+                    console.log(newUser.username + '\'s bio has been updated to ' + req.body.biography);
+                })
+            }
         }
         res.redirect('/settings');
     })
@@ -217,12 +256,32 @@ module.exports = function(router) {
                           {'username': {'$regex': req.body.searchQuery, '$options':'i'}}]})
         .populate('profileImage').exec(function(err, users) {
             if (err) throw err;
-            Post.find({}).populate('image User')
+            Post.find({}).populate('image comments')
             .populate({
                     path: 'User',
                     populate: {path: 'profileImage',
-                    model: 'Image'}}).sort({'utcMS': -1})
-            .exec(function(err, posts) {
+                    model: 'Image'}
+            }).populate({
+                    path: 'comments',
+                    populate: { path: 'User',
+                                model: 'User'}
+            }).sort({'utcMS': -1})
+            .exec(function(err, resultPosts) {
+                if (users.length > 0) {
+                    var usernames = [];
+                    for (var j=0; j<users.length; j++) {
+                        usernames.push(users[j].username)
+                    }
+                    console.log(usernames);
+                }
+                var posts = [];
+                if (resultPosts.length > 0) {
+                    for (var i=0; i<resultPosts.length; i++) {
+                        if (usernames.includes(resultPosts[i].User.username)) {
+                            posts.push(resultPosts[i]);
+                        }
+                    }
+                }
                 if (err) throw err;
                 res.render('search.ejs', {user: req.user, searchUsers: users, posts: posts});
             })

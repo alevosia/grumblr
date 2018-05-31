@@ -112,7 +112,7 @@
                         for(var a=0; a<posts[i].comments.length; a++) {
                             %><div class="personComment">
                             <p>
-                                <a href="/users/<%=posts[i].comments[i].User.username%>">
+                                <a href="/users/<%=posts[i].comments[a].User.username%>">
                                 <strong><%=posts[i].comments[a].User.username%></strong></a> <%=posts[i].comments[a].utcMS.toUTCString()%><br>
                                 <%=posts[i].comments[a].text%>
                             </p>
