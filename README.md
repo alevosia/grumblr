@@ -64,8 +64,8 @@
 
 ### How To Use:
 
-*Download [npm](https://www.npmjs.com/get-npm) and [Git](https://git-scm.com/)
-*Make sure npm commands are global. Set it in your system's environment variables.
+* Download [npm](https://www.npmjs.com/get-npm) and [Git](https://git-scm.com/) <br/>
+* Make sure npm commands are global. Set it in your system's environment variables.
 
 1. Navigate to the folder directory then type npm install
 1. type npm start
