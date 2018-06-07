@@ -64,9 +64,11 @@
 
 ### How To Use:
 
-* Download [npm](https://www.npmjs.com/get-npm) and [Git](https://git-scm.com/) <br/>
+* Download [npm](https://www.npmjs.com/get-npm) <br/>
+* This project also requires MongoDB locally to use the database.
 * Make sure npm commands are global. Set it in your system's environment variables.
 
-1. Navigate to the folder directory then type npm install
-1. type npm start
-1. Type localhost:8080 in the browser url
+1. Navigate to the folder directory then type 'npm install'
+1. Start the mongodb server by typing 'mongod'
+1. Type 'npm start'
+1. Type 'localhost:8080' in the browser url
