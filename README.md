@@ -61,3 +61,12 @@
 * Alexander Paul Mariñas
 * Kevin Say
 * Paolo Latoja
+
+### How To Use:
+
+*Download [npm](https://www.npmjs.com/get-npm) and [Git](https://git-scm.com/)
+*Make sure npm commands are global. Set it in your system's environment variables.
+
+1. Navigate to the folder directory then type npm install
+1. type npm start
+1. Type localhost:8080 in the browser url
