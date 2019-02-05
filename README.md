@@ -55,13 +55,6 @@
 * You can use MySQL/PostgreSQL to store user information but the blog posts
   should be stored, and saved on a MongoDB instance
 
-### Members:
-
-* Nathaniel Saludes
-* Alexander Paul Mariñas
-* Kevin Say
-* Paolo Latoja
-
 ### How To Use:
 
 * Download [npm](https://www.npmjs.com/get-npm) <br/>
