@@ -1,8 +1,7 @@
 # Grumblr
 
-## NoSQL project for SFLECT1
-
-### Project website that mimics the website of Tumblr.com
+### NoSQL project for Software Free Elective 1  
+### A website that mimics Tumblr  
 
 Watch it in action [here](https://www.youtube.com/watch?v=H3-ICZAQ_hI)!
 ---
