@@ -4,8 +4,7 @@
 
 ### Project website that mimics the website of Tumblr.com
 
-#### Temporary Project Name: Grumblr
-
+Watch it in action [here](https://www.youtube.com/watch?v=H3-ICZAQ_hI)!
 ---
 
 ## Dependencies
