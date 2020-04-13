@@ -2,6 +2,7 @@
   "name": "grumblr",
   "version": "1.0.0",
   "description": "NoSQL project for SFLECT1",
+  "private": true,
   "main": "app/server.js",
   "dependencies": {
     "bcrypt": "^4.0.1",
@@ -21,17 +22,16 @@
     "nodemon": "^2.0.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alevfalse/grumblr.git"
+    "url": "git+https://github.com/alevosia/grumblr.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alevfalse/grumblr/issues"
+    "url": "https://github.com/alevosia/grumblr/issues"
   },
-  "homepage": "https://github.com/alevfalse/grumblr#readme"
+  "homepage": "https://github.com/alevosia/grumblr#readme"
 }
